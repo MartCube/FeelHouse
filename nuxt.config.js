@@ -14,7 +14,7 @@ export default {
 
 	modules: ['@nuxtjs/sanity/module'],
 	sanity: {
-		projectId: process.env.projectId,
+		projectId: process.env.SANITY_ID,
 		minimal: true,
 		contentHepler: true,
 	},

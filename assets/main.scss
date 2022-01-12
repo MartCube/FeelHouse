@@ -1,5 +1,5 @@
 @import '~/assets/colors.scss';
-@import '~/assets/fonts.scss';
+// @import '~/assets/fonts.scss';
 // @import '~/assets/mixins.scss';
 
 
@@ -15,11 +15,9 @@
 
 
 body {
-	font-family: 'Config', system;
-	background-color: $bg;
-	color: $text;
-	span{
-		color:$text
-	}
+	font-family:  system;
+	// background-color: $bg;
+	// color: $text;
+
 }
 
