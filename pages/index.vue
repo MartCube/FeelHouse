@@ -1,18 +1,18 @@
 <template>
 	<div id="index">
-		<SanityContent class="sanity_content" :blocks="content" :serializers="serializers" />
+		<SanityContent class="content" :blocks="content" :serializers="serializers" />
 	</div>
 </template>
 
 <script>
-import { index } from '@/assets/queries'
+import { page } from '@/assets/queries'
 import faq from '@/components/Faq'
 import articleList from '@/components/ArticleList'
 
 export default {
 	name: 'Index',
-	asyncData({ $sanity }) {
-		return $sanity.fetch(index)
+	asyncData({ $sanity, route }) {
+		return $sanity.fetch(page, { uid: 'index' })
 	},
 	data: () => ({
 		serializers: {
@@ -25,4 +25,11 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.content {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+</style>
