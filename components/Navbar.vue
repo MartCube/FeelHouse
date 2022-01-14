@@ -1,5 +1,5 @@
 <template>
-	<header id="navbar">
+	<header>
 		<div class="links">
 			<n-link v-for="link in links" :key="link.uid" :to="`/${link.uid}/`"> {{ link.uid }} </n-link>
 		</div>
@@ -21,12 +21,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-#navbar {
+header {
 	width: 100%;
 	height: 100px;
 	position: fixed;
 	top: 0;
 	border-bottom: 1px solid $border;
+	background: $white;
 
 	display: flex;
 	flex-direction: column;

@@ -1,5 +1,5 @@
 <template>
-	<div id="index">
+	<div class="page">
 		<SanityContent class="content" :blocks="content" :serializers="serializers" />
 	</div>
 </template>
@@ -7,11 +7,12 @@
 <script>
 import { page } from '@/assets/queries'
 import faq from '@/components/Faq'
-import articleList from '@/components/ArticleList'
+import articleList from '@/components/ArticleList.vue'
+import projectList from '@/components/ProjectList.vue'
 
 export default {
 	name: 'Index',
-	asyncData({ $sanity, route }) {
+	asyncData({ $sanity }) {
 		return $sanity.fetch(page, { uid: 'index' })
 	},
 	data: () => ({
@@ -19,6 +20,7 @@ export default {
 			types: {
 				faq,
 				articleList,
+				projectList,
 			},
 		},
 	}),

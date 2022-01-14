@@ -1,5 +1,5 @@
 <template>
-	<n-link class="panel_card" :to="'blog/' + data.uid">
+	<n-link class="article_card" :to="'/blog/' + data.uid">
 		<SanityImage :asset-id="data.poster" auto="format" fit="clip" height="400" />
 		<h2>{{ data.title }}</h2>
 		<span> {{ data.releaseDate }} </span>
@@ -18,7 +18,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.panel_card {
+.article_card {
 	width: 350px;
 	display: flex;
 	flex-direction: column;

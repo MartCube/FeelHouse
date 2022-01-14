@@ -1,17 +1,3 @@
-import { createClient } from '@nuxtjs/sanity'
-
-import fetch from 'node-fetch'
-if (!globalThis.fetch) {
-	globalThis.fetch = fetch
-}
-
-const configSanity = {
-	projectId: process.env.SANITY_ID,
-	minimal: true,
-}
-
-const client = createClient(configSanity)
-
 export default {
 	css: ['~/assets/main.scss'],
 	target: 'static',
@@ -28,22 +14,8 @@ export default {
 
 	modules: ['@nuxtjs/sanity/module'],
 	sanity: {
-		...configSanity,
-	},
-
-	generate: {
-		fallback: true,
-		// crawler: false,
-		async routes() {
-			const page = (await client.fetch(`*[_type == "page"]`)) || []
-			console.log(page)
-			return page.map((page) => {
-				return {
-					route: `/${page.uid.current}/`,
-					payload: page,
-				}
-			})
-		},
+		projectId: process.env.SANITY_ID,
+		minimal: true,
 	},
 
 	router: {

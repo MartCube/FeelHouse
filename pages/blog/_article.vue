@@ -1,17 +1,17 @@
 <template>
-	<div class="page">
+	<div class="article">
 		<!-- <SanityContent class="content" :blocks="content" :serializers="serializers" /> -->
 		{{ title }}
 	</div>
 </template>
 
 <script>
-import { page } from '@/assets/queries'
+import { article } from '@/assets/queries'
 
 export default {
-	name: 'Page',
+	name: 'Article',
 	asyncData({ $sanity, route }) {
-		return $sanity.fetch(page, { uid: route.params.page })
+		return $sanity.fetch(article, { uid: route.params.page })
 	},
 	data: () => ({
 		// serializers: {
@@ -24,4 +24,12 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.article {
+	width: 100%;
+	margin-top: 100px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+</style>
