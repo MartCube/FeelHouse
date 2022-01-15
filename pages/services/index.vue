@@ -1,18 +1,26 @@
 <template>
 	<div class="page">
 		<Intro :title="title" :poster="poster" />
+		<SanityContent class="content" :blocks="content" :serializers="serializers" />
 	</div>
 </template>
 
 <script>
 import { page } from '@/assets/queries'
+import serviceList from '~/components/ServiceList.vue'
 
 export default {
-	name: 'Projects',
+	name: 'Services',
 	asyncData({ $sanity }) {
 		return $sanity.fetch(page, { uid: 'services' })
 	},
-	data: () => ({}),
+	data: () => ({
+		serializers: {
+			types: {
+				serviceList,
+			},
+		},
+	}),
 }
 </script>
 

@@ -1,12 +1,12 @@
 <template>
-	<section class="projects">
+	<section class="service list">
 		<h2 class="title">{{ title }}</h2>
-		<ProjectCard v-for="project in data" :key="project.uid" :data="project" />
+		<ServiceCard v-for="article in data" :key="article.uid" :data="article" />
 	</section>
 </template>
 
 <script>
-import { projectList } from '@/assets/queries'
+import { serviceList } from '@/assets/queries'
 
 export default {
 	props: {
@@ -14,22 +14,18 @@ export default {
 			type: String,
 			required: true,
 		},
-		tag: {
-			type: Array,
-			default: () => [{ value: 'design' }],
-		},
 	},
 	data: () => ({
 		data: null,
 	}),
 	async fetch() {
-		this.data = await this.$sanity.fetch(projectList, { tag: this.tag[0].value })
+		this.data = await this.$sanity.fetch(serviceList)
 	},
 }
 </script>
 
 <style lang="scss" scoped>
-.projects {
+.list {
 	width: 100%;
 	max-width: 1200px;
 

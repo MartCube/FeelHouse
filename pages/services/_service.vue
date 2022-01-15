@@ -1,7 +1,7 @@
 <template>
 	<div class="service">
-		<!-- <SanityContent class="content" :blocks="content" :serializers="serializers" /> -->
 		<Intro :title="title" :poster="poster" />
+		<!-- <SanityContent class="content" :blocks="content" :serializers="serializers" /> -->
 	</div>
 </template>
 
