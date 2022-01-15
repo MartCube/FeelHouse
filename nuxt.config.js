@@ -23,8 +23,15 @@ export default {
 	},
 
 	// Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
-	buildModules: ['@nuxtjs/eslint-module', '@nuxtjs/style-resources'],
+	buildModules: ['@nuxtjs/eslint-module', '@nuxtjs/style-resources', 'nuxt-font-loader'],
 	styleResources: { scss: ['./assets/colors.scss'] },
+	fontLoader: {
+		url: 'https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600&display=swap',
+
+		prefetch: true,
+		preconnect: true,
+	},
+
 	// Build Configuration: https://go.nuxtjs.dev/config-build
 	build: {},
 }
