@@ -1,17 +1,17 @@
 <template>
-	<div class="project">
+	<div class="service">
 		<!-- <SanityContent class="content" :blocks="content" :serializers="serializers" /> -->
-		{{ title }}
+		<Intro :title="title" :poster="poster" />
 	</div>
 </template>
 
 <script>
-import { project } from '@/assets/queries'
+import { service } from '@/assets/queries'
 
 export default {
-	name: 'Project',
+	name: 'Service',
 	asyncData({ $sanity, route }) {
-		return $sanity.fetch(project, { uid: route.params.page })
+		return $sanity.fetch(service, { uid: route.params.service })
 	},
 	data: () => ({
 		// serializers: {
@@ -25,7 +25,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.project {
+.service {
 	width: 100%;
 	display: flex;
 	flex-direction: column;

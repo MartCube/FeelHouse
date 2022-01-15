@@ -6,7 +6,7 @@
 
 <script>
 import { page } from '@/assets/queries'
-import faq from '@/components/Faq'
+import faq from '@/components/Faq.vue'
 import articleList from '@/components/ArticleList.vue'
 import projectList from '@/components/ProjectList.vue'
 

@@ -10,7 +10,7 @@ import { page } from '@/assets/queries'
 export default {
 	name: 'Projects',
 	asyncData({ $sanity }) {
-		return $sanity.fetch(page, { uid: 'projects' })
+		return $sanity.fetch(page, { uid: 'services' })
 	},
 	data: () => ({}),
 }

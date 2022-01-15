@@ -2,6 +2,7 @@ import { groq } from '@nuxtjs/sanity'
 
 export const page = groq`*[ _type == "page" && uid.current == $uid][0]{
 	"uid": uid.current,
+	"poster": poster.asset._ref,
     title,
     content,
 }`

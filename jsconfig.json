@@ -1,6 +1,5 @@
 {
 	"compilerOptions": {
-		"noEmit": true,
 		"baseUrl": ".",
 		"paths": {
 			"~/*": [
@@ -15,7 +14,8 @@
 			"@@/*": [
 				"./*"
 			]
-		}
+		},
+		"noEmit": true,
 	},
 	"exclude": [
 		"node_modules",

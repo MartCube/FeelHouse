@@ -22,12 +22,13 @@ export default {
 
 <style lang="scss" scoped>
 header {
-	width: 100%;
+	width: 100vw;
 	height: 100px;
 	position: fixed;
+	z-index: 3;
 	top: 0;
-	border-bottom: 1px solid $border;
-	background: $white;
+	border-bottom: 1px solid $borderWhite;
+	// background: $white;
 
 	display: flex;
 	flex-direction: column;
@@ -36,8 +37,9 @@ header {
 	.links {
 		display: flex;
 		a {
+			text-transform: uppercase;
 			text-decoration: none;
-			color: $text;
+			color: $white;
 			margin: 0 20px;
 		}
 	}
