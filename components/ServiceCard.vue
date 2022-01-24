@@ -1,12 +1,14 @@
 <template>
 	<n-link class="service card" :to="'/services/' + data.uid">
-		<SanityImage :asset-id="data.poster" auto="format" fit="clip" height="400" />
-		<h2>{{ data.title }}</h2>
+		<ImageItem :image="data.poster" h="400" fit="clip" />
+		<h2 class="title">{{ data.title }}</h2>
 	</n-link>
 </template>
 
 <script>
+import ImageItem from './ImageItem.vue'
 export default {
+	components: { ImageItem },
 	props: {
 		data: {
 			type: Object,
@@ -20,9 +22,19 @@ export default {
 .card {
 	width: 350px;
 	display: flex;
-	flex-direction: column;
-	text-decoration: none;
+	position: relative;
 
-	color: $text;
+	.title {
+		position: absolute;
+		bottom: 1rem;
+		right: 1rem;
+		z-index: 3;
+
+		text-transform: uppercase;
+		writing-mode: sideways-lr;
+		text-orientation: mixed;
+		text-decoration: none;
+		color: $white;
+	}
 }
 </style>

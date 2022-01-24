@@ -10,7 +10,7 @@ export default {
 		link: [{ rel: 'icon', type: 'png', href: '/favicon.png' }],
 	},
 
-	plugins: [],
+	plugins: [{ src: '@/plugins/vee-validate.js' }, { src: `~/plugins/lazysizes.client.js` }],
 
 	modules: ['@nuxtjs/sanity/module'],
 	sanity: {
@@ -27,11 +27,18 @@ export default {
 	styleResources: { scss: ['./assets/colors.scss'] },
 	fontLoader: {
 		url: 'https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600&display=swap',
-
 		prefetch: true,
 		preconnect: true,
 	},
 
 	// Build Configuration: https://go.nuxtjs.dev/config-build
-	build: {},
+	build: {
+		// vee validate
+		transpile: ['vee-validate/dist/rules'],
+		// lazysizes
+		extend(config, { isClient, loaders: { vue } }) {
+			vue.transformAssetUrls.img = ['data-src', 'src']
+			vue.transformAssetUrls.source = ['data-srcset', 'srcset']
+		},
+	},
 }

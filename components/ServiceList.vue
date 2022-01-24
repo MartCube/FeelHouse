@@ -1,6 +1,6 @@
 <template>
 	<section class="service list">
-		<h2 class="title">{{ title }}</h2>
+		<h2 v-if="title" class="title">{{ title }}</h2>
 		<ServiceCard v-for="article in data" :key="article.uid" :data="article" />
 	</section>
 </template>
@@ -12,7 +12,7 @@ export default {
 	props: {
 		title: {
 			type: String,
-			required: true,
+			default: undefined,
 		},
 	},
 	data: () => ({
@@ -26,8 +26,7 @@ export default {
 
 <style lang="scss" scoped>
 .list {
-	width: 100%;
-	max-width: 1200px;
+	width: 1200px;
 
 	display: flex;
 	flex-wrap: wrap;

@@ -5,23 +5,17 @@
 </template>
 
 <script>
-import { page } from '@/assets/queries'
-import faq from '@/components/Faq.vue'
-import articleList from '@/components/ArticleList.vue'
-import projectList from '@/components/ProjectList.vue'
+import { index } from '@/assets/queries'
+// import faq from '@/components/Faq.vue'
 
 export default {
 	name: 'Index',
 	asyncData({ $sanity }) {
-		return $sanity.fetch(page, { uid: 'index' })
+		return $sanity.fetch(index)
 	},
 	data: () => ({
 		serializers: {
-			types: {
-				faq,
-				articleList,
-				projectList,
-			},
+			types: {},
 		},
 	}),
 }
