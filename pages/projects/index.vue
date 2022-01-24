@@ -1,26 +1,19 @@
 <template>
 	<div class="page">
 		<Intro :title="title" :poster="poster" />
-		<ProjectList title="test" />
+		<ProjectList />
 	</div>
 </template>
 
 <script>
 import { page } from '@/assets/queries'
-import projectList from '@/components/ProjectList.vue'
 
 export default {
 	name: 'Projects',
 	asyncData({ $sanity }) {
 		return $sanity.fetch(page, { uid: 'projects' })
 	},
-	data: () => ({
-		serializers: {
-			types: {
-				projectList,
-			},
-		},
-	}),
+	data: () => ({}),
 }
 </script>
 
@@ -30,5 +23,8 @@ export default {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	.project_list {
+		flex-direction: column;
+	}
 }
 </style>

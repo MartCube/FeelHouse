@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<n-link class="project_card" :to="'/projects/' + data.uid">
-			<SanityImage :asset-id="data.poster" auto="format" fit="clip" height="400" />
+			<SanityImage :asset-id="data.poster" auto="format" fit="crop" w="500" h="300" />
 		</n-link>
 		<div class="info">
 			<h2>{{ data.title }}</h2>
@@ -12,9 +12,7 @@
 </template>
 
 <script>
-import Btn from './Btn.vue'
 export default {
-	components: { Btn },
 	props: {
 		data: {
 			type: Object,
@@ -26,7 +24,7 @@ export default {
 
 <style lang="scss" scoped>
 .project_card {
-	width: 350px;
+	width: fit-content;
 	display: flex;
 	flex-direction: column;
 	text-decoration: none;

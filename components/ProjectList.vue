@@ -1,6 +1,6 @@
 <template>
-	<section class="projects">
-		<h2 class="title">{{ title }}</h2>
+	<section class="project_list">
+		<h2 v-if="title" class="title">{{ title }}</h2>
 		<ProjectCard v-for="project in data" :key="project.uid" :data="project" />
 	</section>
 </template>
@@ -12,7 +12,7 @@ export default {
 	props: {
 		title: {
 			type: String,
-			required: true,
+			default: null,
 		},
 		tag: {
 			type: Array,
@@ -29,7 +29,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.projects {
+.project_list {
 	width: 100%;
 	max-width: 1200px;
 

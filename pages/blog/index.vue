@@ -1,6 +1,7 @@
 <template>
 	<div class="page">
 		<Intro :title="title" :poster="poster" />
+		<ArticleList title="test" />
 	</div>
 </template>
 
