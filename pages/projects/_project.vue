@@ -1,7 +1,7 @@
 <template>
 	<div class="project">
+		<Intro :title="title" :poster="poster" />
 		<!-- <SanityContent class="content" :blocks="content" :serializers="serializers" /> -->
-		{{ title }}
 	</div>
 </template>
 
@@ -11,7 +11,7 @@ import { project } from '@/assets/queries'
 export default {
 	name: 'Project',
 	asyncData({ $sanity, route }) {
-		return $sanity.fetch(project, { uid: route.params.page })
+		return $sanity.fetch(project, { uid: route.params.project })
 	},
 	data: () => ({
 		// serializers: {

@@ -1,7 +1,8 @@
 export default {
 	css: ['~/assets/main.scss'],
 	target: 'static',
-	components: true,
+	components: ['~/components/forms', '~/components/global', '~/components/items', '~/components/local', '~/components/sections'],
+
 	// Global page headers: https://go.nuxtjs.dev/config-head
 	head: {
 		title: 'Feel House',
@@ -16,6 +17,7 @@ export default {
 	sanity: {
 		projectId: process.env.SANITY_ID,
 		minimal: true,
+		imageHelper: false,
 	},
 
 	router: {

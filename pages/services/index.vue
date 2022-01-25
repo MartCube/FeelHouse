@@ -7,7 +7,7 @@
 
 <script>
 import { page } from '@/assets/queries'
-import serviceList from '~/components/ServiceList.vue'
+import serviceList from '~/components/sections/ServiceList.vue'
 
 export default {
 	name: 'Services',

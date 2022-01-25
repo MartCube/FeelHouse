@@ -1,14 +1,12 @@
 <template>
-	<n-link class="service card" :to="'/services/' + data.uid">
-		<ImageItem :image="data.poster" h="400" fit="clip" />
+	<n-link class="service card" :to="`/services/${data.uid}/`">
+		<ImageItem :image="data.poster" w="350" h="400" />
 		<h2 class="title">{{ data.title }}</h2>
 	</n-link>
 </template>
 
 <script>
-import ImageItem from './ImageItem.vue'
 export default {
-	components: { ImageItem },
 	props: {
 		data: {
 			type: Object,
@@ -21,6 +19,7 @@ export default {
 <style lang="scss" scoped>
 .card {
 	width: 350px;
+	min-height: 400px;
 	display: flex;
 	position: relative;
 
