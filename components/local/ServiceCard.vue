@@ -6,9 +6,7 @@
 </template>
 
 <script>
-import ImageItem from './ImageItem.vue'
 export default {
-	components: { ImageItem },
 	props: {
 		data: {
 			type: Object,
