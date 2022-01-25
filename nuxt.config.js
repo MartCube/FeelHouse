@@ -17,6 +17,7 @@ export default {
 	sanity: {
 		projectId: process.env.SANITY_ID,
 		minimal: true,
+		imageHelper: false,
 	},
 
 	router: {

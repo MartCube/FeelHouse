@@ -1,6 +1,6 @@
 <template>
-	<n-link class="article_card" :to="'/blog/' + data.uid">
-		<SanityImage :asset-id="data.poster" auto="format" fit="clip" height="400" />
+	<n-link class="article_card" :to="`/blog/${data.uid}/`">
+		<ImageItem :image="data.poster" w="400" h="300" />
 		<h2>{{ data.title }}</h2>
 		<span> {{ data.releaseDate }} </span>
 	</n-link>
@@ -19,7 +19,9 @@ export default {
 
 <style lang="scss" scoped>
 .article_card {
-	width: 350px;
+	width: 400px;
+	min-height: 300px;
+
 	display: flex;
 	flex-direction: column;
 	text-decoration: none;

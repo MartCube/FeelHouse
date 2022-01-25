@@ -1,7 +1,7 @@
 <template>
 	<div>
-		<n-link class="project_card" :to="'/projects/' + data.uid">
-			<SanityImage :asset-id="data.poster" auto="format" fit="crop" w="500" h="300" />
+		<n-link class="project_card" :to="`/projects/${data.uid}/`">
+			<ImageItem :image="data.poster" w="500" h="300" />
 		</n-link>
 		<div class="info">
 			<h2>{{ data.title }}</h2>
@@ -24,7 +24,8 @@ export default {
 
 <style lang="scss" scoped>
 .project_card {
-	width: fit-content;
+	width: 500px;
+	min-height: 300px;
 	display: flex;
 	flex-direction: column;
 	text-decoration: none;

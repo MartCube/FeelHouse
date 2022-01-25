@@ -11,7 +11,7 @@ import { article } from '@/assets/queries'
 export default {
 	name: 'Article',
 	asyncData({ $sanity, route }) {
-		return $sanity.fetch(article, { uid: route.params.page })
+		return $sanity.fetch(article, { uid: route.params.article })
 	},
 	data: () => ({
 		// serializers: {

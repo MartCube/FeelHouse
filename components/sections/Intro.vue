@@ -1,7 +1,8 @@
 <template>
 	<section class="intro">
 		<div class="box"></div>
-		<SanityImage :asset-id="poster" auto="format" crop="top" fit="crop" width="1920" height="1080" />
+		<ImageItem :image="poster" w="1920" h="1080" crop="top" />
+
 		<h1>{{ title }}</h1>
 	</section>
 </template>
@@ -42,7 +43,7 @@ export default {
 		opacity: 0.75;
 		z-index: 2;
 	}
-	img {
+	picture {
 		position: absolute;
 		z-index: 1;
 	}
