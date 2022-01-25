@@ -26,7 +26,7 @@ export default {
 	buildModules: ['@nuxtjs/eslint-module', '@nuxtjs/style-resources', 'nuxt-font-loader'],
 	styleResources: { scss: ['./assets/colors.scss'] },
 	fontLoader: {
-		url: 'https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600&display=swap',
+		url: 'https://fonts.googleapis.com/css2?family=Oswald:wght@300;400&display=swap',
 		prefetch: true,
 		preconnect: true,
 	},

@@ -25,7 +25,7 @@ export default {
 .intro {
 	display: flex;
 	width: 100%;
-	height: 600px;
+	height: 70vh;
 	overflow: hidden;
 	position: relative;
 
@@ -38,18 +38,21 @@ export default {
 		height: 100%;
 		position: absolute;
 		top: 0;
-		background: $text;
-		opacity: 0.75;
+		background: $black;
+		opacity: 0.5;
 		z-index: 2;
 	}
 	img {
 		position: absolute;
 		z-index: 1;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
 	}
 	h1 {
+		text-transform: uppercase;
 		z-index: 2;
 		color: $white;
-		font-size: 2rem;
 	}
 }
 </style>
