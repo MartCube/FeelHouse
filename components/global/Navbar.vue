@@ -1,21 +1,21 @@
 <template>
 	<header>
-		<div class="links">
-			<n-link v-for="link in links" :key="link.uid" :to="`/${link.uid}/`"> {{ link.uid }} </n-link>
+		<div v-if="!$fetchState.pending" class="links">
+			<n-link v-for="link in data.links" :key="link.uid" :to="`/${link.uid}/`"> {{ link.uid }} </n-link>
 		</div>
 	</header>
 </template>
 
 <script>
-import { pageLinks } from '@/assets/queries'
+import { navbar } from '@/assets/queries'
 
 export default {
 	name: 'Navbar',
 	data: () => ({
-		links: null,
+		data: null,
 	}),
 	async fetch() {
-		this.links = await this.$sanity.fetch(pageLinks)
+		this.data = await this.$sanity.fetch(navbar)
 	},
 }
 </script>
