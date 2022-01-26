@@ -6,13 +6,15 @@
 		<div class="info">
 			<h2>{{ data.title }}</h2>
 			<span> {{ data.releaseDate }} </span>
-			<Btn>send</Btn>
+			<ButtonItem>send</ButtonItem>
 		</div>
 	</div>
 </template>
 
 <script>
+import ButtonItem from '../items/ButtonItem.vue'
 export default {
+	components: { ButtonItem },
 	props: {
 		data: {
 			type: Object,
