@@ -1,8 +1,27 @@
 import { groq } from '@nuxtjs/sanity'
 
 // singleton
+
 export const index = groq`*[ _type == "index" ][0]{
-	content,
+	content[] {
+		_type == 'slider' => {
+			list[] {
+				title,
+				description,
+				'poster': poster.asset._ref,
+     		},
+      		...
+		},
+		_type == 'projectRef' => {
+			list[] -> {
+				title,
+				'uid': uid.current,
+				'poster': poster.asset._ref,
+				"tags": tags[].value,
+			},
+			...
+    	},
+  	},
 	metaTags {
 		title,
 		description,
