@@ -1,6 +1,6 @@
 <template>
 	<section class="service list">
-		<h2 v-if="title" class="title">{{ title }}</h2>
+		<!-- <h2 v-if="title" class="title">{{ title }}</h2> -->
 		<ServiceCard v-for="article in data" :key="article.uid" :data="article" />
 	</section>
 </template>
@@ -26,14 +26,15 @@ export default {
 
 <style lang="scss" scoped>
 .list {
-	width: 1200px;
-
 	display: flex;
+	justify-content: center;
 	flex-wrap: wrap;
-	justify-content: space-between;
-	.title {
-		width: 100%;
+	align-items: center;
+	padding: 100px 0;
+}
+@media screen and (max-width: 800px) {
+	.list {
+		padding: 100px 5%;
 	}
-	margin: 100px 0;
 }
 </style>

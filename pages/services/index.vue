@@ -1,7 +1,7 @@
 <template>
 	<div class="page">
 		<Intro :title="title" :poster="poster" />
-		<SanityContent class="content" :blocks="content" :serializers="serializers" />
+		<SanityContent class="container" :blocks="content" :serializers="serializers" />
 	</div>
 </template>
 
