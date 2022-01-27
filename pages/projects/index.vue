@@ -1,7 +1,6 @@
 <template>
 	<div class="page">
 		<Intro :title="poster.alt" :poster="poster.src" />
-		<ProjectList />
 	</div>
 </template>
 

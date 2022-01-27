@@ -12,12 +12,11 @@ export const index = groq`*[ _type == "index" ][0]{
      		},
       		...
 		},
-		_type == 'projectRef' => {
+		_type == 'projectList' => {
 			list[] -> {
 				title,
 				'uid': uid.current,
 				'poster': poster.asset._ref,
-				"tags": tags[].value,
 			},
 			...
     	},
