@@ -6,7 +6,9 @@
 
 <script>
 import { index } from '@/assets/queries'
-// import faq from '@/components/Faq.vue'
+import slider from '@/components/global/Slider.vue'
+import projectRef from '@/components/sections/ProjectRef.vue'
+import articleList from '@/components/sections/ArticleList.vue'
 
 export default {
 	name: 'Index',
@@ -15,7 +17,11 @@ export default {
 	},
 	data: () => ({
 		serializers: {
-			types: {},
+			types: {
+				slider,
+				projectRef,
+				articleList,
+			},
 		},
 	}),
 }
