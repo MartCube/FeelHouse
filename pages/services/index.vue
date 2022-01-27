@@ -1,6 +1,6 @@
 <template>
 	<div class="page">
-		<Intro :title="title" :poster="poster" />
+		<Intro :title="poster.alt" :poster="poster.src" />
 		<SanityContent class="container" :blocks="content" :serializers="serializers" />
 	</div>
 </template>
