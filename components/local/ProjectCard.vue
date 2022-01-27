@@ -5,7 +5,6 @@
 		</n-link>
 		<div class="info">
 			<h2>{{ data.title }}</h2>
-			<span> {{ data.releaseDate }} </span>
 			<ButtonItem>send</ButtonItem>
 		</div>
 	</div>
