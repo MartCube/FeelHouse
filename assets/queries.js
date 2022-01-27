@@ -21,6 +21,7 @@ export const index = groq`*[ _type == "index" ][0]{
 			},
 			...
     	},
+		_type == 'articleList' => {...},
   	},
 	metaTags {
 		title,
