@@ -152,7 +152,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 @media (min-width:600px){
 	.container{
-		max-width:570px
+		max-width:540px
 	}
 }
 @media (min-width:800px){
@@ -167,7 +167,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 @media (min-width:1240px){
 	.container{
-		max-width:1180px
+		max-width:1140px
 	}
 }
 
@@ -180,7 +180,7 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 50px;
     font-weight: 500;
     line-height: 1em;
-    font-family: 'Khand', sans-serif;
+    // font-family: 'Khand', sans-serif;
     text-transform: uppercase;
     color: $text;
     position: relative;
