@@ -7,7 +7,7 @@
 <script>
 import { index } from '@/assets/queries'
 import slider from '@/components/global/Slider.vue'
-import projectRef from '@/components/sections/ProjectRef.vue'
+import projectList from '@/components/sections/ProjectList.vue'
 import articleList from '@/components/sections/ArticleList.vue'
 
 export default {
@@ -19,7 +19,7 @@ export default {
 		serializers: {
 			types: {
 				slider,
-				projectRef,
+				projectList,
 				articleList,
 			},
 		},
