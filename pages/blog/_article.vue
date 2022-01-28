@@ -1,12 +1,13 @@
 <template>
 	<div class="article">
-		<!-- <SanityContent class="content" :blocks="content" :serializers="serializers" /> -->
-		{{ title }}
+		<Intro :title="title" :poster="poster" />
+		<SanityContent class="content" :blocks="content" :serializers="serializers" />
 	</div>
 </template>
 
 <script>
 import { article } from '@/assets/queries'
+import img from '@/components/items/ImageItem.vue'
 
 export default {
 	name: 'Article',
@@ -14,12 +15,11 @@ export default {
 		return $sanity.fetch(article, { uid: route.params.article })
 	},
 	data: () => ({
-		// serializers: {
-		// 	types: {
-		// 		faq,
-		// 		articleList,
-		// 	},
-		// },
+		serializers: {
+			types: {
+				img,
+			},
+		},
 	}),
 }
 </script>
@@ -30,5 +30,9 @@ export default {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+
+	.content {
+		width: 1200px;
+	}
 }
 </style>
