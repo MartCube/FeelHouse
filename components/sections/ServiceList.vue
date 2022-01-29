@@ -27,13 +27,14 @@ export default {
 <style lang="scss" scoped>
 .list {
 	display: flex;
-	justify-content: center;
+	justify-content: space-between;
 	flex-wrap: wrap;
 	align-items: center;
 	padding: 100px 0;
 }
 @media screen and (max-width: 800px) {
 	.list {
+		justify-content: center;
 		padding: 100px 5%;
 	}
 }

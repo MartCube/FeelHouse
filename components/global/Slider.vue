@@ -83,15 +83,18 @@ export default {
 		}
 		.content {
 			position: absolute;
+			max-width: 60%;
 			z-index: 5;
 			top: 50%;
 			transform: translateY(-50%);
-			// left: 20%;
 			color: $white;
 			.h1 {
 				font-size: 6rem;
 				text-transform: uppercase;
 				margin-bottom: 0;
+			}
+			.description {
+				font-size: 20px;
 			}
 			.subtitle {
 				font-size: 17px;
@@ -126,9 +129,15 @@ export default {
 	}
 }
 @media (max-width: 600px) {
-	.container {
-		padding: 0 15px;
+	.slider {
+		.slide {
+			.content {
+				max-width: 100%;
+			}
+			.container {
+				padding: 0 15px;
+			}
+		}
 	}
-	
 }
 </style>
