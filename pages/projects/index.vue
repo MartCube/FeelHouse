@@ -1,18 +1,26 @@
 <template>
 	<div class="page">
-		<Intro :title="poster.alt" :poster="poster.src" />
+		<template v-if="!$fetchState.pending">
+			<Intro :title="page.poster.alt" :poster="page.poster.src" />
+			<ProjectCard v-for="project in list" :key="project.uid" :data="project" />
+		</template>
 	</div>
 </template>
 
 <script>
-import { page } from '@/assets/queries'
+import { page, projectList } from '@/assets/queries'
 
 export default {
 	name: 'Projects',
-	asyncData({ $sanity }) {
-		return $sanity.fetch(page, { uid: 'projects' })
+
+	data: () => ({
+		page: null,
+		list: null,
+	}),
+	async fetch() {
+		this.page = await this.$sanity.fetch(page, { uid: 'projects' })
+		this.list = await this.$sanity.fetch(projectList)
 	},
-	data: () => ({}),
 }
 </script>
 

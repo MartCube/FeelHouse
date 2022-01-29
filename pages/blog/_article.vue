@@ -1,7 +1,9 @@
 <template>
 	<div class="article">
-		<Intro :title="title" :poster="poster" />
-		<SanityContent class="content" :blocks="content" :serializers="serializers" />
+		<template v-if="!$fetchState.pending">
+			<Intro :title="data.title" :poster="data.poster" :uid="$route.params.article" />
+			<SanityContent class="content" :blocks="data.content" :serializers="serializers" />
+		</template>
 	</div>
 </template>
 
@@ -11,22 +13,27 @@ import img from '@/components/items/ImageItem.vue'
 
 export default {
 	name: 'Article',
-	asyncData({ $sanity, route }) {
-		return $sanity.fetch(article, { uid: route.params.article })
-	},
 	data: () => ({
-		serializers: {
+		data: null,
+		serializers: null,
+	}),
+	async fetch() {
+		this.data = await this.$sanity.fetch(article, { uid: this.$route.params.article })
+	},
+	mounted() {
+		this.serializers = {
 			types: {
 				img,
 			},
-		},
-	}),
+		}
+	},
 }
 </script>
 
 <style lang="scss" scoped>
 .article {
 	width: 100%;
+	min-height: 100vh;
 	display: flex;
 	flex-direction: column;
 	align-items: center;

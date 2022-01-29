@@ -72,10 +72,9 @@ export const service = groq`*[ _type == "service" && uid.current == $uid][0]{
 }`
 
 // list
-export const projectList = groq`*[ _type == "project" && tags[].value == $tag ]{
+export const projectList = groq`*[ _type == "project" ]{
 	title,
 	"poster": poster.asset._ref,
-	"tags": tags[].value,
 	"uid": uid.current,
 }`
 export const articleList = groq`*[ _type == "article" ] | order(_createdAt desc)[$from...$to]{

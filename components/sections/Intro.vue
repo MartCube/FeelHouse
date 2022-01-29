@@ -4,6 +4,7 @@
 		<ImageItem :image="poster" w="1920" h="1080" crop="top" />
 
 		<h1>{{ title }}</h1>
+		<Crumbs link="blog" :uid="uid" />
 	</section>
 </template>
 
@@ -18,6 +19,10 @@ export default {
 			type: String,
 			required: true,
 		},
+		uid: {
+			type: String,
+			default: undefined,
+		},
 	},
 }
 </script>
@@ -31,6 +36,7 @@ export default {
 	position: relative;
 
 	display: flex;
+	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 	&::after {
@@ -62,6 +68,10 @@ export default {
 	}
 	h1 {
 		text-transform: uppercase;
+		z-index: 2;
+		color: $white;
+	}
+	.crumbs {
 		z-index: 2;
 		color: $white;
 	}
