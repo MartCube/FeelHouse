@@ -30,7 +30,7 @@ export default {
 <style lang="scss" scoped>
 .content {
 	width: 100%;
-	margin-top: 100px;
+	// margin-top: 100px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;

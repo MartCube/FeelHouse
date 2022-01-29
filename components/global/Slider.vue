@@ -1,19 +1,39 @@
 <template>
 	<section class="slider">
-		<div v-for="slide in list" :key="slide.link" class="slider">
-			<h2>{{ slide.title }}</h2>
-			<p>{{ slide.description }}</p>
-			<ImageItem :image="slide.poster" w="150" />
-			<ButtonItem>Discover</ButtonItem>
-		</div>
+		<VueSlickCarousel v-bind="options">
+			<!-- <div class="swiper-wrapper"> -->
+			<template v-for="slide in list">
+				<div :key="slide.link" class="slide">
+					<div class="container">
+						<div class="content">
+							<span class="subtitle">residental</span>
+							<p class="h1">{{ slide.title }}</p>
+							<p class="description">{{ slide.description }}</p>
+							<n-link to="/projects" class="button">Discover</n-link>
+						</div>
+					</div>
+					<ImageItem :image="slide.poster" w="2000" />
+				</div>
+			</template>
+			<!-- </div> -->
+			<template #customPaging="page">
+				<div class="custom-dot">
+					{{ page }}
+				</div>
+			</template>
+		</VueSlickCarousel>
 	</section>
 </template>
 
 <script>
-// import { projectList } from '@/assets/queries'
+import VueSlickCarousel from 'vue-slick-carousel'
+import 'vue-slick-carousel/dist/vue-slick-carousel.css'
 
 export default {
 	name: 'Slider',
+	components: {
+		VueSlickCarousel,
+	},
 	props: {
 		list: {
 			type: Array,
@@ -22,6 +42,93 @@ export default {
 	},
 	data: () => ({
 		data: null,
+		options: {
+			dots: true,
+			dotsClass: 'slick-dots home_intro',
+			draggable: true,
+			infinite: true,
+			speed: 1000,
+			autoplay: true,
+			arrows: false,
+			fade: true,
+		},
 	}),
 }
 </script>
+<style lang="scss" scoped>
+.slider {
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
+	.slide {
+		width: 100vw;
+		height: 100vh;
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+		&::after {
+			content: '';
+			background-color: rgb(0, 0, 0, 50%);
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			z-index: 2;
+		}
+		.container {
+			position: relative;
+			height: 100vh;
+		}
+		.content {
+			position: absolute;
+			z-index: 5;
+			top: 50%;
+			transform: translateY(-50%);
+			// left: 20%;
+			color: $white;
+			.h1 {
+				font-size: 6rem;
+				text-transform: uppercase;
+				margin-bottom: 0;
+			}
+			.subtitle {
+				font-size: 17px;
+				font-weight: 300;
+				color: $primary;
+				text-align: left;
+				margin-bottom: 10px;
+				text-transform: uppercase;
+				letter-spacing: 4px;
+				align-items: center;
+				display: inline-flex;
+				&::before {
+					position: relative;
+					top: 0px;
+					content: '';
+					background-color: $primary;
+					width: 30px;
+					height: 1px;
+					margin-right: 15px;
+				}
+			}
+		}
+		picture {
+			z-index: 1;
+			top: 0;
+			left: 0;
+			position: absolute;
+			width: 100vw;
+			height: 100vh;
+			object-fit: cover;
+		}
+	}
+}
+@media (max-width: 600px) {
+	.container {
+		padding: 0 15px;
+	}
+	
+}
+</style>
