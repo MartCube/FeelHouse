@@ -74,6 +74,7 @@
 		</div>
 	</footer>
 </template>
+
 <script>
 export default {
 	name: 'Footer',
@@ -178,7 +179,7 @@ export default {
 }
 @media screen and (max-width: 800px) {
 	.topbanner-footer {
-		.section-padding{
+		.section-padding {
 			padding: 0 1rem;
 		}
 		.container .info {
