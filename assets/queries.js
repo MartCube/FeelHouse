@@ -16,6 +16,7 @@ export const index = groq`*[ _type == "index" ][0]{
 				title,
 				'uid': uid.current,
 				'poster': poster.asset._ref,
+				description
 			},
 			...
     	},

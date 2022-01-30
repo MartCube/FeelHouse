@@ -14,9 +14,19 @@ export default {
 	name: 'Navbar',
 	data: () => ({
 		data: null,
+		scrollPosition: null,
 	}),
 	async fetch() {
 		this.data = await this.$sanity.fetch(navbar)
+	},
+
+	mounted() {
+		window.addEventListener('scroll', this.updateScroll)
+	},
+	methods: {
+		updateScroll() {
+			this.scrollPosition = window.scrollY
+		},
 	},
 }
 </script>
@@ -29,12 +39,13 @@ header {
 	z-index: 3;
 	top: 0;
 	border-bottom: 1px solid $borderWhite;
-	// background: $white;
 
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
+	.container {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		height: inherit;
+	}
 	.links {
 		display: flex;
 		a {
@@ -42,6 +53,41 @@ header {
 			text-decoration: none;
 			color: $white;
 			margin: 0 20px;
+			&:hover {
+				color: $primary;
+			}
+		}
+	}
+	.logo {
+		position: relative;
+		width: 150px;
+		height: 45px;
+		img {
+			width: 100%;
+			transition: opacity 0.3s linear;
+			height: 100%;
+			position: absolute;
+		}
+		img:last-child {
+			opacity: 0;
+		}
+	}
+	&.fill {
+		background-color: $white;
+		.logo {
+			img {
+				&:first-child {
+					opacity: 0;
+				}
+				&:last-child {
+					opacity: 1;
+				}
+			}
+		}
+		.links {
+			a {
+				color: $text;
+			}
 		}
 	}
 }
