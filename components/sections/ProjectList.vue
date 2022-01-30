@@ -24,7 +24,7 @@ export default {
 	width: 100%;
 	.section-title {
 		text-align: center;
-		margin-bottom: 5rem;
+		margin-bottom: 3rem;
 	}
 	.grid {
 		width: 100%;

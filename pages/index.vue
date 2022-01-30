@@ -8,7 +8,7 @@
 import { index } from '@/assets/queries'
 import slider from '@/components/global/Slider.vue'
 import projectList from '@/components/sections/ProjectList.vue'
-import articleList from '@/components/sections/ArticleList.vue'
+import LatestNews from '@/components/sections/LatestNews.vue'
 
 export default {
 	name: 'Index',
@@ -16,11 +16,12 @@ export default {
 		return $sanity.fetch(index)
 	},
 	data: () => ({
+		content: undefined,
 		serializers: {
 			types: {
 				slider,
 				projectList,
-				articleList,
+				articleList: LatestNews,
 			},
 		},
 	}),

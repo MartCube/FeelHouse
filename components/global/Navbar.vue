@@ -42,7 +42,7 @@ header {
 	width: 100vw;
 	height: 100px;
 	position: fixed;
-	z-index: 3;
+	z-index: 30;
 	top: 0;
 	border-bottom: 1px solid $borderWhite;
 

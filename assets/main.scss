@@ -13,14 +13,6 @@
 	-webkit-tap-highlight-color: transparent;
 }
 
-
-body {
-	font-family: 'Oswald', sans-serif;
-	font-weight: 300;
-	color: $text;
-	letter-spacing: 1px;
-}
-
 html,
 body {
     -moz-osx-font-smoothing: grayscale;
@@ -42,17 +34,15 @@ body {
     font-size: 17px;
     font-weight: 300;
     line-height: 1.75em;
-    color: $text_light;
-    overflow-x: hidden !important;
     background: #fff;
+		color: $text;
+		letter-spacing: 1px;
 }
 p {
-    // font-family: 'Oswald', sans-serif;
     font-size: 17px;
     font-weight: 300;
     line-height: 1.75em;
 
-    // color: $text_light;
     margin-bottom: 20px;
     letter-spacing: 0.25px;
 }

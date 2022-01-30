@@ -100,3 +100,10 @@ export const projectRef = groq`*[ _id in $refs ]{
 
 // pagination
 export const articleCount = groq`count(*[ _type == "article" ])`
+
+export const latestNews = groq`*[_type == "article"][0..2] | order(_updatedAt asc) {
+  title,
+	"uid": uid.current,
+	"poster": poster.asset._ref,
+	releaseDate,
+}`
