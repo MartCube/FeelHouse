@@ -2,7 +2,7 @@
 	<section class="project_list section-padding">
 		<div class="container">
 			<h2 class="section-title">Our Projects</h2>
-			<div class="grid" v-if="!$fetchState.pending">
+			<div v-if="!$fetchState.pending" class="grid">
 				<ProjectCard v-for="project in list" :key="project.uid" :data="project" />
 			</div>
 		</div>

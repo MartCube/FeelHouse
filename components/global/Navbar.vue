@@ -7,7 +7,7 @@
 			</n-link>
 			<div v-if="!$fetchState.pending" class="links">
 				<!-- <n-link to="/"> Home </n-link> -->
-				<n-link v-for="link in data.links" :key="link.uid" :to="`/${link.uid}/`"> {{ link.uid }} </n-link>
+				<n-link v-for="link in data.links" :key="link.uid" :to="`/${link.uid}/`"> {{ link.label }} </n-link>
 			</div>
 		</div>
 	</header>
