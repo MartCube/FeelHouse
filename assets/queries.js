@@ -41,7 +41,7 @@ export const page = groq`*[ _type == "page" && uid.current == $uid][0]{
 	content[] {
 		_type == 'blockContent' => { '_type': 'block', ... },
 		_type == 'contactForm' => { ... },
-		_type == 'serviceList' => { ... },
+		_type == 'about' => { ... },
 	}
 }`
 export const project = groq`*[ _type == "project" && uid.current == $uid][0]{

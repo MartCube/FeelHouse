@@ -8,6 +8,7 @@
 <script>
 import { page } from '@/assets/queries'
 import contactForm from '@/components/forms/ContactForm.vue'
+import about from '@/components/sections/About.vue'
 
 export default {
 	name: 'Page',
@@ -18,6 +19,7 @@ export default {
 		serializers: {
 			types: {
 				contactForm,
+				about,
 			},
 		},
 	}),
