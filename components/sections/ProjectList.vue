@@ -1,8 +1,11 @@
 <template>
-	<section class="project list">
-		<template v-if="!$fetchState.pending">
-			<ProjectCard v-for="project in data" :key="project.uid" :data="project" />
-		</template>
+	<section class="project_list section-padding">
+		<div class="container">
+			<h2 class="section-title">Our Projects</h2>
+			<div class="grid" v-if="!$fetchState.pending">
+				<ProjectCard v-for="project in list" :key="project.uid" :data="project" />
+			</div>
+		</div>
 	</section>
 </template>
 
@@ -18,18 +21,16 @@ export default {
 	},
 }
 </script>
-
-<style lang="scss" scoped>
-.list {
-	display: flex;
-	justify-content: center;
-	flex-wrap: wrap;
-	align-items: center;
-	padding: 100px 0;
-}
-@media screen and (max-width: 800px) {
-	.list {
-		padding: 100px 5%;
+<style lang="scss">
+.project_list {
+	width: 100%;
+	.section-title {
+		text-align: center;
+		margin-bottom: 5rem;
+	}
+	.grid {
+		width: 100%;
+		padding: 0 15px;
 	}
 }
 </style>

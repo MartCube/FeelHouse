@@ -11,7 +11,7 @@ export default {
 		link: [{ rel: 'icon', type: 'png', href: '/favicon.png' }],
 	},
 
-	plugins: [{ src: '@/plugins/vee-validate.js' }, { src: `~/plugins/lazysizes.client.js` }],
+	plugins: [{ src: '@/plugins/scroll-plugin.js' }, { src: '@/plugins/vee-validate.js' }, { src: `~/plugins/lazysizes.client.js` }],
 
 	modules: ['@nuxtjs/sanity/module'],
 	sanity: {

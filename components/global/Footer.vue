@@ -167,9 +167,6 @@ export default {
 	font-size: 24px;
 	margin: 20px 0;
 }
-.topbanner-footer h5 a {
-	color: $primary;
-}
 .topbanner-footer h1 {
 	font-size: 45px;
 	position: relative;
