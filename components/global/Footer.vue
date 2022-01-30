@@ -17,7 +17,7 @@
 						</div>
 						<div class="vid-area">
 							<a class="location_button" href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3354.758017847153!2d-79.93420398486563!3d32.77215479154045!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88fe7a1ae84ff639%3A0xe5c782f71924a526!2s24%20King%20St%2C%20Charleston%2C%20SC%2029401%2C%20USA!5e0!3m2!1sen!2str!4v1631170502143!5m2!1sen!2str">
-								<Icon name="location" :fill="color" size="3rem" />
+								<Icon name="location" :fill="color" size="48px" />
 							</a>
 							<h5>Our Location</h5>
 						</div>

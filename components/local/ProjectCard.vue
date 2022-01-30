@@ -11,9 +11,7 @@
 </template>
 
 <script>
-import ButtonItem from '../items/ButtonItem.vue'
 export default {
-	components: { ButtonItem },
 	props: {
 		data: {
 			type: Object,

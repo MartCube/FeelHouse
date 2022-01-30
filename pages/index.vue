@@ -7,8 +7,8 @@
 <script>
 import { index } from '@/assets/queries'
 import slider from '@/components/global/Slider.vue'
-import projectList from '@/components/sections/ProjectList.vue'
-import articleList from '@/components/sections/ArticleList.vue'
+import projectList from '@/components/sections/ProjectRef.vue'
+import articleList from '@/components/sections/ArticleLatest.vue'
 
 export default {
 	name: 'Index',

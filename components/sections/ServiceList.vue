@@ -1,7 +1,8 @@
 <template>
 	<section class="service list">
-		<!-- <h2 v-if="title" class="title">{{ title }}</h2> -->
-		<ServiceCard v-for="article in data" :key="article.uid" :data="article" />
+		<template v-if="!$fetchState.pending">
+			<ServiceCard v-for="service in data" :key="service.uid" :data="service" />
+		</template>
 	</section>
 </template>
 
@@ -9,12 +10,6 @@
 import { serviceList } from '@/assets/queries'
 
 export default {
-	props: {
-		title: {
-			type: String,
-			default: undefined,
-		},
-	},
 	data: () => ({
 		data: null,
 	}),
@@ -26,6 +21,7 @@ export default {
 
 <style lang="scss" scoped>
 .list {
+	width: 1200px;
 	display: flex;
 	justify-content: center;
 	flex-wrap: wrap;

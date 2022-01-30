@@ -28,24 +28,30 @@ export const index = groq`*[ _type == "index" ][0]{
 	},
 }`
 export const navbar = groq`*[ _type == "navbar" ][0]{
-	links[]->{'uid':uid.current}
+	links[]->{
+		'uid':uid.current,
+		'label':linkLabel,
+	}
 }`
 
 // by UID
 export const page = groq`*[ _type == "page" && uid.current == $uid][0]{
-	"uid": uid.current,
-	poster{
-		'src': asset._ref,
-		alt
- 	},
     title,
-    content,
+	'poster':poster.asset._ref,
+	content[] {
+		_type == 'blockContent' => { '_type': 'block', ... },
+		_type == 'contactForm' => { ... },
+		_type == 'serviceList' => { ... },
+	}
 }`
 export const project = groq`*[ _type == "project" && uid.current == $uid][0]{
+    title,
 	"uid": uid.current,
 	"poster": poster.asset._ref,
-    title,
-    content,
+    "youtube": youtube.url,
+	info,
+	description,
+	gallery,
 }`
 export const article = groq`*[ _type == "article" && uid.current == $uid][0]{
     title,
@@ -86,13 +92,6 @@ export const articleList = groq`*[ _type == "article" ] | order(_createdAt desc)
 export const serviceList = groq`*[ _type == "service" ]{
 	title,
 	"poster": poster.asset._ref,
-	"uid": uid.current,
-}`
-
-// refs
-export const projectRef = groq`*[ _id in $refs ]{
-	title,
-	poster,
 	"uid": uid.current,
 }`
 
