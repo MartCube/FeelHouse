@@ -9,6 +9,7 @@ import { index } from '@/assets/queries'
 import slider from '@/components/global/Slider.vue'
 import projectList from '@/components/sections/ProjectList.vue'
 import LatestNews from '@/components/sections/LatestNews.vue'
+import PartnersGallery from '@/components/sections/PartnersGallery.vue'
 
 export default {
 	name: 'Index',
@@ -22,6 +23,7 @@ export default {
 				slider,
 				projectList,
 				articleList: LatestNews,
+				partners: PartnersGallery,
 			},
 		},
 	}),

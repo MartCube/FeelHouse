@@ -12,6 +12,7 @@
 <script>
 import { latestNews } from '@/assets/queries'
 export default {
+	name: 'LatestNews',
 	data: () => ({
 		data: null,
 	}),

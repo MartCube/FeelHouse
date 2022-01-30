@@ -21,7 +21,11 @@ export const index = groq`*[ _type == "index" ][0]{
 			...
     	},
 		_type == 'articleList' => {...},
-  	},
+		_type == 'partners' => {  
+			...,
+			'list': list[].asset._ref
+		},
+	},
 	metaTags {
 		title,
 		description,
