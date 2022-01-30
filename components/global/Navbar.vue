@@ -2,8 +2,8 @@
 	<header :class="{ fill: scrollPosition > 500 }">
 		<div class="container">
 			<n-link to="/" class="logo">
-				<img src="/logo-light.png" alt="logo">
-				<img src="/logo-dark.png" alt="logo">
+				<img src="/logo-light.png" alt="logo" />
+				<img src="/logo-dark.png" alt="logo" />
 			</n-link>
 			<div v-if="!$fetchState.pending" class="links">
 				<!-- <n-link to="/"> Home </n-link> -->

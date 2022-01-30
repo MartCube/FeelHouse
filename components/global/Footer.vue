@@ -305,8 +305,8 @@ export default {
 @media screen and (max-width: 800px) {
 	.topbanner-footer {
 		.section-padding {
-			padding-left: 1rem;
-			padding-right: 1rem;
+			padding-left: 15px;
+			padding-right: 15px;
 		}
 		.container .info {
 			.phones,

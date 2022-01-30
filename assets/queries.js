@@ -103,4 +103,3 @@ export const serviceList = groq`*[ _type == "service" ]{
 
 // pagination
 export const articleCount = groq`count(*[ _type == "article" ])`
-

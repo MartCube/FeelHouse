@@ -21,21 +21,17 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-$border: #f6f6f6;
 .partners {
 	width: 100%;
 	.grid {
 		display: flex;
-		// border-left: 1px solid $border;
-		// border-top: 1px solid $border;
 		flex-wrap: wrap;
 		.image {
 			height: 180px;
 			display: flex;
 			justify-content: center;
 			align-items: center;
-			border: 1px solid $border;
-			// border-top: 1px solid $border;
+			border: 1px solid $borderLight;
 			&:hover {
 				background-color: #f3ece5;
 			}
@@ -51,6 +47,5 @@ $border: #f6f6f6;
 			}
 		}
 	}
-	
 }
 </style>

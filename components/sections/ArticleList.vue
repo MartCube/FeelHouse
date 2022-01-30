@@ -5,10 +5,14 @@
 				<ArticleCard v-for="(article, i) in data" :key="article.uid" :reverse="i % 2 == 0 ? false : true" :data="article" />
 			</template>
 		</div>
-		<div class="pagination">
-			<span class="prev" :class="{ disable: from === 0 }" @click="fetchPrev">prev</span>
+		<div v-animate-onscroll="{ down: 'animated fadeInUp' }" class="pagination">
+			<span class="prev" :class="{ disable: from === 0 }" @click="fetchPrev">
+				<Icon name="chevron" :fill="color" size="15px" />
+			</span>
 			<span v-for="page in totalPages" :key="page" :class="{ active: page == currentPage }" @click="fetchPage(page)">{{ page }}</span>
-			<span class="next" :class="{ disable: to >= articleCount }" @click="fetchNext">next</span>
+			<span class="next" :class="{ disable: to >= articleCount }" @click="fetchNext">
+				<Icon name="chevron" :fill="color" size="15px" />
+			</span>
 		</div>
 	</section>
 </template>
@@ -24,6 +28,7 @@ export default {
 		pageSize: 2,
 		from: 0,
 		to: 2,
+		color: '#555',
 	}),
 	async fetch() {
 		this.data = await this.$sanity.fetch(articleList, { from: this.from, to: this.to })
@@ -80,10 +85,12 @@ export default {
 		justify-content: center;
 
 		span {
-			width: 3rem;
-			height: 3rem;
-			margin: 0 1rem;
-			border: 1px solid $text;
+			width: 40px;
+			height: 40px;
+			margin: 0 5px;
+			border: 1px solid $borderLight;
+			color: $text_light;
+			font-size: 17px;
 
 			display: flex;
 			justify-content: center;
@@ -91,13 +98,21 @@ export default {
 
 			cursor: pointer;
 			user-select: none;
-
+			&.prev {
+				svg {
+					transform: rotate(180deg);
+				}
+			}
 			&.active {
 				border-color: $primary;
 			}
 
 			&:hover {
 				border-color: $primary;
+				color: $primary;
+				svg {
+					fill: $primary;
+				}
 			}
 			&.disable {
 				opacity: 0.5;
