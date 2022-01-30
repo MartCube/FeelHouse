@@ -177,32 +177,7 @@ export default {
 	font-size: 17px;
 	line-height: 1.75em;
 }
-@media screen and (max-width: 800px) {
-	.topbanner-footer {
-		.section-padding {
-			padding: 0 1rem;
-		}
-		.container .info {
-			.phones,
-			.vid-area,
-			.adress {
-				width: 100%;
-				margin-top: 2rem;
-			}
-		}
-		h6 {
-			font-size: 12px;
-			margin-bottom: 10px;
-		}
-	}
-	.bottom-footer {
-		padding: 0 1rem;
-		.item {
-			width: 100%;
-			margin-top: 2rem;
-		}
-	}
-}
+
 .banner-img:after {
 	position: absolute;
 	height: 100%;
@@ -325,5 +300,33 @@ export default {
 }
 .main-footer .sub-footer .text-right-left {
 	text-align: right !important;
+}
+
+@media screen and (max-width: 800px) {
+	.topbanner-footer {
+		.section-padding {
+			padding-left: 1rem;
+			padding-right: 1rem;
+		}
+		.container .info {
+			.phones,
+			.vid-area,
+			.adress {
+				width: 100%;
+				margin-top: 2rem;
+			}
+		}
+		h6 {
+			font-size: 12px;
+			margin-bottom: 10px;
+		}
+	}
+	.bottom-footer {
+		padding: 0 1rem;
+		.item {
+			width: 100%;
+			margin-top: 2rem;
+		}
+	}
 }
 </style>

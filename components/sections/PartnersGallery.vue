@@ -34,12 +34,23 @@ $border: #f6f6f6;
 			display: flex;
 			justify-content: center;
 			align-items: center;
-			border-left: 1px solid $border;
-			border-top: 1px solid $border;
+			border: 1px solid $border;
+			// border-top: 1px solid $border;
 			&:hover {
 				background-color: #f3ece5;
 			}
 		}
 	}
+}
+@media (max-width: 600px) {
+	.partners {
+		.grid {
+			justify-content: center;
+			.image {
+				height: 50%;
+			}
+		}
+	}
+	
 }
 </style>

@@ -1,23 +1,31 @@
 <template>
 	<section class="latest_news section-padding">
 		<div class="container">
-			<h2 class="section-title">Latest news</h2>
+			<h2 class="section-title">{{ title }}</h2>
 			<div class="grid">
-				<LatestNewsCard v-for="article in data" :key="article.uid" :data="article" />
+				<template v-if="!$fetchState.pending">
+					<LatestNewsCard v-for="article in data" :key="article.uid" :data="article" />
+				</template>
 			</div>
 		</div>
 	</section>
 </template>
 
 <script>
-import { latestNews } from '@/assets/queries'
+import { articleList } from '@/assets/queries'
 export default {
 	name: 'LatestNews',
+	props: {
+		title: {
+			type: String,
+			required: true,
+		},
+	},
 	data: () => ({
 		data: null,
 	}),
 	async fetch() {
-		this.data = await this.$sanity.fetch(latestNews)
+		this.data = await this.$sanity.fetch(articleList, { from: 0, to: 3 })
 	},
 }
 </script>
@@ -37,8 +45,9 @@ export default {
 }
 @media (max-width: 800px) {
 	.latest_news {
+		padding-left: 15px;
+		padding-right: 15px;
 		.grid {
-			padding: 0 15px;
 		}
 	}
 }

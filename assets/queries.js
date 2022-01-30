@@ -87,6 +87,7 @@ export const projectList = groq`*[ _type == "project" ]{
 	title,
 	"poster": poster.asset._ref,
 	"uid": uid.current,
+	description
 }`
 export const articleList = groq`*[ _type == "article" ] | order(_createdAt desc)[$from...$to]{
 	title,
@@ -103,9 +104,3 @@ export const serviceList = groq`*[ _type == "service" ]{
 // pagination
 export const articleCount = groq`count(*[ _type == "article" ])`
 
-export const latestNews = groq`*[_type == "article"][0..2] | order(_updatedAt asc) {
-  title,
-	"uid": uid.current,
-	"poster": poster.asset._ref,
-	releaseDate,
-}`
