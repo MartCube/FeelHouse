@@ -2,7 +2,7 @@
 	<section class="project_list section-padding">
 		<div class="container">
 			<h2 class="section-title">Our Projects</h2>
-			<div class="grid">
+			<div v-if="!$fetchState.pending" class="grid">
 				<ProjectCard v-for="project in list" :key="project.uid" :data="project" />
 			</div>
 		</div>
@@ -10,12 +10,14 @@
 </template>
 
 <script>
+import { projectList } from '@/assets/queries'
+
 export default {
-	props: {
-		list: {
-			type: Array,
-			required: true,
-		},
+	data: () => ({
+		data: null,
+	}),
+	async fetch() {
+		this.data = await this.$sanity.fetch(projectList)
 	},
 }
 </script>

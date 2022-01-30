@@ -10,6 +10,8 @@ import slider from '@/components/global/Slider.vue'
 import projectList from '@/components/sections/ProjectList.vue'
 import LatestNews from '@/components/sections/LatestNews.vue'
 import PartnersGallery from '@/components/sections/PartnersGallery.vue'
+// import projectList from '@/components/sections/ProjectRef.vue'
+// import articleList from '@/components/sections/ArticleLatest.vue'
 
 export default {
 	name: 'Index',

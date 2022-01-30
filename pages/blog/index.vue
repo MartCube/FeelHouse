@@ -1,6 +1,6 @@
 <template>
 	<div class="page">
-		<Intro :title="poster.alt" :poster="poster.src" />
+		<Intro :title="title" :poster="poster" />
 		<ArticleList />
 	</div>
 </template>
@@ -13,7 +13,6 @@ export default {
 	asyncData({ $sanity }) {
 		return $sanity.fetch(page, { uid: 'blog' })
 	},
-	data: () => ({}),
 }
 </script>
 

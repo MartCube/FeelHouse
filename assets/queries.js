@@ -33,24 +33,30 @@ export const index = groq`*[ _type == "index" ][0]{
 	},
 }`
 export const navbar = groq`*[ _type == "navbar" ][0]{
-	links[]->{'uid':uid.current}
+	links[]->{
+		'uid':uid.current,
+		'label':linkLabel,
+	}
 }`
 
 // by UID
 export const page = groq`*[ _type == "page" && uid.current == $uid][0]{
-	"uid": uid.current,
-	poster{
-		'src': asset._ref,
-		alt
- 	},
     title,
-    content,
+	'poster':poster.asset._ref,
+	content[] {
+		_type == 'blockContent' => { '_type': 'block', ... },
+		_type == 'contactForm' => { ... },
+		_type == 'about' => { ... },
+	}
 }`
 export const project = groq`*[ _type == "project" && uid.current == $uid][0]{
+    title,
 	"uid": uid.current,
 	"poster": poster.asset._ref,
-    title,
-    content,
+    "youtube": youtube.url,
+	info,
+	description,
+	gallery,
 }`
 export const article = groq`*[ _type == "article" && uid.current == $uid][0]{
     title,
@@ -77,10 +83,9 @@ export const service = groq`*[ _type == "service" && uid.current == $uid][0]{
 }`
 
 // list
-export const projectList = groq`*[ _type == "project" && tags[].value == $tag ]{
+export const projectList = groq`*[ _type == "project" ]{
 	title,
 	"poster": poster.asset._ref,
-	"tags": tags[].value,
 	"uid": uid.current,
 }`
 export const articleList = groq`*[ _type == "article" ] | order(_createdAt desc)[$from...$to]{
@@ -92,13 +97,6 @@ export const articleList = groq`*[ _type == "article" ] | order(_createdAt desc)
 export const serviceList = groq`*[ _type == "service" ]{
 	title,
 	"poster": poster.asset._ref,
-	"uid": uid.current,
-}`
-
-// refs
-export const projectRef = groq`*[ _id in $refs ]{
-	title,
-	poster,
 	"uid": uid.current,
 }`
 

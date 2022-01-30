@@ -1,7 +1,9 @@
 <template>
 	<section class="articles">
 		<div class="grid">
-			<ArticleCard v-for="(article, i) in data" :key="article.uid" :reverse="i % 2 == 0 ? false : true" :data="article" />
+			<template v-if="!$fetchState.pending">
+				<ArticleCard v-for="(article, i) in data" :key="article.uid" :reverse="i % 2 == 0 ? false : true" :data="article" />
+			</template>
 		</div>
 		<div class="pagination">
 			<span class="prev" :class="{ disable: from === 0 }" @click="fetchPrev">prev</span>
@@ -69,6 +71,9 @@ export default {
 	align-items: center;
 	flex-wrap: wrap;
 
+	.grid {
+		min-height: 670px;
+	}
 	.pagination {
 		width: 100%;
 		display: flex;

@@ -19,7 +19,7 @@ export default {
 		},
 		fill: {
 			type: String,
-			default: '#B93937',
+			default: '#272727',
 		},
 		direction: {
 			type: String,
