@@ -20,11 +20,16 @@ export const index = groq`*[ _type == "index" ][0]{
 			},
 			...
     	},
+		_type == 'partners' => {  
+			'list': list[].asset._ref,
+			...
+		},
 		_type == 'articleList' => {...},
 		_type == 'partners' => {  
 			...,
 			'list': list[].asset._ref
 		},
+		_type == 'countdown' => { 'bg': background.asset._ref, ...},
 	},
 	metaTags {
 		title,
@@ -46,7 +51,7 @@ export const page = groq`*[ _type == "page" && uid.current == $uid][0]{
 	content[] {
 		_type == 'blockContent' => { '_type': 'block', ... },
 		_type == 'contactForm' => { ... },
-		_type == 'about' => { ... },
+		_type == 'about' => { 'poster': poster.asset._ref, ... },
 	}
 }`
 export const project = groq`*[ _type == "project" && uid.current == $uid][0]{
