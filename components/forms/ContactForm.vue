@@ -1,19 +1,24 @@
 <template>
-	<div class="contact_form">
-		<h4 class="title">{{ title }}</h4>
-		<form ref="contact_form" autocomplete="off" @submit.prevent="Submit()">
-			<ValidationObserver ref="contact" tag="div">
-				<InputItem id="fullName" :label="fullName" rules="required" @getValue="storeValue" />
-				<InputItem id="number" :label="number" type="number" rules="min:9|required" @getValue="storeValue" />
-				<InputItem id="email" :label="email" rules="email|required" @getValue="storeValue" />
-				<InputItem id="message" :label="message" rules="required" @getValue="storeValue" />
-				<ButtonItem> {{ button }} </ButtonItem>
-			</ValidationObserver>
-			<!-- <div v-else class="message">
-				<h2>success ?!</h2>
-			</div> -->
-		</form>
-	</div>
+	<section class="contact section-padding">
+		<div class="container">
+			<SanityContent class="content" :blocks="info" />
+			<div class="contact_form">
+				<h5 class="title">{{ title }}</h5>
+				<form ref="contact_form" autocomplete="off" @submit.prevent="Submit()">
+					<ValidationObserver ref="contact" tag="div">
+						<InputItem id="fullName" :label="fullName" rules="required" @getValue="storeValue" />
+						<InputItem id="number" :label="number" type="number" rules="min:9|required" @getValue="storeValue" />
+						<InputItem id="email" :label="email" rules="email|required" @getValue="storeValue" />
+						<InputItem id="message" :label="message" rules="required" @getValue="storeValue" />
+						<ButtonItem> {{ button }} </ButtonItem>
+					</ValidationObserver>
+					<!-- <div v-else class="message">
+						<h2>success ?!</h2>
+					</div> -->
+				</form>
+			</div>
+		</div>
+	</section>
 </template>
 
 <script>
@@ -24,6 +29,10 @@ export default {
 		ValidationObserver,
 	},
 	props: {
+		info: {
+			type: Array,
+			required: true,
+		},
 		title: {
 			type: String,
 			required: true,
@@ -126,8 +135,38 @@ export default {
 </script>
 
 <style lang="scss">
+.contact {
+	width: 100%;
+	.container {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		.content {
+			width: 40%;
+			h5 {
+				margin-bottom: 2.5rem;
+			}
+			strong {
+				font-weight: 300;
+				color: $primary;
+				margin-right: 10px;
+			}
+			p {
+				margin-bottom: 15px;
+			}
+		}
+		.contact_form {
+			width: 40%;
+		}
+	}
+	h5 {
+		color: $text;
+		font-size: 30px;
+		font-weight: 500;
+		text-transform: uppercase;
+	}
+}
 .contact_form {
-	width: 500px;
 	height: 100%;
 	display: flex;
 	justify-content: center;
@@ -137,6 +176,9 @@ export default {
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
+		button {
+			margin-top: 2rem;
+		}
 	}
 	.title {
 		color: $text;
@@ -160,6 +202,20 @@ export default {
 	.input_item {
 		margin: 1rem 0;
 		height: 4rem;
+	}
+}
+@media (max-width: 800px) {
+	.contact {
+		.container {
+			padding: 0 15px;
+			.content {
+				margin-bottom: 3rem;
+			}
+			.content,
+			.contact_form {
+				width: 100%;
+			}
+		}
 	}
 }
 </style>

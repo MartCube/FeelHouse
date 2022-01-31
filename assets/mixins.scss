@@ -15,3 +15,14 @@
 	align-items: $ai;
 	width: $w;
 };
+
+@mixin section_title($fz: 50px, $mb: 20px) {
+		font-size: $fz;
+    font-weight: 500;
+    line-height: 1em;
+    text-transform: uppercase;
+    color: $text;
+    position: relative;
+    margin-bottom: $mb;
+    letter-spacing: 0.5px;
+}

@@ -66,7 +66,7 @@ export default {
 		width: 100%;
 		height: 50px;
 		border: 0;
-		border-bottom: 2px solid $text;
+		border-bottom: 1px solid $borderInput;
 		outline: 0;
 		padding-top: 20px;
 		background: transparent;
@@ -87,8 +87,10 @@ export default {
 			color: $text;
 			text-transform: capitalize;
 			transition: 0.2s ease;
+			font-weight: 300;
+			letter-spacing: 1px;
 		}
-		&:placeholder-shown ~ label {
+		&::placeholder-shown ~ label {
 			font-size: 1rem;
 			cursor: text;
 			top: 20px;
@@ -102,6 +104,7 @@ export default {
 				top: 0;
 				display: block;
 				transition: 0.2s;
+				font-weight: 300;
 				font-size: 0.8rem;
 				color: $text;
 			}
@@ -120,7 +123,7 @@ export default {
 		top: 0;
 		display: block;
 		transition: 0.2s ease;
-
+		font-weight: 300;
 		font-size: 0.8rem;
 		color: transparent;
 		text-transform: capitalize;
