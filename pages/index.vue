@@ -9,6 +9,8 @@ import { index } from '@/assets/queries'
 import slider from '@/components/global/Slider.vue'
 import projectList from '@/components/sections/ProjectRef.vue'
 import articleList from '@/components/sections/ArticleLatest.vue'
+import partners from '@/components/sections/Partners.vue'
+import countdown from '@/components/sections/Countdown.vue'
 
 export default {
 	name: 'Index',
@@ -21,6 +23,8 @@ export default {
 				slider,
 				projectList,
 				articleList,
+				partners,
+				countdown,
 			},
 		},
 	}),
