@@ -1,7 +1,9 @@
 <template>
 	<div class="contact_form">
-		<h4 class="title">{{ title }}</h4>
+		<SanityContent class="info" :blocks="info" />
+
 		<form ref="contact_form" autocomplete="off" @submit.prevent="Submit()">
+			<h4 class="title">{{ title }}</h4>
 			<ValidationObserver ref="contact" tag="div">
 				<InputItem id="fullName" :label="fullName" rules="required" @getValue="storeValue" />
 				<InputItem id="number" :label="number" type="number" rules="min:9|required" @getValue="storeValue" />
@@ -24,6 +26,10 @@ export default {
 		ValidationObserver,
 	},
 	props: {
+		info: {
+			type: Array,
+			required: true,
+		},
 		title: {
 			type: String,
 			required: true,
@@ -127,20 +133,23 @@ export default {
 
 <style lang="scss">
 .contact_form {
-	width: 500px;
+	width: 100%;
 	height: 100%;
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
+
 	form {
 		width: 100%;
+		max-width: 500px;
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
+		.title {
+			color: $text;
+		}
 	}
-	.title {
-		color: $text;
-	}
+
 	.message {
 		display: flex;
 		background-color: rgb(0 219 17 / 5%);

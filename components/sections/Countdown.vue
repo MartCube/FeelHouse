@@ -25,7 +25,7 @@
 				<span> seconds </span>
 			</div>
 		</div>
-		<SubscribeForm title="Subscribe to us" number="phone number" button="subscribe" />
+		<SubscribeForm :title="subscribeTitle" />
 	</section>
 </template>
 
@@ -42,6 +42,10 @@ export default {
 			required: true,
 		},
 		bg: {
+			type: String,
+			required: true,
+		},
+		subscribeTitle: {
 			type: String,
 			required: true,
 		},

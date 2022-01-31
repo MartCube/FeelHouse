@@ -1,17 +1,13 @@
 <template>
 	<div class="subscribe">
-		<h4 class="title">{{ title }}</h4>
-		<form ref="subscribe" autocomplete="off" @submit.prevent="Submit()">
-			<ValidationProvider ref="subscribe" v-slot="{ errors, classes }" :rules="rules" :mode="mode" tag="div" class="input_item">
-				<div v-if="errors.length" class="error" :class="classes">
-					{{ errors[0] }}
-				</div>
-
-				<input id="subscribe" v-model="inputValue" v-mask="'###-###-####'" :placeholder="number" name="subscribe" />
-			</ValidationProvider>
-
-			<ButtonItem> {{ button }} </ButtonItem>
-		</form>
+		<h5 class="title">{{ title }}</h5>
+		<ValidationProvider ref="subscribe" v-slot="{ errors, classes }" class="input_item" :rules="rules" :mode="mode" tag="div">
+			<div v-if="errors.length" class="error" :class="classes">
+				<!-- {{ errors[0] }} -->
+			</div>
+			<input id="subscribe" v-model="inputValue" v-mask="'###-###-####'" placeholder="phone number" name="subscribe" />
+			<ButtonItem @click.native="Submit()"> Subscribe </ButtonItem>
+		</ValidationProvider>
 	</div>
 </template>
 
@@ -29,14 +25,6 @@ export default {
 			type: String,
 			required: true,
 		},
-		number: {
-			type: String,
-			required: true,
-		},
-		button: {
-			type: String,
-			required: true,
-		},
 		rules: {
 			type: [Object, String],
 			default: 'min:9|required',
@@ -51,54 +39,64 @@ export default {
 		inputValue: '',
 	}),
 	methods: {
-		Submit(field) {
-			const provider = this.$refs[field]
-
-			// Validate the field
-			return provider.validate()
+		Submit() {
+			const isValid = this.$refs.subscribe.validate()
+			if (isValid) {
+				console.log('data ready to send')
+			}
 		},
 	},
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .subscribe {
 	z-index: 2;
+	max-width: 800px;
+	height: min-content;
+	margin-top: 40px;
 
-	width: 500px;
-	height: 100%;
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
-
-	form {
-		width: 100%;
-		display: flex;
-		flex-direction: column;
-		justify-content: space-between;
-	}
+	align-items: center;
 	.title {
-		color: $text;
-	}
-	.message {
-		display: flex;
-		background-color: rgb(0 219 17 / 5%);
-		padding: 1rem;
-		flex-direction: column;
-		justify-content: center;
 		color: $white;
-		align-items: center;
-		border: 1px solid rgb(255, 255, 255, 10%);
-		a {
-			font-weight: bold;
-		}
-	}
-	p {
-		padding: 0;
+		text-transform: initial;
+		margin-bottom: 20px;
 	}
 	.input_item {
-		margin: 1rem 0;
-		height: 4rem;
+		width: 500px;
+		height: 50px;
+
+		display: flex;
+		position: relative;
+
+		border: 1px solid $primary;
+		padding: 6px;
+		.error {
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+		input {
+			width: 100%;
+			height: 38px;
+			padding-left: 10px;
+			outline: 0;
+			background: transparent;
+			border: none;
+			font-family: inherit;
+			font-size: 1rem;
+			color: $white;
+
+			&::placeholder {
+				text-transform: capitalize;
+			}
+		}
+		button {
+			height: 38px;
+		}
 	}
 }
 </style>

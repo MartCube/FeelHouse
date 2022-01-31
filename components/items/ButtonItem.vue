@@ -17,8 +17,9 @@ export default {
 
 <style lang="scss" scoped>
 button {
-	margin: 1rem 0;
-	padding: 1rem 2rem;
+	width: min-content;
+	height: 50px;
+	padding: 0 2rem;
 
 	display: flex;
 	justify-content: center;

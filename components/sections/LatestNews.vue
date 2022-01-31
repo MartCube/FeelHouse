@@ -47,8 +47,6 @@ export default {
 	.latest_news {
 		padding-left: 15px;
 		padding-right: 15px;
-		.grid {
-		}
 	}
 }
 </style>

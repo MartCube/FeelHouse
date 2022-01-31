@@ -1,7 +1,7 @@
 <template>
 	<section class="about">
-		<h2>{{ title }}</h2>
-		<p>{{ text }}</p>
+		<SanityContent class="text" :blocks="text" />
+
 		<ImageItem :image="poster" w="200" />
 	</section>
 </template>
