@@ -1,8 +1,12 @@
 <template>
-	<div class="article">
+	<div class="page">
 		<template v-if="!$fetchState.pending">
 			<Intro :title="data.title" :poster="data.poster" :uid="$route.params.article" />
-			<SanityContent class="content" :blocks="data.content" :serializers="serializers" />
+			<section class="article section-padding">
+				<div class="container">
+					<SanityContent class="content" :blocks="data.content" :serializers="serializers" />
+				</div>
+			</section>
 		</template>
 	</div>
 </template>
@@ -10,6 +14,7 @@
 <script>
 import { article } from '@/assets/queries'
 import img from '@/components/items/ImageItem.vue'
+import VideoSection from '@/components/sections/VideoSection.vue'
 
 export default {
 	name: 'Article',
@@ -24,6 +29,7 @@ export default {
 		this.serializers = {
 			types: {
 				img,
+				youtube: VideoSection,
 			},
 		}
 	},
@@ -32,14 +38,12 @@ export default {
 
 <style lang="scss" scoped>
 .article {
-	width: 100%;
-	min-height: 100vh;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-
-	.content {
-		width: 1200px;
+	.container {
+		padding: 0 15px;
+	}
+	picture {
+		margin-bottom: 15px;
+		display: block;
 	}
 }
 </style>

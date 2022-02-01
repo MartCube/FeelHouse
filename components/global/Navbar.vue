@@ -5,7 +5,7 @@
 				<img src="/logo-light.png" alt="logo" />
 				<img src="/logo-dark.png" alt="logo" />
 			</n-link>
-			<div v-if="!$fetchState.pending" class="links" :class="{ open: isOpened }">
+			<div v-if="!$fetchState.pending" class="links" :class="{ open: isOpened }" @click="openMenu()">
 				<n-link v-for="link in data.links" :key="link.uid" :to="`/${link.uid}/`"> {{ link.label }} </n-link>
 			</div>
 			<button class="burger" :class="{ open: isOpened }" @click="openMenu()">
