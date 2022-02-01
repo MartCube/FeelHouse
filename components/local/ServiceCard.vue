@@ -41,7 +41,7 @@ export default {
 	position: relative;
 	background-size: cover;
 	background-position: center center;
-	width: 30%;
+	width: 49%;
 	min-height: 420px;
 	margin-bottom: 30px;
 	.square {
@@ -53,6 +53,7 @@ export default {
 		picture {
 			position: absolute;
 			z-index: 0;
+			object-fit: cover;
 		}
 	}
 	.square2 {
