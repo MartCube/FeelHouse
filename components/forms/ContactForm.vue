@@ -171,8 +171,10 @@ export default {
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
+
 	form {
 		width: 100%;
+		max-width: 500px;
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
@@ -180,9 +182,7 @@ export default {
 			margin-top: 2rem;
 		}
 	}
-	.title {
-		color: $text;
-	}
+
 	.message {
 		display: flex;
 		background-color: rgb(0 219 17 / 5%);

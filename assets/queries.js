@@ -50,12 +50,12 @@ export const page = groq`*[ _type == "page" && uid.current == $uid][0]{
 	'poster':poster.asset._ref,
 	content[] {
 		_type == 'blockContent' => { '_type': 'block', ... },
-		_type == 'contactForm' => { info[] { '_type': 'block',   ...  }, ... },
+		_type == 'contactForm' => { info[] { '_type': 'block', 	...	}, ... },
 		_type == 'about' => { 
-      text[] { '_type': 'block',   ...  },
-      'poster': poster.asset._ref, 
-      ... 
-    },
+			text[] { '_type': 'block', 	...	},
+			'poster': poster.asset._ref, 
+			... 
+		},
 	}
 }`
 export const project = groq`*[ _type == "project" && uid.current == $uid][0]{
