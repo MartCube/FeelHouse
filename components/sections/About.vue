@@ -1,7 +1,7 @@
 <template>
 	<section class="about section-padding">
 		<div class="container">
-			<SanityContent class="content" :blocks="content" />
+			<SanityContent class="content" :blocks="text" />
 			<div class="image">
 				<ImageItem :image="poster" w="500" h="400" />
 			</div>
@@ -16,7 +16,7 @@ export default {
 		// 	type: String,
 		// 	required: true,
 		// },
-		content: {
+		text: {
 			type: Array,
 			required: true,
 		},
@@ -48,6 +48,17 @@ export default {
 			transition: transform 0.3s linear;
 			&:hover {
 				transform: scale(0.95);
+			}
+		}
+	}
+}
+@media (max-width: 800px) {
+	.about {
+		.container {
+			flex-direction: column;
+			.image,
+			.content {
+				width: 100%;
 			}
 		}
 	}

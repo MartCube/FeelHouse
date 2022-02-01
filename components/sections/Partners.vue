@@ -35,7 +35,7 @@ export default {
 			align-items: center;
 			border: 1px solid $borderLight;
 			&:hover {
-				background-color: #f3ece5;
+				background-color: $light_bg;
 			}
 		}
 	}

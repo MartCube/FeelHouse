@@ -114,7 +114,7 @@ export default {
 	}
 }
 .square2 {
-	background: $secrice_card_bg;
+	background: $light_bg;
 	background-size: cover;
 	background-position: center center;
 	// -webkit-transition: -webkit-transform 0.9s cubic-bezier(0.68, -0.55, 0.265, 1.25);
