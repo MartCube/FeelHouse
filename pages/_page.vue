@@ -9,6 +9,7 @@
 import { page } from '@/assets/queries'
 import contactForm from '@/components/forms/ContactForm.vue'
 import about from '@/components/sections/About.vue'
+import team from '@/components/sections/Team.vue'
 
 export default {
 	name: 'Page',
@@ -20,6 +21,7 @@ export default {
 			types: {
 				contactForm,
 				about,
+				team,
 			},
 		},
 	}),

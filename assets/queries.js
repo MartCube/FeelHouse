@@ -56,39 +56,44 @@ export const page = groq`*[ _type == "page" && uid.current == $uid][0]{
 			'poster': poster.asset._ref, 
 			... 
 		},
+		_type == 'team' => { 
+			employee[]{
+				SMedia[]{ name,link },
+				'image':image.asset._ref,
+				...
+			},
+			...   
+		},
 	}
 }`
 export const project = groq`*[ _type == "project" && uid.current == $uid][0]{
     title,
-	"uid": uid.current,
 	"poster": poster.asset._ref,
-    "youtube": youtube.url,
 	info,
-	description,
-	gallery,
+	'gallery': gallery[].asset._ref,
+    content[] {
+		_type == 'blockContent' => {'_type': 'block', ...},
+		_type == 'image' => { _key, _type, alt, "image": asset._ref, },
+		_type == 'youtube' => {...}
+	}
 }`
 export const article = groq`*[ _type == "article" && uid.current == $uid][0]{
     title,
 	"poster": poster.asset._ref,
     content[] {
-		_type == 'blockContent' => {
-      		'_type': 'block',
-       		...
-		},
-		_type == 'img' => {
-       		_key,
-       		_type,
-       		alt,
-			"image": asset._ref,
-		},
+		_type == 'blockContent' => {'_type': 'block', ...},
+		_type == 'image' => { _key, _type, alt, "image": asset._ref, },
 		_type == 'youtube' => {...}
 	}
 }`
 export const service = groq`*[ _type == "service" && uid.current == $uid][0]{
-	"uid": uid.current,
+	title,
 	"poster": poster.asset._ref,
-    title,
-    content,
+    content[] {
+		_type == 'blockContent' => {'_type': 'block', ...},
+		_type == 'image' => { _key, _type, alt, "image": asset._ref, },
+		_type == 'youtube' => {...}
+	}
 }`
 
 // list
