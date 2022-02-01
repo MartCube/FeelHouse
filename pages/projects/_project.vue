@@ -1,12 +1,14 @@
 <template>
 	<div class="project">
 		<Intro :title="title" :poster="poster" />
-		<!-- <SanityContent class="content" :blocks="content" :serializers="serializers" /> -->
+		<SanityContent class="content" :blocks="content" :serializers="serializers" />
 	</div>
 </template>
 
 <script>
 import { project } from '@/assets/queries'
+import img from '@/components/items/ImageItem.vue'
+import VideoSection from '@/components/sections/VideoSection.vue'
 
 export default {
 	name: 'Project',
@@ -14,12 +16,12 @@ export default {
 		return $sanity.fetch(project, { uid: route.params.project })
 	},
 	data: () => ({
-		// serializers: {
-		// 	types: {
-		// 		faq,
-		// 		articleList,
-		// 	},
-		// },
+		serializers: {
+			types: {
+				img,
+				youtube: VideoSection,
+			},
+		},
 	}),
 }
 </script>
