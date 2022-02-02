@@ -133,6 +133,13 @@ export default {
 		.slide {
 			.content {
 				max-width: 100%;
+				.h1 {
+					font-size: 4rem;
+					margin: 1rem 0;
+				}
+				.description {
+					font-size: 17px;
+				}
 			}
 			.container {
 				padding: 0 15px;

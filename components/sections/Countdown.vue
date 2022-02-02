@@ -150,4 +150,22 @@ export default {
 		}
 	}
 }
+@media (max-width: 1000px) {
+	.countdown {
+		height: auto;
+		padding: 3rem 0;
+		.title {
+			font-size: 2rem;
+		}
+		.counter {
+			flex-wrap: wrap;
+			width: 100%;
+			justify-content: space-around;
+			div {
+				width: 45%;
+				margin: 2%;
+			}
+		}
+	}
+}
 </style>

@@ -31,7 +31,7 @@ export default {
 			arr.forEach((item) => {
 				imageUrls.push(`https://cdn.sanity.io/images/n9rlxbmy/production/${item.slice(6, item.length - 4)}.jpg`)
 			})
-			console.log(imageUrls)
+			// console.log(imageUrls)
 			return imageUrls
 		},
 	},
@@ -47,6 +47,9 @@ export default {
 		figure {
 			display: flex;
 			transition: width 0.2s linear;
+			&:hover {
+				cursor: pointer;
+			}
 			picture {
 				object-fit: cover;
 			}
@@ -91,6 +94,18 @@ export default {
 	img {
 		width: auto;
 		height: auto;
+	}
+}
+
+@media (max-width: 800px) {
+	.gallery {
+		.wrapper {
+			display: flex;
+			flex-wrap: wrap;
+			figure {
+				width: 100%;
+			}
+		}
 	}
 }
 </style>

@@ -114,6 +114,10 @@ export const serviceList = groq`*[ _type == "service" ]{
 	"poster": poster.asset._ref,
 	"uid": uid.current,
 }`
+export const serviceListLinks = groq`*[ _type == "service" ]{
+	title,
+	"uid": uid.current,
+}`
 
 // pagination
 export const articleCount = groq`count(*[ _type == "article" ])`

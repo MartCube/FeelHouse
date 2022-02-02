@@ -1,9 +1,11 @@
 <template>
-	<section class="articles">
-		<div class="grid">
-			<template v-if="!$fetchState.pending">
-				<ArticleCard v-for="(article, i) in data" :key="article.uid" :reverse="i % 2 == 0 ? false : true" :data="article" />
-			</template>
+	<section class="articles section-padding">
+		<div class="container">
+			<div class="grid">
+				<template v-if="!$fetchState.pending">
+					<ArticleCard v-for="(article, i) in data" :key="article.uid" :reverse="i % 2 == 0 ? false : true" :data="article" />
+				</template>
+			</div>
 		</div>
 		<div v-animate-onscroll="{ down: 'animated fadeInUp' }" class="pagination">
 			<span class="prev" :class="{ disable: from === 0 }" @click="fetchPrev">
@@ -67,18 +69,7 @@ export default {
 <style lang="scss" scoped>
 .articles {
 	width: 100%;
-	max-width: 1200px;
-	margin: 100px 0;
 
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	align-items: center;
-	flex-wrap: wrap;
-
-	.grid {
-		min-height: 670px;
-	}
 	.pagination {
 		width: 100%;
 		display: flex;
@@ -119,6 +110,13 @@ export default {
 				cursor: initial;
 				pointer-events: none;
 			}
+		}
+	}
+}
+@media (max-width: 800px) {
+	.articles {
+		.container {
+			padding: 0 15px;
 		}
 	}
 }

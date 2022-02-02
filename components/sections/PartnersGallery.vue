@@ -1,5 +1,5 @@
 <template>
-	<section class="partners">
+	<section class="partners section-padding">
 		<div class="container">
 			<div class="grid">
 				<div v-for="image in list" :key="image" class="image">

@@ -40,7 +40,7 @@ export default {
 
 <style lang="scss" scoped>
 .article_card {
-	width: 1100px;
+	width: 100%;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -50,17 +50,21 @@ export default {
 	margin-bottom: 2rem;
 
 	.image {
-		width: 500px;
-		min-height: 300px;
+		width: 48%;
 		display: flex;
 		overflow: hidden;
 		picture {
 			transform: scale(1);
+			object-fit: cover;
 			transition: all 0.75s ease;
 		}
 	}
 	.info {
-		width: 500px;
+		width: 48%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		padding: 3rem;
 
 		span {
 			display: flex;
@@ -91,6 +95,21 @@ export default {
 			&::before {
 				width: 4rem;
 			}
+		}
+	}
+}
+@media (max-width: 800px) {
+	.article_card {
+		flex-wrap: wrap;
+		.image {
+			order: 1;
+			width: 100%;
+			margin-bottom: 2rem;
+			min-height: 100%;
+		}
+		.info {
+			width: 100%;
+			order: 2;
 		}
 	}
 }

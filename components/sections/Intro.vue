@@ -75,4 +75,12 @@ export default {
 		color: $white;
 	}
 }
+@media (max-width: 600px) {
+	.intro {
+		padding: 0 15px;
+		h1 {
+			font-size: 3rem;
+		}
+	}
+}
 </style>
