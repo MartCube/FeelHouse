@@ -64,10 +64,11 @@ export default {
 		color: $white;
 		text-transform: initial;
 		margin-bottom: 20px;
+		font-weight: 300;
 	}
 	.input_item {
 		width: 500px;
-		height: 50px;
+		height: 60px;
 
 		display: flex;
 		position: relative;
@@ -81,7 +82,7 @@ export default {
 		}
 		input {
 			width: 100%;
-			height: 38px;
+			height: 45px;
 			padding-left: 10px;
 			outline: 0;
 			background: transparent;
@@ -92,10 +93,12 @@ export default {
 
 			&::placeholder {
 				text-transform: capitalize;
+				color: $white;
+				font-weight: 300;
 			}
 		}
 		button {
-			height: 38px;
+			height: 45px;
 		}
 	}
 }

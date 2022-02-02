@@ -16,7 +16,7 @@
 	width: $w;
 };
 
-@mixin section_title($fz: 50px, $mb: 20px) {
+@mixin section_title($fz: 50px, $mb: 25px) {
 		font-size: $fz;
     font-weight: 500;
     line-height: 1em;

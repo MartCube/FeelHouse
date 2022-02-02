@@ -1,7 +1,11 @@
 <template>
 	<section class="team">
-		<h2>{{ title }}</h2>
-		<Employee v-for="item in employee" :key="item._key" :data="item" />
+		<div class="container">
+			<h2 class="section-title">{{ title }}</h2>
+			<div class="grid">
+				<Employee v-for="item in employee" :key="item._key" :data="item" />
+			</div>
+		</div>
 	</section>
 </template>
 
@@ -22,12 +26,18 @@ export default {
 
 <style lang="scss" scoped>
 .team {
-	display: flex;
-	flex-direction: column;
-	margin: 50px 0;
-
-	h2 {
+	width: 100%;
+	padding-bottom: 120px;
+	.section-title {
 		margin-bottom: 50px;
+	}
+	.container {
+		padding: 0 15px;
+	}
+	.grid {
+		display: flex;
+		justify-content: space-between;
+		flex-wrap: wrap;
 	}
 }
 </style>

@@ -9,20 +9,20 @@
 		</h2>
 		<div class="counter">
 			<div>
-				<span>- {{ days }}</span>
+				<span>-{{ days }}</span>
 				<span> days </span>
 			</div>
 			<div>
-				<span> 0 - {{ hours }}</span>
-				<span> hours </span>
+				<span>0-{{ hours }}</span>
+				<span>hours </span>
 			</div>
 			<div>
-				<span> 0- {{ minutes }}</span>
-				<span> minutes </span>
+				<span>0-{{ minutes }}</span>
+				<span>minutes </span>
 			</div>
 			<div>
-				<span> 0- {{ seconds }}</span>
-				<span> seconds </span>
+				<span>0-{{ seconds }}</span>
+				<span>seconds </span>
 			</div>
 		</div>
 		<SubscribeForm :title="subscribeTitle" />
@@ -96,8 +96,7 @@ export default {
 		height: 100%;
 		position: absolute;
 		top: 0;
-		background: $black;
-		opacity: 0.5;
+		background: hsl(0deg 0% 11% / 60%);
 		z-index: 1;
 	}
 	picture {
@@ -113,13 +112,14 @@ export default {
 		color: $primary;
 		font-size: 1.5rem;
 		user-select: none;
+		font-weight: 300;
 	}
 	.title {
 		z-index: 2;
 		color: $white;
 		font-size: 5rem;
 		user-select: none;
-		margin: 40px 0;
+		margin: 10px 0 40px 0;
 	}
 	.counter {
 		z-index: 2;
@@ -133,13 +133,14 @@ export default {
 			flex-direction: column;
 			justify-content: center;
 			align-items: center;
-
+			border: 1px solid rgb($borderLight, 20%);
 			user-select: none;
 			background: $counter;
 			span {
 				color: $white;
 				font-size: 4rem;
 				line-height: initial;
+				font-weight: 400;
 				&:last-child {
 					font-size: 1rem;
 					color: $primary;
