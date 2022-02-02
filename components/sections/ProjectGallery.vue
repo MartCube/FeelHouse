@@ -41,8 +41,8 @@ export default {
 .gallery {
 	.wrapper {
 		display: grid;
-		grid-template-columns: repeat(3, 1fr);
-		grid-auto-columns: 17%;
+		grid-template-columns: repeat(3, 32.1%);
+		grid-auto-rows: 25vh;
 		grid-gap: 20px;
 		figure {
 			display: flex;
