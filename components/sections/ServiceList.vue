@@ -1,8 +1,10 @@
 <template>
-	<section class="service list">
-		<template v-if="!$fetchState.pending">
-			<ServiceCard v-for="service in data" :key="service.uid" :data="service" />
-		</template>
+	<section class="list section-padding">
+		<div class="container">
+			<template v-if="!$fetchState.pending">
+				<ServiceCard v-for="service in data" :key="service.uid" :data="service" />
+			</template>
+		</div>
 	</section>
 </template>
 
@@ -21,17 +23,20 @@ export default {
 
 <style lang="scss" scoped>
 .list {
-	width: 1200px;
-	display: flex;
-	justify-content: space-between;
-	flex-wrap: wrap;
-	align-items: center;
-	padding: 100px 0;
+	width: 100%;
+	.container {
+		display: flex;
+		justify-content: space-between;
+		flex-wrap: wrap;
+		align-items: center;
+	}
 }
 @media screen and (max-width: 800px) {
 	.list {
-		justify-content: center;
-		padding: 100px 5%;
+		.container {
+			justify-content: center;
+			padding: 100px 5%;
+		}
 	}
 }
 </style>

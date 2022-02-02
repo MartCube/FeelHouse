@@ -1,7 +1,7 @@
 <template>
 	<div class="video_wrapper">
 		<client-only>
-			<LazyYoutube :src="url" autoplay="true" />
+			<LazyYoutube :src="url" :autoplay="true" />
 		</client-only>
 	</div>
 </template>

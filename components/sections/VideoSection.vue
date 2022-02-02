@@ -16,10 +16,10 @@
 export default {
 	name: 'VideoSection',
 	props: {
-		preview: {
-			type: Object,
-			required: true,
-		},
+		// preview: {
+		// 	type: Object,
+		// 	required: true,
+		// },
 		url: {
 			type: String,
 			required: true,

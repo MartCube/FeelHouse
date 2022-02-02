@@ -1,7 +1,13 @@
 <template>
-	<div class="project">
+	<div>
 		<Intro :title="title" :poster="poster" />
-		<SanityContent class="content" :blocks="content" :serializers="serializers" />
+		<section class="project section-padding">
+			<div class="container">
+				<InfoTable :info="info" />
+				<SanityContent class="content" :blocks="content" :serializers="serializers" />
+				<ProjectGallery :gallery="gallery" />
+			</div>
+		</section>
 	</div>
 </template>
 
@@ -9,6 +15,7 @@
 import { project } from '@/assets/queries'
 import img from '@/components/items/ImageItem.vue'
 import VideoSection from '@/components/sections/VideoSection.vue'
+import 'vue-cool-lightbox/dist/vue-cool-lightbox.min.css'
 
 export default {
 	name: 'Project',
@@ -29,8 +36,8 @@ export default {
 <style lang="scss" scoped>
 .project {
 	width: 100%;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+	.container {
+		padding: 0 15px;
+	}
 }
 </style>

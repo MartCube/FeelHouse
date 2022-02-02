@@ -33,6 +33,7 @@ export default {
 	},
 
 	mounted() {
+		this.mobile = window.innerWidth
 		window.addEventListener('scroll', this.updateScroll)
 		window.addEventListener('resize', this.resize)
 	},
