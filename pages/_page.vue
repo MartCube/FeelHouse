@@ -10,6 +10,7 @@ import { page } from '@/assets/queries'
 import contactForm from '@/components/forms/ContactForm.vue'
 import about from '@/components/sections/About.vue'
 import team from '@/components/sections/Team.vue'
+import faq from '@/components/sections/Faq.vue'
 
 export default {
 	name: 'Page',
@@ -22,6 +23,7 @@ export default {
 				contactForm,
 				about,
 				team,
+				faq,
 			},
 		},
 	}),
@@ -32,10 +34,10 @@ export default {
 .page {
 	width: 100%;
 	min-height: 100vh;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
+	// display: flex;
+	// flex-direction: column;
+	// align-items: center;
+	// justify-content: center;
 
 	.content {
 		width: 100%;

@@ -1,7 +1,7 @@
 <template>
-	<div v-if="uid" class="crumbs">
+	<div v-if="enabled" class="crumbs">
 		<n-link :to="`/${link}/`">{{ link }}</n-link>
-		<span>/ {{ uid }}</span>
+		<span>/ {{ title }}</span>
 	</div>
 </template>
 
@@ -12,7 +12,11 @@ export default {
 			type: String,
 			required: true,
 		},
-		uid: {
+		enabled: {
+			type: Boolean,
+			required: true,
+		},
+		title: {
 			type: String,
 			default: undefined,
 		},
@@ -23,6 +27,9 @@ export default {
 <style lang="scss" scoped>
 a {
 	color: $primary;
+	&::first-letter {
+		text-transform: uppercase;
+	}
 	&:hover {
 		opacity: 0.85;
 	}

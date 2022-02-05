@@ -5,9 +5,14 @@
 				<ImageItem :image="data.poster" w="500" h="300" />
 			</div>
 			<div v-animate-onscroll="{ down: 'animated fadeInLeft' }" class="info">
-				<p>{{ data.releaseDate }}</p>
-				<h2>{{ data.title }}</h2>
-				<span> read more</span>
+				<div class="date">
+					<span class="day">{{ formatDate[1].slice(0, 2) }}</span>
+					<p class="month_year">{{ formatDate[0] }} {{ formatDate[2] }}</p>
+				</div>
+				<div class="content">
+					<h2 class="title">{{ data.title }}</h2>
+					<span class="read_more"> read more</span>
+				</div>
 			</div>
 		</template>
 		<template v-else>
@@ -15,9 +20,14 @@
 				<ImageItem :image="data.poster" w="500" h="300" />
 			</div>
 			<div v-animate-onscroll="{ down: 'animated fadeInRight' }" class="info">
-				<p>{{ data.releaseDate }}</p>
-				<h2>{{ data.title }}</h2>
-				<span> read more</span>
+				<div class="date">
+					<span class="day">{{ formatDate[1].slice(0, 2) }}</span>
+					<p class="month_year">{{ formatDate[0] }} {{ formatDate[2] }}</p>
+				</div>
+				<div class="content">
+					<h2 class="title">{{ data.title }}</h2>
+					<span class="read_more"> read more</span>
+				</div>
 			</div>
 		</template>
 	</n-link>
@@ -33,6 +43,15 @@ export default {
 		reverse: {
 			type: Boolean,
 			default: false,
+		},
+	},
+	computed: {
+		formatDate() {
+			const date = new Date(this.data.releaseDate)
+			const options = { month: 'long', day: 'numeric', year: 'numeric' }
+			// Then specify how you want your dates to be formatted
+			const updatedFormat = new Intl.DateTimeFormat('en-EN', options).format(date).split(' ')
+			return updatedFormat
 		},
 	},
 }
@@ -62,11 +81,10 @@ export default {
 	.info {
 		width: 48%;
 		display: flex;
-		flex-direction: column;
 		justify-content: center;
 		padding: 3rem;
 
-		span {
+		.read_more {
 			display: flex;
 			align-items: center;
 
@@ -82,6 +100,39 @@ export default {
 				margin-right: 1rem;
 				background: $primary;
 				transition: all 0.35s ease;
+			}
+		}
+		.date {
+			flex-basis: 20%;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			.day {
+				font-size: 75px;
+				font-weight: 500;
+				color: $primary;
+				line-height: 1em;
+			}
+			.month_year {
+				color: $text_light;
+				letter-spacing: 2px;
+				font-size: 12px;
+				text-transform: uppercase;
+				font-weight: 300;
+				margin-top: 1rem;
+			}
+		}
+		.content {
+			flex-basis: 80%;
+			padding-left: 2rem;
+			.title {
+				font-size: 2.5rem;
+				font-weight: 300;
+				line-height: 1.1em;
+			}
+			.read_more {
+				margin-top: 2rem;
 			}
 		}
 	}
@@ -110,6 +161,20 @@ export default {
 		.info {
 			width: 100%;
 			order: 2;
+			padding: 0;
+			.date {
+				flex-basis: 25%;
+			}
+			.content {
+				padding-left: 1rem;
+				flex-basis: fill;
+				.title {
+					font-size: 2rem;
+				}
+				.read_more {
+					margin-top: 1rem;
+				}
+			}
 		}
 	}
 }

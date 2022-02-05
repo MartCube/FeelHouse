@@ -1,7 +1,7 @@
 <template>
 	<div class="page">
 		<template v-if="!$fetchState.pending">
-			<Intro :title="data.title" :poster="data.poster" :uid="$route.params.article" />
+			<Intro :title="data.title" :poster="data.poster" :uid="$route.params.article" :crumbs="{ enabled: true, link: 'blog', title: data.title }" />
 			<section class="article section-padding">
 				<div class="container">
 					<SanityContent class="content" :blocks="data.content" :serializers="serializers" />
@@ -13,7 +13,7 @@
 
 <script>
 import { article } from '@/assets/queries'
-import img from '@/components/items/ImageItem.vue'
+import image from '@/components/items/ImageItem.vue'
 import VideoSection from '@/components/sections/VideoSection.vue'
 
 export default {
@@ -28,7 +28,7 @@ export default {
 	mounted() {
 		this.serializers = {
 			types: {
-				img,
+				image,
 				youtube: VideoSection,
 			},
 		}

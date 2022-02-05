@@ -56,6 +56,9 @@ export const page = groq`*[ _type == "page" && uid.current == $uid][0]{
 			'poster': poster.asset._ref, 
 			... 
 		},
+		_type == 'faq' => { 
+			... 
+		},
 		_type == 'team' => { 
 			employee[]{
 				SMedia[]{ name,link },

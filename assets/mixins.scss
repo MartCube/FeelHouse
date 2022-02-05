@@ -26,3 +26,12 @@
     margin-bottom: $mb;
     letter-spacing: 0.5px;
 }
+
+@mixin fadeIn {
+  -webkit-animation-name: fadeInUp;
+  animation-name: fadeInUp;
+	-webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}

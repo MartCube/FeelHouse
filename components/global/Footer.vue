@@ -46,10 +46,10 @@
 					<h6>Sitemap</h6>
 				</div>
 				<ul>
-					<li><n-link to="/faq">FAQ</n-link></li>
-					<li><n-link to="/faq">Interior Design</n-link></li>
-					<li><n-link to="/faq">Urban Design</n-link></li>
-					<li><n-link to="/faq">Decor Plan</n-link></li>
+					<li><n-link to="/faq/">FAQ</n-link></li>
+					<li><n-link to="/faq/">Interior Design</n-link></li>
+					<li><n-link to="/faq/">Urban Design</n-link></li>
+					<li><n-link to="/faq/">Decor Plan</n-link></li>
 				</ul>
 			</div>
 			<div class="item fotcont">

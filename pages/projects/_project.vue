@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<Intro :title="title" :poster="poster" />
+		<Intro :title="title" :crumbs="{ enabled: true, link: 'projects', title: title }" :poster="poster" />
 		<section class="project section-padding">
 			<div class="container">
 				<InfoTable :info="info" />

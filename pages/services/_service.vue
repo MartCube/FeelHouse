@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<Intro :title="title" :poster="poster" />
+		<Intro :title="title" :poster="poster" :crumbs="{ enabled: true, link: 'services', title: title }" />
 		<section class="service section-padding">
 			<div class="container">
 				<SanityContent class="content" :blocks="content" :serializers="serializers" />
