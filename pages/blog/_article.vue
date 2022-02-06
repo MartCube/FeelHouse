@@ -1,13 +1,11 @@
 <template>
 	<div class="page">
-		<template v-if="!$fetchState.pending">
-			<Intro :title="data.title" :poster="data.poster" :uid="$route.params.article" />
-			<section class="article section-padding">
-				<div class="container">
-					<SanityContent class="content" :blocks="data.content" :serializers="serializers" />
-				</div>
-			</section>
-		</template>
+		<Intro :title="title" :poster="poster" :uid="$route.params.article" />
+		<section class="article section-padding">
+			<div class="container">
+				<SanityContent class="content" :blocks="content" :serializers="serializers" />
+			</div>
+		</section>
 	</div>
 </template>
 
@@ -18,21 +16,17 @@ import VideoSection from '@/components/sections/VideoSection.vue'
 
 export default {
 	name: 'Article',
-	data: () => ({
-		data: null,
-		serializers: null,
-	}),
-	async fetch() {
-		this.data = await this.$sanity.fetch(article, { uid: this.$route.params.article })
+	asyncData({ $sanity, route }) {
+		return $sanity.fetch(article, { uid: route.params.article })
 	},
-	mounted() {
-		this.serializers = {
+	data: () => ({
+		serializers: {
 			types: {
 				img,
 				youtube: VideoSection,
 			},
-		}
-	},
+		},
+	}),
 }
 </script>
 

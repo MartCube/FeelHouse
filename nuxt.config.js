@@ -1,4 +1,5 @@
 export default {
+	loading: { color: '#c5a37d' },
 	css: ['~/assets/main.scss'],
 	target: 'static',
 	components: ['~/components/forms', '~/components/global', '~/components/items', '~/components/local', '~/components/sections'],
@@ -13,7 +14,7 @@ export default {
 
 	plugins: [{ src: '@/plugins/scroll-plugin.js' }, { src: '@/plugins/vee-validate.js' }, { src: `~/plugins/lazysizes.client.js` }],
 
-	modules: ['@nuxtjs/sanity/module'],
+	modules: ['@nuxtjs/sanity/module', '@nuxtjs/i18n'],
 	sanity: {
 		projectId: process.env.SANITY_ID,
 		minimal: true,
@@ -22,6 +23,77 @@ export default {
 
 	router: {
 		trailingSlash: true,
+	},
+
+	i18n: {
+		defaultLocale: 'ru',
+		baseUrl: 'https://feel-house.ua/',
+		lazy: true,
+		langDir: 'i18n/',
+		detectBrowserLanguage: false,
+		seo: false,
+		parsePages: false, // Disable babel parsing
+		locales: [
+			{
+				code: 'en',
+				name: 'eng',
+				prismic: 'en-us',
+				file: 'en.js',
+				iso: 'en-US',
+			},
+			{
+				code: 'ru',
+				name: 'рус',
+				prismic: 'ru',
+				file: 'ru.js',
+				iso: 'ru-RU',
+				isCatchallLocale: true,
+			},
+			{
+				code: 'ua',
+				name: 'укр',
+				prismic: 'ua-ua',
+				file: 'ua.js',
+				iso: 'ua-UA',
+			},
+		],
+		pages: {
+			'blog/index': {
+				en: '/blog',
+				ru: '/blog',
+				ua: '/blog',
+			},
+			'blog/_article': {
+				en: '/blog/:article?',
+				ru: '/blog/:article?',
+				ua: '/blog/:article?',
+			},
+			'projects/index': {
+				en: '/projects',
+				ru: '/projects',
+				ua: '/projects',
+			},
+			'projects/_project': {
+				en: '/projects/:project?',
+				ru: '/projects/:project?',
+				ua: '/projects/:project?',
+			},
+			'services/index': {
+				en: '/services',
+				ru: '/services',
+				ua: '/services',
+			},
+			'services/_service': {
+				en: '/services/:service?',
+				ru: '/services/:service?',
+				ua: '/services/:service?',
+			},
+			_page: {
+				en: '/:page?',
+				ru: '/:page?',
+				ua: '/:page?',
+			},
+		},
 	},
 
 	// Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules

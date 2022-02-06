@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { index } from '@/assets/queries'
+import { page } from '@/assets/queries'
 import slider from '@/components/global/Slider.vue'
 import LatestNews from '@/components/sections/LatestNews.vue'
 import PartnersGallery from '@/components/sections/PartnersGallery.vue'
@@ -15,10 +15,9 @@ import countdown from '@/components/sections/Countdown.vue'
 export default {
 	name: 'Index',
 	asyncData({ $sanity }) {
-		return $sanity.fetch(index)
+		return $sanity.fetch(page, { uid: 'home' })
 	},
 	data: () => ({
-		content: undefined,
 		serializers: {
 			types: {
 				slider,

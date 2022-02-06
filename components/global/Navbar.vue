@@ -5,8 +5,10 @@
 				<img src="/logo-light.png" alt="logo" />
 				<img src="/logo-dark.png" alt="logo" />
 			</n-link>
+
 			<div v-if="!$fetchState.pending" class="links" :class="{ open: isOpened }" @click="openMenu()">
 				<n-link v-for="link in data.links" :key="link.uid" :to="`/${link.uid}/`"> {{ link.label }} </n-link>
+				<LangSwitcher />
 			</div>
 			<button class="burger" :class="{ open: isOpened }" @click="openMenu()">
 				<span></span>
@@ -31,7 +33,6 @@ export default {
 	async fetch() {
 		this.data = await this.$sanity.fetch(navbar)
 	},
-
 	mounted() {
 		this.mobile = window.innerWidth
 		window.addEventListener('scroll', this.updateScroll)
@@ -68,11 +69,16 @@ header {
 	}
 	.links {
 		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 30px;
+
 		a {
+			margin: 0 20px;
 			text-transform: uppercase;
 			text-decoration: none;
+			font-size: 1rem;
 			color: $white;
-			margin: 0 20px;
 			&:hover {
 				color: $primary;
 			}
@@ -82,6 +88,7 @@ header {
 		position: relative;
 		width: 150px;
 		height: 45px;
+
 		img {
 			width: 100%;
 			transition: opacity 0.3s linear;
