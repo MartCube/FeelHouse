@@ -107,7 +107,7 @@ export const serviceListLinks = groq`*[ _type == "service" ]{
 export const navbar = groq`*[ _type == "navbar" ][0]{
 	links[]->{
 		'uid':uid.current,
-		'label':linkLabel,
+		'label':title,
 	}
 }`
 
