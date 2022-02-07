@@ -1,18 +1,26 @@
 <template>
 	<div class="page">
-		<Intro :title="title" :poster="poster" />
+		<SanityContent class="content" :blocks="content" :serializers="serializers" />
 		<ServiceList />
 	</div>
 </template>
 
 <script>
 import { page } from '@/assets/queries'
+import intro from '@/components/sections/Intro.vue'
 
 export default {
 	name: 'Services',
 	asyncData({ $sanity }) {
 		return $sanity.fetch(page, { uid: 'services' })
 	},
+	data: () => ({
+		serializers: {
+			types: {
+				intro,
+			},
+		},
+	}),
 }
 </script>
 
@@ -22,5 +30,12 @@ export default {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	.content {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
 }
 </style>
