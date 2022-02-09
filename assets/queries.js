@@ -1,7 +1,27 @@
 import { groq } from '@nuxtjs/sanity'
 
 // by UID
-export const page = groq`*[ _type == "page" && uid.current == $uid][0]{
+export const page = groq`*[ _type == "page" && uid.current == $uid && __i18n_lang == $lang][0]{
+	$lang == 'ru' => {
+       'langs': [
+		    {
+			   'id': __i18n_lang,
+			   'uid':uid.current,
+			},
+			...
+			__i18n_refs[] -> {'id': __i18n_lang,'uid':uid.current}
+		],
+    },
+    $lang != 'ru'  => {
+        'langs': [
+      		{
+				'id': __i18n_base -> __i18n_lang,
+				'uid': __i18n_base -> uid.current,
+      		},
+      		...
+     	 	__i18n_base -> __i18n_refs[] -> {'id': __i18n_lang,'uid':uid.current}, 
+   	 	]	
+    },
     title,
 	'poster':poster.asset._ref,
 	content[] {
@@ -50,7 +70,8 @@ export const page = groq`*[ _type == "page" && uid.current == $uid][0]{
 			'list': list[].asset._ref
 		},
 		...
-	}
+	},
+	
 }`
 export const project = groq`*[ _type == "project" && uid.current == $uid][0]{
     title,
