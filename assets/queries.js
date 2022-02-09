@@ -1,8 +1,29 @@
 import { groq } from '@nuxtjs/sanity'
 
-// singleton
-export const index = groq`*[ _type == "index" ][0]{
+// by UID
+export const page = groq`*[ _type == "page" && uid.current == $uid][0]{
+    title,
+	'poster':poster.asset._ref,
 	content[] {
+		_type == 'intro' => { 'poster': poster.asset._ref, ... },
+		_type == 'blockContent' => { '_type': 'block', ... },
+		_type == 'contactForm' => { info[] { '_type': 'block', 	...	}, ... },
+		// _type == 'articleList' => {...},
+		// _type == 'faq' => {...},
+		_type == 'countdown' => { 'bg': background.asset._ref, ...},
+		_type == 'about' => { 
+			text[] { '_type': 'block', 	...	},
+			'poster': poster.asset._ref, 
+			... 
+		},
+		_type == 'team' => { 
+			employee[]{
+				SMedia[]{ name,link },
+				'image':image.asset._ref,
+				...
+			},
+			...   
+		},
 		_type == 'slider' => {
 			list[] {
 				title,
@@ -24,49 +45,11 @@ export const index = groq`*[ _type == "index" ][0]{
 			'list': list[].asset._ref,
 			...
 		},
-		_type == 'articleList' => {...},
 		_type == 'partners' => {  
 			...,
 			'list': list[].asset._ref
 		},
-		_type == 'countdown' => { 'bg': background.asset._ref, ...},
-	},
-	metaTags {
-		title,
-		description,
-		"image": image.asset._ref
-	},
-}`
-export const navbar = groq`*[ _type == "navbar" ][0]{
-	links[]->{
-		'uid':uid.current,
-		'label':linkLabel,
-	}
-}`
-
-// by UID
-export const page = groq`*[ _type == "page" && uid.current == $uid][0]{
-    title,
-	'poster':poster.asset._ref,
-	content[] {
-		_type == 'blockContent' => { '_type': 'block', ... },
-		_type == 'contactForm' => { info[] { '_type': 'block', 	...	}, ... },
-		_type == 'about' => { 
-			text[] { '_type': 'block', 	...	},
-			'poster': poster.asset._ref, 
-			... 
-		},
-		_type == 'faq' => { 
-			... 
-		},
-		_type == 'team' => { 
-			employee[]{
-				SMedia[]{ name,link },
-				'image':image.asset._ref,
-				...
-			},
-			...   
-		},
+		...
 	}
 }`
 export const project = groq`*[ _type == "project" && uid.current == $uid][0]{
@@ -120,6 +103,12 @@ export const serviceList = groq`*[ _type == "service" ]{
 export const serviceListLinks = groq`*[ _type == "service" ]{
 	title,
 	"uid": uid.current,
+}`
+export const navbar = groq`*[ _type == "navbar" ][0]{
+	links[]->{
+		'uid':uid.current,
+		'label':title,
+	}
 }`
 
 // pagination

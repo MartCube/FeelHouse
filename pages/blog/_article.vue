@@ -18,21 +18,17 @@ import VideoSection from '@/components/sections/VideoSection.vue'
 
 export default {
 	name: 'Article',
-	data: () => ({
-		data: null,
-		serializers: null,
-	}),
-	async fetch() {
-		this.data = await this.$sanity.fetch(article, { uid: this.$route.params.article })
+	asyncData({ $sanity, route }) {
+		return $sanity.fetch(article, { uid: route.params.article })
 	},
-	mounted() {
-		this.serializers = {
+	data: () => ({
+		serializers: {
 			types: {
 				image,
 				youtube: VideoSection,
 			},
-		}
-	},
+		},
+	}),
 }
 </script>
 

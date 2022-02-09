@@ -1,20 +1,18 @@
 <template>
 	<section class="slider">
 		<VueSlickCarousel v-bind="options">
-			<!-- <div class="swiper-wrapper"> -->
-			<template v-for="slide in list">
-				<div :key="slide.link" class="slide">
-					<div class="container">
-						<div class="content">
-							<span class="subtitle">residental</span>
-							<p class="h1">{{ slide.title }}</p>
-							<p class="description">{{ slide.description }}</p>
-							<n-link to="/projects/" class="button">Discover</n-link>
-						</div>
+
+			<div v-for="slide in list" :key="slide.link" class="slide">
+				<div class="container">
+					<div class="content">
+						<span class="subtitle">residental</span>
+						<p class="h1">{{ slide.title }}</p>
+						<p class="description">{{ slide.description }}</p>
+						<n-link to="/projects" class="button">Discover</n-link>
 					</div>
-					<ImageItem :image="slide.poster" w="2000" />
 				</div>
-			</template>
+				<ImageItem :image="slide.poster" w="2000" />
+			</div>
 			<!-- </div> -->
 			<template #customPaging="page">
 				<div class="custom-dot">

@@ -1,12 +1,12 @@
 <template>
 	<div class="page">
-		<Intro :title="title" :poster="poster" />
 		<SanityContent class="content" :blocks="content" :serializers="serializers" />
 	</div>
 </template>
 
 <script>
 import { page } from '@/assets/queries'
+import intro from '@/components/sections/Intro.vue'
 import contactForm from '@/components/forms/ContactForm.vue'
 import about from '@/components/sections/About.vue'
 import team from '@/components/sections/Team.vue'
@@ -20,6 +20,7 @@ export default {
 	data: () => ({
 		serializers: {
 			types: {
+				intro,
 				contactForm,
 				about,
 				team,
