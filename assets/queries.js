@@ -4,6 +4,7 @@ import { groq } from '@nuxtjs/sanity'
 export const page = groq`*[ _type == "page" && uid.current == $uid][0]{
     title,
 	'poster':poster.asset._ref,
+	__i18n_refs[] -> {'lang': __i18n_lang,'uid':uid.current},
 	content[] {
 		_type == 'intro' => { 'poster': poster.asset._ref, ... },
 		_type == 'blockContent' => { '_type': 'block', ... },
@@ -95,7 +96,7 @@ export const articleList = groq`*[ _type == "article" ] | order(_createdAt desc)
 	"poster": poster.asset._ref,
 	releaseDate,
 }`
-export const serviceList = groq`*[ _type == "service" ]{
+export const serviceList = groq`*[ _type == "service" &&  __i18n_lang == $lang ]{
 	title,
 	"poster": poster.asset._ref,
 	"uid": uid.current,

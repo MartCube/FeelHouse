@@ -11,8 +11,8 @@ import intro from '@/components/sections/Intro.vue'
 
 export default {
 	name: 'Services',
-	asyncData({ $sanity }) {
-		return $sanity.fetch(page, { uid: 'services' })
+	asyncData({ $sanity, route, store }) {
+		return $sanity.fetch(page, { uid: route.params.page })
 	},
 	data: () => ({
 		serializers: {

@@ -16,7 +16,8 @@ export default {
 		data: null,
 	}),
 	async fetch() {
-		this.data = await this.$sanity.fetch(serviceList)
+		console.log(this.$i18n.localeProperties.code)
+		this.data = await this.$sanity.fetch(serviceList, { __i18n_lang: this.$i18n.localeProperties.code })
 	},
 }
 </script>
