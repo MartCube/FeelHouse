@@ -1,7 +1,7 @@
 <template>
 	<section class="slider">
 		<VueSlickCarousel v-bind="options">
-			<!-- <div class="swiper-wrapper"> -->
+
 			<div v-for="slide in list" :key="slide.link" class="slide">
 				<div class="container">
 					<div class="content">
@@ -90,9 +90,11 @@ export default {
 				font-size: 6rem;
 				text-transform: uppercase;
 				margin-bottom: 0;
+				opacity: 0;
 			}
 			.description {
 				font-size: 20px;
+				opacity: 0;
 			}
 			.subtitle {
 				font-size: 17px;
@@ -104,6 +106,7 @@ export default {
 				letter-spacing: 4px;
 				align-items: center;
 				display: inline-flex;
+				opacity: 0;
 				&::before {
 					position: relative;
 					top: 0px;
@@ -114,6 +117,9 @@ export default {
 					margin-right: 15px;
 				}
 			}
+			.button {
+				opacity: 0;
+			}
 		}
 		picture {
 			z-index: 1;
@@ -123,6 +129,27 @@ export default {
 			width: 100vw;
 			height: 100vh;
 			object-fit: cover;
+		}
+	}
+	.slick-active {
+		.slide {
+			.content {
+				.subtitle {
+					@include fadeIn;
+				}
+				.h1 {
+					@include fadeIn;
+					animation-delay: 0.2s;
+				}
+				.description {
+					@include fadeIn;
+					animation-delay: 0.4s;
+				}
+				.button {
+					@include fadeIn;
+					animation-delay: 0.6s;
+				}
+			}
 		}
 	}
 }

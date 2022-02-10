@@ -3,13 +3,23 @@
 		<ImageItem :image="poster" w="1920" h="1080" crop="top" />
 
 		<h1>{{ title }}</h1>
-		<Crumbs link="blog" :uid="uid" />
+		<Crumbs :enabled="crumbs.enabled" :link="crumbs.link" :title="crumbs.title" />
 	</section>
 </template>
 
 <script>
 export default {
 	props: {
+		crumbs: {
+			type: Object,
+			default() {
+				return {
+					enabled: false,
+					link: 'blog',
+					title: this.title,
+				}
+			},
+		},
 		poster: {
 			type: String,
 			required: true,

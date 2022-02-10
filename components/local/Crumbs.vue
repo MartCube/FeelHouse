@@ -1,18 +1,26 @@
 <template>
-	<div v-if="uid" class="crumbs">
-		<n-link :to="`/${link}/`">{{ link }}</n-link>
-		<span>/ {{ uid }}</span>
+	<div v-if="enabled" class="crumbs">
+		<a :href="`${url}`">{{ link }}</a>
+		<span>/ {{ title }}</span>
 	</div>
 </template>
 
 <script>
 export default {
 	props: {
+		url: {
+			type: String,
+			required: true,
+		},
 		link: {
 			type: String,
 			required: true,
 		},
-		uid: {
+		enabled: {
+			type: Boolean,
+			required: true,
+		},
+		title: {
 			type: String,
 			default: undefined,
 		},
@@ -23,6 +31,9 @@ export default {
 <style lang="scss" scoped>
 a {
 	color: $primary;
+	&::first-letter {
+		text-transform: uppercase;
+	}
 	&:hover {
 		opacity: 0.85;
 	}

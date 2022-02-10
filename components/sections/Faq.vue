@@ -1,9 +1,7 @@
 <template>
-	<section class="faq">
-		<h2 class="title">{{ title }}</h2>
-		<div v-for="item in list" :key="item._key">
-			<span>{{ item.question }}</span>
-			<span>{{ item.answer }}</span>
+	<section class="faq section-padding">
+		<div class="container">
+			<Accordeon v-for="(item, i) in list" :key="item._key" :number="++i" :question="item.question" :answer="item.answer"/>
 		</div>
 	</section>
 </template>

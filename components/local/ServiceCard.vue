@@ -12,10 +12,9 @@
 		<div class="square2">
 			<div class="square-container2">
 				<h4>{{ data.title }}</h4>
-				<p>Architecture viverra tristique ustoni missten vitae diam neque nivamus aestan the atene artines arinianu ateli ine finibus viverra nec lacus. Nedana theme sea no curabit.</p>
+				<p>{{ data.description }}</p>
 				<div class="btn-line">
-					<a href="architectural-design.html"></a>
-					<n-link class="service card" :to="`/services/${data.uid}/`">Read more</n-link>
+					<n-link class="service card" :to="link">{{ $t('pages.service.read_more') }}</n-link>
 				</div>
 			</div>
 		</div>
@@ -28,6 +27,22 @@ export default {
 		data: {
 			type: Object,
 			required: true,
+		},
+	},
+	computed: {
+		link() {
+			let link
+			switch (this.$i18n.localeProperties.code) {
+				case 'en':
+					link = `/en/services/${this.data.uid}/`
+					break
+				case 'ua':
+					link = `/ua/poslygu/${this.data.uid}/`
+					break
+				default:
+					link = `/uslugi/${this.data.uid}/`
+			}
+			return link
 		},
 	},
 }

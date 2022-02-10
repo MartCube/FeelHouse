@@ -1,13 +1,14 @@
 <template>
 	<div v-animate-onscroll="{ down: 'animated fadeInUp' }" class="project_card">
-		<n-link :to="`/projects/${data.uid}/`" class="image">
+		<n-link :to="link" class="image">
 			<ImageItem :image="data.poster" w="770" h="600" />
 		</n-link>
 		<div class="info">
 			<span class="subtitle">ARCHITECTURE</span>
 			<h3 class="title">{{ data.title }}</h3>
-			<SanityContent class="content" :blocks="data.description" />
-			<n-link :to="`/projects/${data.uid}/`" class="button">Discover</n-link>
+			<p>{{ data.description }}</p>
+			<!-- <SanityContent class="content" :blocks="data.description" /> -->
+			<n-link :to="link" class="button">Discover</n-link>
 		</div>
 	</div>
 </template>
@@ -18,6 +19,22 @@ export default {
 		data: {
 			type: Object,
 			required: true,
+		},
+	},
+	computed: {
+		link() {
+			let link
+			switch (this.$i18n.localeProperties.code) {
+				case 'en':
+					link = `/en/projects/${this.data.uid}/`
+					break
+				case 'ua':
+					link = `/ua/nashi-proekty/${this.data.uid}/`
+					break
+				default:
+					link = `/proekty/${this.data.uid}/`
+			}
+			return link
 		},
 	},
 }

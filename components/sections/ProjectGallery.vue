@@ -42,7 +42,7 @@ export default {
 	.wrapper {
 		display: grid;
 		grid-template-columns: repeat(3, 32.1%);
-		grid-auto-rows: 25vh;
+		grid-auto-rows: 15rem;
 		grid-gap: 20px;
 		figure {
 			display: flex;

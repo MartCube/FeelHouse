@@ -1,6 +1,8 @@
 <template>
 	<div class="page">
-		<SanityContent class="content" :blocks="content" :serializers="serializers" />
+		<template v-if="!$fetchState.pending">
+			<SanityContent class="content" :blocks="data.content" :serializers="serializers" />
+		</template>
 	</div>
 </template>
 
@@ -14,9 +16,6 @@ import countdown from '@/components/sections/Countdown.vue'
 
 export default {
 	name: 'Index',
-	asyncData({ $sanity }) {
-		return $sanity.fetch(page, { uid: 'home' })
-	},
 	data: () => ({
 		serializers: {
 			types: {
@@ -28,13 +27,36 @@ export default {
 			},
 		},
 	}),
+	async fetch() {
+		let id
+		switch (this.$i18n.localeProperties.code) {
+			case 'en':
+				id = 'home'
+				break
+			case 'ua':
+				id = 'golovna'
+				break
+			default:
+				id = 'domashnyaja'
+				break
+		}
+		await this.$sanity.fetch(page, { uid: id, lang: this.$i18n.localeProperties.code }).then((fetch) => {
+			this.data = fetch
+			this.$store.dispatch('i18n/setRouteParams', {
+				ru: { page: this.data.langs.filter((el) => el.lang === 'ru')[0].uid },
+				en: { page: this.data.langs.filter((el) => el.lang === 'en')[0].uid },
+				ua: { page: this.data.langs.filter((el) => el.lang === 'ua')[0].uid },
+			})
+		})
+		// console.log(data.langs, store)
+	},
+	fetchOnServer: false,
 }
 </script>
 
 <style lang="scss" scoped>
 .content {
 	width: 100%;
-	// margin-top: 100px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
