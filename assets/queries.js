@@ -1,7 +1,7 @@
 import { groq } from '@nuxtjs/sanity'
 
 // by UID
-export const page = groq`*[ _type == "page" && uid.current == $uid &&  __i18n_lang == $lang][0]{
+export const page = groq`*[ _type == "page" && uid.current == $uid &&  __i18n_lang == $lang ][0]{
     title,
 	'poster':poster.asset._ref,
 	content[] {

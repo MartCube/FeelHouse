@@ -37,14 +37,12 @@ export default {
 			{
 				code: 'en',
 				name: 'eng',
-				prismic: 'en-EN',
 				file: 'en.js',
 				iso: 'en-EN',
 			},
 			{
 				code: 'ru',
 				name: 'рус',
-				prismic: 'ru-RU',
 				file: 'ru.js',
 				iso: 'ru-RU',
 				isCatchallLocale: true,
@@ -52,7 +50,6 @@ export default {
 			{
 				code: 'ua',
 				name: 'укр',
-				prismic: 'ua-UA',
 				file: 'ua.js',
 				iso: 'uk-UA',
 			},

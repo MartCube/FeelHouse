@@ -1,6 +1,6 @@
 <template>
 	<section class="intro">
-		<ImageItem :image="poster" w="1920" h="1080" crop="top" />
+		<ImageItem :image="poster" w="1920" h="1080" />
 
 		<h1>{{ title }}</h1>
 		<Crumbs :enabled="crumbs.enabled" :link="crumbs.link" :title="crumbs.title" />
