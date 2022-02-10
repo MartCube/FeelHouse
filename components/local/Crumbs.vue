@@ -1,6 +1,6 @@
 <template>
 	<div v-if="enabled" class="crumbs">
-		<n-link :to="`/${link}/`">{{ link }}</n-link>
+		<a :href="`${url}`">{{ link }}</a>
 		<span>/ {{ title }}</span>
 	</div>
 </template>
@@ -8,6 +8,10 @@
 <script>
 export default {
 	props: {
+		url: {
+			type: String,
+			required: true,
+		},
 		link: {
 			type: String,
 			required: true,

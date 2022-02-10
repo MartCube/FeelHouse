@@ -1,12 +1,14 @@
 <template>
-	<div>
-		<Intro :title="title" :poster="poster" :crumbs="{ enabled: true, link: 'services', title: title }" />
-		<section class="service section-padding">
-			<div class="container">
-				<SanityContent class="content" :blocks="content" :serializers="serializers" />
-				<ServiceSidebar />
-			</div>
-		</section>
+	<div class="page">
+		<template v-if="!$fetchState.pending">
+			<Intro :title="data.title" :poster="data.poster" :crumbs="{ enabled: true, url: $route.params.service, link: $t('pages.service.crumbsName'), title: data.title }" />
+			<section class="service section-padding">
+				<div class="container">
+					<SanityContent class="content" :blocks="data.content" :serializers="serializers" />
+					<ServiceSidebar />
+				</div>
+			</section>
+		</template>
 	</div>
 </template>
 
@@ -17,11 +19,8 @@ import VideoSection from '@/components/sections/VideoSection.vue'
 
 export default {
 	name: 'Service',
-	asyncData({ $sanity, route }) {
-		return $sanity.fetch(service, { uid: route.params.service })
-	},
 	data: () => ({
-		content: undefined,
+		data: null,
 		serializers: {
 			types: {
 				image,
@@ -29,6 +28,34 @@ export default {
 			},
 		},
 	}),
+	async fetch() {
+		await this.$sanity.fetch(service, { uid: this.$route.params.service }).then((fetch) => {
+			this.data = fetch
+			this.$store.dispatch('i18n/setRouteParams', {
+				ru: { service: this.data.langs.filter((el) => el.lang === 'ru')[0].uid },
+				en: { service: this.data.langs.filter((el) => el.lang === 'en')[0].uid },
+				ua: { service: this.data.langs.filter((el) => el.lang === 'ua')[0].uid },
+			})
+		})
+		// console.log(data.langs, store)
+	},
+	fetchOnServer: false,
+	computed: {
+		crumbsUrl() {
+			let link
+			switch (this.$i18n.localeProperties.code) {
+				case 'en':
+					link = `/en/services/${this.$route.params.service}/`
+					break
+				case 'ua':
+					link = `/ua/poslygu/${this.$route.params.service}/`
+					break
+				default:
+					link = `/uslugi/${this.$route.params.service}/`
+			}
+			return link
+		},
+	},
 }
 </script>
 

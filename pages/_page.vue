@@ -1,6 +1,8 @@
 <template>
 	<div class="page">
-		<SanityContent class="content" :blocks="content" :serializers="serializers" />
+		<template v-if="!$fetchState.pending">
+			<SanityContent class="content" :blocks="data.content" :serializers="serializers" />
+		</template>
 	</div>
 </template>
 
@@ -14,10 +16,8 @@ import faq from '@/components/sections/Faq.vue'
 
 export default {
 	name: 'Page',
-	asyncData({ $sanity, route }) {
-		return $sanity.fetch(page, { uid: route.params.page })
-	},
 	data: () => ({
+		data: null,
 		serializers: {
 			types: {
 				intro,
@@ -28,6 +28,18 @@ export default {
 			},
 		},
 	}),
+	async fetch() {
+		await this.$sanity.fetch(page, { uid: this.$route.params.page, lang: this.$i18n.localeProperties.code }).then((fetch) => {
+			this.data = fetch
+			this.$store.dispatch('i18n/setRouteParams', {
+				ru: { page: this.data.langs.filter((el) => el.lang === 'ru')[0].uid },
+				en: { page: this.data.langs.filter((el) => el.lang === 'en')[0].uid },
+				ua: { page: this.data.langs.filter((el) => el.lang === 'ua')[0].uid },
+			})
+		})
+		// console.log(data.langs, store)
+	},
+	fetchOnServer: false,
 }
 </script>
 
@@ -35,10 +47,6 @@ export default {
 .page {
 	width: 100%;
 	min-height: 100vh;
-	// display: flex;
-	// flex-direction: column;
-	// align-items: center;
-	// justify-content: center;
 
 	.content {
 		width: 100%;

@@ -1,5 +1,5 @@
 <template>
-	<n-link class="latestNews_card" :to="`/blog/${data.uid}/`">
+	<n-link class="latestNews_card" :to="link">
 		<div class="image">
 			<ImageItem :image="data.poster" w="350" h="410" />
 		</div>
@@ -21,12 +21,28 @@ export default {
 			required: true,
 		},
 	},
+	computed: {
+		link() {
+			let link
+			switch (this.$i18n.localeProperties.code) {
+				case 'en':
+					link = `/en/blog/${this.data.uid}/`
+					break
+				case 'ua':
+					link = `/ua/novunu/${this.data.uid}/`
+					break
+				default:
+					link = `/novosti/${this.data.uid}/`
+			}
+			return link
+		},
+	},
 	methods: {
 		formatDate(dateString) {
 			const date = new Date(dateString)
 			const options = { month: 'long', day: '2-digit' }
 			// Then specify how you want your dates to be formatted
-			const updatedFormat = new Intl.DateTimeFormat('en-EN', options).format(date).split(' ').join(', ')
+			const updatedFormat = new Intl.DateTimeFormat(this.$i18n.localeProperties.iso, options).format(date).split(' ').join(', ')
 			// console.log();
 			return updatedFormat
 		},

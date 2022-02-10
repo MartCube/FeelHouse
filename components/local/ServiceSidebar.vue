@@ -7,7 +7,7 @@
 				</div>
 				<ul>
 					<li v-for="link in data" :key="link.uid">
-						<n-link :to="`/services/${link.uid}/`">
+						<n-link :to="`${url}${link.uid}/`">
 							<span>{{ link.title }}</span>
 						</n-link>
 					</li>
@@ -38,7 +38,23 @@ export default {
 		data: null,
 	}),
 	async fetch() {
-		this.data = await this.$sanity.fetch(serviceListLinks)
+		this.data = await this.$sanity.fetch(serviceListLinks, { lang: this.$i18n.localeProperties.code })
+	},
+	computed: {
+		url() {
+			let link
+			switch (this.$i18n.localeProperties.code) {
+				case 'en':
+					link = `/en/services/`
+					break
+				case 'ua':
+					link = `/ua/poslygu/`
+					break
+				default:
+					link = `/uslugi/`
+			}
+			return link
+		},
 	},
 }
 </script>

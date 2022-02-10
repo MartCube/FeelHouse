@@ -1,17 +1,17 @@
 <template>
-	<n-link class="article_card" :to="`/blog/${data.uid}/`">
+	<n-link class="article_card" :to="link">
 		<template v-if="reverse">
 			<div v-animate-onscroll="{ down: 'animated fadeInRight' }" class="image">
 				<ImageItem :image="data.poster" w="500" h="300" />
 			</div>
 			<div v-animate-onscroll="{ down: 'animated fadeInLeft' }" class="info">
 				<div class="date">
-					<span class="day">{{ formatDate[1].slice(0, 2) }}</span>
-					<p class="month_year">{{ formatDate[0] }} {{ formatDate[2] }}</p>
+					<span class="day">{{ formatDate[0] }}</span>
+					<p class="month_year">{{ formatDate[1] }} {{ formatDate[2] }}</p>
 				</div>
 				<div class="content">
 					<h2 class="title">{{ data.title }}</h2>
-					<span class="read_more"> read more</span>
+					<span class="read_more"> {{ $t('pages.blog.read_more') }}</span>
 				</div>
 			</div>
 		</template>
@@ -21,12 +21,12 @@
 			</div>
 			<div v-animate-onscroll="{ down: 'animated fadeInRight' }" class="info">
 				<div class="date">
-					<span class="day">{{ formatDate[1].slice(0, 2) }}</span>
-					<p class="month_year">{{ formatDate[0] }} {{ formatDate[2] }}</p>
+					<span class="day">{{ formatDate[0] }}</span>
+					<p class="month_year">{{ formatDate[1] }} {{ formatDate[2] }}</p>
 				</div>
 				<div class="content">
 					<h2 class="title">{{ data.title }}</h2>
-					<span class="read_more"> read more</span>
+					<span class="read_more"> {{ $t('pages.blog.read_more') }}</span>
 				</div>
 			</div>
 		</template>
@@ -48,10 +48,27 @@ export default {
 	computed: {
 		formatDate() {
 			const date = new Date(this.data.releaseDate)
-			const options = { month: 'long', day: 'numeric', year: 'numeric' }
+			const options = { year: 'numeric', month: 'long', day: 'numeric' }
 			// Then specify how you want your dates to be formatted
-			const updatedFormat = new Intl.DateTimeFormat('en-EN', options).format(date).split(' ')
+			let updatedFormat = new Intl.DateTimeFormat(this.$i18n.localeProperties.iso, options).format(date).split(' ')
+			if (this.$i18n.localeProperties.code === 'en') {
+				updatedFormat = [updatedFormat[1].slice(0, 2), updatedFormat[0], updatedFormat[2]]
+			}
 			return updatedFormat
+		},
+		link() {
+			let link
+			switch (this.$i18n.localeProperties.code) {
+				case 'en':
+					link = `/en/blog/${this.data.uid}/`
+					break
+				case 'ua':
+					link = `/ua/novunu/${this.data.uid}/`
+					break
+				default:
+					link = `/novosti/${this.data.uid}/`
+			}
+			return link
 		},
 	},
 }

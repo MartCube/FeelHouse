@@ -27,13 +27,13 @@ export default {
 		// pagination
 		articleCount: null,
 		currentPage: 1,
-		pageSize: 2,
+		pageSize: 4,
 		from: 0,
-		to: 2,
+		to: 4,
 		color: '#555',
 	}),
 	async fetch() {
-		this.data = await this.$sanity.fetch(articleList, { from: this.from, to: this.to })
+		this.data = await this.$sanity.fetch(articleList, { from: this.from, to: this.to, lang: this.$i18n.localeProperties.code })
 		this.articleCount = await this.$sanity.fetch(articleCount)
 	},
 	computed: {
