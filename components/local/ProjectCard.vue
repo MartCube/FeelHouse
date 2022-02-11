@@ -62,6 +62,7 @@ export default {
 		padding: 5% 4% 5% 0%;
 		transform: translate(0, -50%);
 		color: $text;
+		z-index: 3;
 		.subtitle {
 			color: $primary;
 			text-transform: uppercase;
@@ -85,6 +86,17 @@ export default {
 	.image {
 		width: 66.6%;
 		transition: transform 0.3s linear;
+		overflow: hidden;
+		position: relative;
+		&::before {
+			position: absolute;
+			content: '';
+			background-color: rgb(0, 0, 0, 30%);
+			width: 100%;
+			height: 100%;
+			display: block;
+			z-index: 2;
+		}
 	}
 	&:nth-child(even) {
 		justify-content: flex-start;
