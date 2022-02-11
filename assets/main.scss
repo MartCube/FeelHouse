@@ -325,3 +325,10 @@ h1, h2, h3, h4, h5, h6 {
   -webkit-animation-name: fadeInRight;
   animation-name: fadeInRight;
 }
+
+.page-enter-active, .page-leave-active {
+  transition: opacity .5s;
+}
+.page-enter, .page-leave-to {
+  opacity: 0;
+}

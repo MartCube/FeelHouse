@@ -90,6 +90,7 @@ export default {
 		padding: 0 15px;
 		h1 {
 			font-size: 3rem;
+			text-align: center;
 		}
 	}
 }

@@ -322,11 +322,15 @@ export default {
 		}
 	}
 	.bottom-footer {
-		padding: 0 1rem;
 		.item {
 			width: 100%;
 			margin-top: 2rem;
 		}
+	}
+}
+@media (max-width: 600px) {
+	.bottom-footer {
+		padding: 0 1rem;
 	}
 }
 </style>

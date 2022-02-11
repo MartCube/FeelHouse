@@ -138,6 +138,7 @@ export default {
 				text-transform: uppercase;
 				font-weight: 300;
 				margin-top: 1rem;
+				white-space: nowrap;
 			}
 		}
 		.content {

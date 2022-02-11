@@ -90,6 +90,11 @@ export default {
 				ru: '/:page?',
 				ua: '/:page?',
 			},
+			// index: {
+			// 	en: '/en',
+			// 	ru: '/',
+			// 	ua: '/ua',
+			// },
 		},
 	},
 

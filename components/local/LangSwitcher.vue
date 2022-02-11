@@ -1,5 +1,5 @@
 <template>
-	<div class="lang">
+	<div class="lang" :class="{ opened: showLocales }">
 		<div class="current_locale" @click="showLocales = !showLocales">
 			<span>{{ currentLocale }}</span>
 		</div>
@@ -37,10 +37,16 @@ export default {
 <style lang="scss" scoped>
 .lang {
 	height: 25px;
+	margin-left: 1.5rem;
 	display: flex;
-	font-size: 1rem;
+	width: 36px;
+	font-size: 1.2rem;
 	color: $white;
-
+	overflow: hidden;
+	transition: width 0.3s linear;
+	&.opened {
+		width: auto;
+	}
 	.current_locale {
 		padding: 0 10px;
 		padding-bottom: 2px;
@@ -48,7 +54,7 @@ export default {
 		align-items: center;
 		z-index: 2;
 		cursor: pointer;
-		background: $primary;
+		// background: $primary;
 
 		span {
 			line-height: 12px;
@@ -62,6 +68,7 @@ export default {
 		padding-bottom: 2px;
 		&:hover {
 			background: $primary;
+			color: $white;
 		}
 	}
 	a {
@@ -72,6 +79,25 @@ export default {
 		line-height: 12px;
 		outline: none;
 		position: relative;
+	}
+}
+.fill {
+	.lang {
+		color: $text;
+		// .current_locale {
+		// 	color: $white;
+		// }
+	}
+}
+
+@media (max-width: 800px) {
+	.lang {
+		color: $text;
+		.locale {
+			&:hover {
+				color: $white;
+			}
+		}
 	}
 }
 </style>

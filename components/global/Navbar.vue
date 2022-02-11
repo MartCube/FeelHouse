@@ -5,11 +5,15 @@
 				<img src="/logo-light.png" alt="logo" />
 				<img src="/logo-dark.png" alt="logo" />
 			</n-link>
+			<LangSwitcher />
 
-			<div v-if="!$fetchState.pending" class="links" :class="{ open: isOpened }" @click="openMenu()">
+			<div v-if="currentLinks !== null" class="links" :class="{ open: isOpened }" @click="openMenu()">
+				<n-link v-for="link in currentLinks[0].data" :key="link.url" :to="`/${link.url}/`"> {{ link.name }} </n-link>
+			</div>
+			<!-- <div v-if="!$fetchState.pending" class="links" :class="{ open: isOpened }" @click="openMenu()">
 				<n-link v-for="link in data.links" :key="link.uid" :to="`/${link.uid}/`"> {{ link.label }} </n-link>
 				<LangSwitcher />
-			</div>
+			</div> -->
 			<button class="burger" :class="{ open: isOpened }" @click="openMenu()">
 				<span></span>
 				<span></span>
@@ -20,25 +24,119 @@
 </template>
 
 <script>
-import { navbar } from '@/assets/queries'
+// import { navbar } from '@/assets/queries'
 
 export default {
 	name: 'Navbar',
 	data: () => ({
-		data: null,
+		currentLinks: null,
+		links: [
+			{
+				language: 'ua',
+				data: [
+					{
+						name: 'Про нас',
+						url: 'pro-nas',
+					},
+					{
+						name: 'Послуги',
+						url: 'poslygu',
+					},
+					{
+						name: 'Проекти',
+						url: 'nashi-proekty',
+					},
+					{
+						name: 'Новини',
+						url: 'novunu',
+					},
+					{
+						name: 'Контакти',
+						url: 'contactu',
+					},
+				],
+			},
+			{
+				language: 'ru',
+				data: [
+					{
+						name: 'О нас',
+						url: 'o-nas',
+					},
+					{
+						name: 'Услуги',
+						url: 'uslugi',
+					},
+					{
+						name: 'Проекты',
+						url: 'proekty',
+					},
+					{
+						name: 'Блог',
+						url: 'novosti',
+					},
+					{
+						name: 'Контакты',
+						url: 'kontakty',
+					},
+				],
+			},
+			{
+				language: 'en',
+				data: [
+					{
+						name: 'About us',
+						url: 'about',
+					},
+					{
+						name: 'Services',
+						url: 'services',
+					},
+					{
+						name: 'Projects',
+						url: 'projects',
+					},
+					{
+						name: 'Blog',
+						url: 'blog',
+					},
+					{
+						name: 'Contacts',
+						url: 'contacts',
+					},
+				],
+			},
+		],
 		scrollPosition: null,
 		mobile: null,
 		isOpened: false,
 	}),
-	async fetch() {
-		this.data = await this.$sanity.fetch(navbar)
+	computed: {
+		currentLocale() {
+			return this.$i18n.locale
+		},
+	},
+	// async fetch() {
+	// 	this.data = await this.$sanity.fetch(navbar)
+	// },
+	watch: {
+		currentLocale(newValue, oldValue) {
+			console.log('currentLocale changed')
+			this.getNavbarLinks()
+		},
 	},
 	mounted() {
 		this.mobile = window.innerWidth
+		this.getNavbarLinks()
 		window.addEventListener('scroll', this.updateScroll)
 		window.addEventListener('resize', this.resize)
 	},
 	methods: {
+		getNavbarLinks() {
+			this.currentLinks = this.links.filter((el) => {
+				return el.language === this.$i18n.localeProperties.code ? el.data : false
+			})
+		},
 		updateScroll() {
 			this.scrollPosition = window.scrollY
 		},
@@ -46,7 +144,7 @@ export default {
 			this.mobile = window.innerWidth
 		},
 		openMenu() {
-			this.isOpened = !this.isOpened
+			if (window.innerWidth < 801) this.isOpened = !this.isOpened
 		},
 	},
 }
@@ -69,9 +167,10 @@ header {
 	}
 	.links {
 		display: flex;
-		justify-content: center;
+		justify-content: flex-end;
 		align-items: center;
 		height: 30px;
+		flex-grow: 1;
 
 		a {
 			margin: 0 20px;
@@ -128,6 +227,7 @@ header {
 		background-color: $white;
 		.container {
 			padding: 0 15px;
+			justify-content: flex-start;
 		}
 		.links {
 			position: fixed;
@@ -154,9 +254,18 @@ header {
 		}
 		.logo {
 			z-index: 3;
+			img {
+				&:first-child {
+					opacity: 0;
+				}
+				&:last-child {
+					opacity: 1;
+				}
+			}
 		}
 	}
 	.burger {
+		margin-left: auto;
 		width: 40px;
 		height: 22px;
 		background: none;

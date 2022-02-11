@@ -163,7 +163,7 @@ export const service = groq`*[ _type == "service" && uid.current == $uid][0]{
 }`
 
 // list
-export const projectList = groq`*[ _type == "project" ]{
+export const projectList = groq`*[ _type == "project" &&  __i18n_lang == $lang ]{
 	title,
 	"poster": poster.asset._ref,
 	"uid": uid.current,
