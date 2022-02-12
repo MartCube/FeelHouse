@@ -3,9 +3,9 @@
 		<Intro :title="title" :poster="poster" />
 		<section class="project section-padding">
 			<div class="container">
-				<InfoTable :info="info" />
-				<SanityContent class="content" :blocks="content" :serializers="serializers" />
-				<ProjectGallery :gallery="gallery" />
+				<InfoTable :info="data.info" />
+				<SanityContent class="content" :blocks="data.content" :serializers="serializers" />
+				<ProjectGallery :gallery="data.gallery" />
 			</div>
 		</section>
 	</div>
@@ -19,8 +19,16 @@ import 'vue-cool-lightbox/dist/vue-cool-lightbox.min.css'
 
 export default {
 	name: 'Project',
-	asyncData({ $sanity, route }) {
-		return $sanity.fetch(project, { uid: route.params.project })
+	async asyncData({ $sanity, route, store, i18n }) {
+		const data = await $sanity.fetch(project, { uid: route.params.uid, lang: i18n.locale })
+
+		await store.dispatch('i18n/setRouteParams', {
+			[data.langs[0].id]: { page: 'proekty', project: data.langs[0].uid },
+			[data.langs[1].id]: { page: 'projects', project: data.langs[1].uid },
+			[data.langs[2].id]: { page: 'nashi-proekty', project: data.langs[2].uid },
+		})
+
+		return data
 	},
 	data: () => ({
 		serializers: {

@@ -15,7 +15,7 @@
 				<p>Architecture viverra tristique ustoni missten vitae diam neque nivamus aestan the atene artines arinianu ateli ine finibus viverra nec lacus. Nedana theme sea no curabit.</p>
 				<div class="btn-line">
 					<a href="architectural-design.html"></a>
-					<n-link class="service card" :to="`/services/${data.uid}/`">Read more</n-link>
+					<n-link class="service card" :to="localePath({ name: 'service-service', params: { service: data.uid } })">Read more</n-link>
 				</div>
 			</div>
 		</div>

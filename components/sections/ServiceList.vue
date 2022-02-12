@@ -16,7 +16,7 @@ export default {
 		data: null,
 	}),
 	async fetch() {
-		this.data = await this.$sanity.fetch(serviceList)
+		this.data = await this.$sanity.fetch(serviceList, { lang: this.$i18n.locale })
 	},
 }
 </script>

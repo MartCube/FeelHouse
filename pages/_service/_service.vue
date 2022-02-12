@@ -1,12 +1,12 @@
 <template>
 	<div>
 		<Intro :title="title" :poster="poster" />
-		<section class="service section-padding">
+		<!-- <section class="service section-padding">
 			<div class="container">
 				<SanityContent class="content" :blocks="content" :serializers="serializers" />
 				<ServiceSidebar />
 			</div>
-		</section>
+		</section> -->
 	</div>
 </template>
 
@@ -17,8 +17,19 @@ import VideoSection from '@/components/sections/VideoSection.vue'
 
 export default {
 	name: 'Service',
-	asyncData({ $sanity, route }) {
-		return $sanity.fetch(service, { uid: route.params.service })
+	async asyncData({ $sanity, route, store, i18n }) {
+		console.log(route)
+		const data = await $sanity.fetch(service, { service: route.params.uid, lang: i18n.locale })
+
+		console.log(data)
+
+		await store.dispatch('i18n/setRouteParams', {
+			[data.langs[0].id]: { page: 'uslugi', service: data.langs[0].uid },
+			[data.langs[1].id]: { page: 'services', service: data.langs[1].uid },
+			[data.langs[2].id]: { page: 'poslygu', service: data.langs[2].uid },
+		})
+
+		return data
 	},
 	data: () => ({
 		content: undefined,

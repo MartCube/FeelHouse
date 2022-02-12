@@ -33,8 +33,8 @@ export default {
 		color: '#555',
 	}),
 	async fetch() {
-		this.data = await this.$sanity.fetch(articleList, { from: this.from, to: this.to })
-		this.articleCount = await this.$sanity.fetch(articleCount)
+		this.data = await this.$sanity.fetch(articleList, { lang: this.$i18n.locale, from: this.from, to: this.to })
+		this.articleCount = await this.$sanity.fetch(articleCount, { lang: this.$i18n.locale })
 	},
 	computed: {
 		totalPages() {

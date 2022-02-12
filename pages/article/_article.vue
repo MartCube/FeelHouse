@@ -16,8 +16,18 @@ import VideoSection from '@/components/sections/VideoSection.vue'
 
 export default {
 	name: 'Article',
-	asyncData({ $sanity, route }) {
-		return $sanity.fetch(article, { uid: route.params.article })
+	async asyncData({ $sanity, route, store, i18n }) {
+		console.log(route.params, i18n.locale)
+		const data = await $sanity.fetch(article, { uid: route.params.article, lang: i18n.locale })
+		console.log(data)
+
+		await store.dispatch('i18n/setRouteParams', {
+			[data.langs[0].id]: { page: 'novosti', article: data.langs[0].uid },
+			[data.langs[1].id]: { page: 'blog', article: data.langs[1].uid },
+			[data.langs[2].id]: { page: 'novini', article: data.langs[2].uid },
+		})
+
+		return data
 	},
 	data: () => ({
 		serializers: {

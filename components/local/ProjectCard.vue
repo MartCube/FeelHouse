@@ -1,6 +1,6 @@
 <template>
 	<div v-animate-onscroll="{ down: 'animated fadeInUp' }" class="project_card">
-		<n-link :to="`/projects/${data.uid}/`" class="image">
+		<n-link :to="localePath({ name: 'project-project', params: { uid: data.uid } })" class="image">
 			<ImageItem :image="data.poster" w="770" h="600" />
 		</n-link>
 		<div class="info">

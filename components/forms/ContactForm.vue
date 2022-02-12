@@ -6,11 +6,11 @@
 				<h5 class="title">{{ title }}</h5>
 				<form ref="contact_form" autocomplete="off" @submit.prevent="Submit()">
 					<ValidationObserver ref="contact" tag="div">
-						<InputItem id="fullName" :label="fullName" rules="required" @getValue="storeValue" />
-						<InputItem id="number" :label="number" type="number" rules="min:9|required" @getValue="storeValue" />
-						<InputItem id="email" :label="email" rules="email|required" @getValue="storeValue" />
-						<InputItem id="message" :label="message" rules="required" @getValue="storeValue" />
-						<ButtonItem> {{ button }} </ButtonItem>
+						<InputItem id="fullName" label="fullName" rules="required" @getValue="storeValue" />
+						<InputItem id="number" label="number" type="number" rules="min:9|required" @getValue="storeValue" />
+						<InputItem id="email" label="email" rules="email|required" @getValue="storeValue" />
+						<InputItem id="message" label="message" rules="required" @getValue="storeValue" />
+						<ButtonItem> send </ButtonItem>
 					</ValidationObserver>
 					<!-- <div v-else class="message">
 						<h2>success ?!</h2>
@@ -34,26 +34,6 @@ export default {
 			required: true,
 		},
 		title: {
-			type: String,
-			required: true,
-		},
-		fullName: {
-			type: String,
-			required: true,
-		},
-		email: {
-			type: String,
-			required: true,
-		},
-		number: {
-			type: String,
-			required: true,
-		},
-		message: {
-			type: String,
-			required: true,
-		},
-		button: {
 			type: String,
 			required: true,
 		},

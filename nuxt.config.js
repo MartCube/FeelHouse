@@ -58,40 +58,25 @@ export default {
 			},
 		],
 		pages: {
-			'blog/index': {
-				en: '/blog',
-				ru: '/blog',
-				ua: '/blog',
-			},
-			'blog/_article': {
-				en: '/blog/:article?',
-				ru: '/blog/:article?',
-				ua: '/blog/:article?',
-			},
-			'projects/index': {
-				en: '/projects',
-				ru: '/projects',
-				ua: '/projects',
-			},
-			'projects/_project': {
-				en: '/projects/:project?',
-				ru: '/projects/:project?',
-				ua: '/projects/:project?',
-			},
-			'services/index': {
-				en: '/services',
-				ru: '/services',
-				ua: '/services',
-			},
-			'services/_service': {
-				en: '/services/:service?',
-				ru: '/services/:service?',
-				ua: '/services/:service?',
-			},
 			_page: {
-				en: '/:page?',
 				ru: '/:page?',
+				en: '/:page?',
 				ua: '/:page?',
+			},
+			'article/_article': {
+				ru: '/novosti/:article?',
+				en: '/blog/:article?',
+				ua: '/novini/:article?',
+			},
+			'_project/_project': {
+				ru: '/:page/:project?',
+				en: '/:page/:project?',
+				ua: '/:page/:project?',
+			},
+			'_service/_service': {
+				ru: '/:page/:service?',
+				en: '/:page/:service?',
+				ua: '/:page/:service?',
 			},
 		},
 	},

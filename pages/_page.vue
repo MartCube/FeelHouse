@@ -10,6 +10,8 @@ import intro from '@/components/sections/Intro.vue'
 import contactForm from '@/components/forms/ContactForm.vue'
 import about from '@/components/sections/About.vue'
 import team from '@/components/sections/Team.vue'
+import articleList from '@/components/sections/ArticleList.vue'
+import serviceList from '@/components/sections/ServiceList.vue'
 
 export default {
 	name: 'Page',
@@ -31,6 +33,8 @@ export default {
 				contactForm,
 				about,
 				team,
+				articleList,
+				serviceList,
 			},
 		},
 	}),

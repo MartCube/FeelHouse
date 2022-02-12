@@ -11,7 +11,8 @@
 
 <script>
 import { localleAnim } from '~/assets/anime'
-
+// rewrite component where you will fetch in back-end only alternative languages
+// so need to filter in front-end
 export default {
 	data: () => ({
 		showLocales: false,

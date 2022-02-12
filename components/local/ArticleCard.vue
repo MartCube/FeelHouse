@@ -1,5 +1,5 @@
 <template>
-	<n-link class="article_card" :to="`/blog/${data.uid}/`">
+	<n-link class="article_card" :to="localePath({ name: 'article-article', params: { article: data.uid } })">
 		<template v-if="reverse">
 			<div v-animate-onscroll="{ down: 'animated fadeInRight' }" class="image">
 				<ImageItem :image="data.poster" w="500" h="300" />
