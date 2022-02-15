@@ -13,6 +13,13 @@ export default {
 		},
 		project: {
 			crumbsName: 'Проекти',
+			infotable: {
+				total_space: 'Загальна площа',
+				space: 'Жилая площадь',
+				rooms: 'Колличество комнат',
+				bathrooms: 'Колличество санузлов',
+				architect: 'Архитектор',
+			},
 		},
 		service: {
 			crumbsName: 'Послуги',

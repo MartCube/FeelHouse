@@ -16,6 +16,7 @@ import LatestNews from '@/components/sections/LatestNews.vue'
 import PartnersGallery from '@/components/sections/PartnersGallery.vue'
 import ProjectRef from '@/components/sections/ProjectRef.vue'
 import countdown from '@/components/sections/Countdown.vue'
+import team from '@/components/sections/Team.vue'
 
 export default {
 	name: 'Index',
@@ -27,6 +28,7 @@ export default {
 				articleList: LatestNews,
 				partners: PartnersGallery,
 				countdown,
+				team,
 			},
 		},
 	}),

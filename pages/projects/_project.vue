@@ -1,6 +1,6 @@
 <template>
 	<div class="page">
-		<template v-if="$fetchState.error">
+		<template v-if="$fetchState.error && data !== null">
 			<Error />
 		</template>
 		<template v-if="!$fetchState.pending">
@@ -51,7 +51,7 @@ export default {
 					this.$nuxt.context.res.statusCode = 404
 				}
 				// use throw new Error()
-				throw new Error('service not found')
+				throw new Error('project not found', error)
 			})
 		// console.log(data.langs, store)
 	},

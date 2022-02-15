@@ -39,7 +39,7 @@ export default {
 <style lang="scss" scoped>
 .intro {
 	width: 100%;
-	height: 70vh;
+	height: 100vh;
 	position: relative;
 
 	display: flex;

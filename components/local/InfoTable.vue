@@ -1,11 +1,21 @@
 <template>
 	<div class="info_table">
 		<div class="wrapper">
-			<p><span>Archtect:</span> {{ info.architect }}</p>
-			<p><span>Bathrooms:</span> {{ info.BathroomNum }}</p>
-			<p><span>Rooms:</span> {{ info.roomNum }}</p>
-			<p><span>Space:</span> {{ info.space }}</p>
-			<p><span>Total space:</span> {{ info.totalSpace }}</p>
+			<p>
+				<span>{{ $t('pages.project.infotable.total_space') }}:</span> {{ info.totalSpace }}
+			</p>
+			<p>
+				<span>{{ $t('pages.project.infotable.space') }}:</span> {{ info.space }}
+			</p>
+			<p>
+				<span>{{ $t('pages.project.infotable.rooms') }}:</span> {{ info.roomNum }}
+			</p>
+			<p>
+				<span>{{ $t('pages.project.infotable.bathrooms') }}:</span> {{ info.BathroomNum }}
+			</p>
+			<p>
+				<span>{{ $t('pages.project.infotable.architect') }}:</span> {{ info.architect }}
+			</p>
 		</div>
 	</div>
 </template>

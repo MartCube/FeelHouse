@@ -13,6 +13,13 @@ export default {
 		},
 		project: {
 			crumbsName: 'projects',
+			infotable: {
+				total_space: 'Total space',
+				space: 'Space',
+				rooms: 'Rooms',
+				bathrooms: 'Bathrooms',
+				architect: 'Architect',
+			},
 		},
 		service: {
 			crumbsName: 'services',
