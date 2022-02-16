@@ -1,6 +1,6 @@
 <template>
-	<div v-if="enabled" class="crumbs">
-		<a :href="`${url}`">{{ link }}</a>
+	<div class="crumbs">
+		<n-link :to="localePath({ name: linkname })">{{ linklabel }}</n-link>
 		<span>/ {{ title }}</span>
 	</div>
 </template>
@@ -8,22 +8,32 @@
 <script>
 export default {
 	props: {
-		url: {
-			type: String,
-			default: '/',
-		},
-		link: {
-			type: String,
-			required: true,
-		},
-		enabled: {
-			type: Boolean,
-			required: true,
-		},
 		title: {
 			type: String,
 			default: undefined,
 		},
+		enabled: {
+			type: Boolean,
+			required: false,
+		},
+		linklabel: {
+			type: String,
+			default: undefined,
+		},
+		linkname: {
+			type: String,
+			default: undefined,
+		},
+	},
+	computed: {
+		link() {
+			const link = this.$route.path.split('/')
+			// if(this.$i18n.locale)
+			return link
+		},
+	},
+	mounted() {
+		console.log(this.$route)
 	},
 }
 </script>

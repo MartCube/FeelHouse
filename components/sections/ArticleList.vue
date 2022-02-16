@@ -34,7 +34,7 @@ export default {
 	}),
 	async fetch() {
 		this.data = await this.$sanity.fetch(articleList, { from: this.from, to: this.to, lang: this.$i18n.localeProperties.code })
-		this.articleCount = await this.$sanity.fetch(articleCount)
+		this.articleCount = await this.$sanity.fetch(articleCount, { lang: this.$i18n.localeProperties.code })
 	},
 	computed: {
 		totalPages() {

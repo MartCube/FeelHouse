@@ -1,6 +1,6 @@
 <template>
 	<div class="page">
-		<template v-if="$fetchState.error">
+		<template v-if="$fetchState.error && data !== null && !$fetchState.pending && $fetchState.pending">
 			<Error />
 		</template>
 		<template v-if="!$fetchState.pending">

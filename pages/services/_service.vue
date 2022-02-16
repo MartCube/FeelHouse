@@ -1,10 +1,10 @@
 <template>
 	<div class="page">
-		<template v-if="$fetchState.error">
+		<template v-if="$fetchState.error && data !== null && !$fetchState.pending && $fetchState.pending">
 			<Error />
 		</template>
 		<template v-if="!$fetchState.pending">
-			<Intro :title="data.title" :poster="data.poster" :crumbs="{ enabled: true, url: $route.params.service, link: $t('pages.service.crumbsName'), title: data.title }" />
+			<Intro :title="data.title" :poster="data.poster" :crumbs="{ enabled: true, linkLabel: $t('pages.service.crumbsName'), linkName: 'service' }" />
 			<section class="service section-padding">
 				<div class="container">
 					<SanityContent class="content" :blocks="data.content" :serializers="serializers" />
@@ -74,6 +74,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.page {
+	min-height: 100vh;
+	width: 100%;
+}
 .service {
 	width: 100%;
 	.container {

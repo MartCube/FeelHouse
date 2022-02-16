@@ -56,7 +56,7 @@ export default {
 	position: relative;
 	background-size: cover;
 	background-position: center center;
-	width: 49%;
+	width: 30%;
 	min-height: 420px;
 	margin-bottom: 30px;
 	.square {

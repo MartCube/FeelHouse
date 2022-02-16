@@ -193,4 +193,4 @@ export const navbar = groq`*[ _type == "navbar" ][0]{
 }`
 
 // pagination
-export const articleCount = groq`count(*[ _type == "article" ])`
+export const articleCount = groq`count(*[ _type == "article" &&  __i18n_lang == $lang ])`

@@ -1,5 +1,8 @@
 <template>
 	<div class="info_table">
+		<div class="image">
+			<ImageItem :image="info.image.asset._ref" w="800" />
+		</div>
 		<div class="wrapper">
 			<p>
 				<span>{{ $t('pages.project.infotable.total_space') }}:</span> {{ info.totalSpace }}
@@ -32,11 +35,33 @@ export default {
 <style lang="scss">
 .info_table {
 	display: flex;
-	// justify-content: center;
+	margin-bottom: 2rem;
+	.image {
+		width: 50%;
+		picture {
+			object-fit: cover;
+			object-position: center;
+		}
+	}
+	.wrapper {
+		width: 50%;
+		padding-left: 2rem;
+	}
 	p {
 		span {
 			color: $primary;
 			font-weight: 400;
+		}
+	}
+}
+@media (max-width: 600px) {
+	.info_table {
+		.image {
+			display: none;
+		}
+		.wrapper {
+			width: 100%;
+			padding-left: 0;
 		}
 	}
 }

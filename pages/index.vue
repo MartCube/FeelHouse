@@ -1,6 +1,6 @@
 <template>
 	<div class="page">
-		<template v-if="$fetchState.error">
+		<template v-if="$fetchState.error && data !== null && !$fetchState.pending && $fetchState.pending">
 			<Error />
 		</template>
 		<template v-if="!$fetchState.pending">
@@ -69,10 +69,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.content {
+.page {
 	width: 100%;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+	min-height: 100vh;
+	.content {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
 }
 </style>

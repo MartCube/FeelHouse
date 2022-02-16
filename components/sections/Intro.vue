@@ -3,7 +3,7 @@
 		<ImageItem :image="poster" w="1920" h="1080" />
 
 		<h1>{{ title }}</h1>
-		<Crumbs :enabled="crumbs.enabled" :link="crumbs.link" :title="crumbs.title" />
+		<Crumbs v-if="crumbs.enabled" :linklabel="crumbs.linkLabel" :linkname="crumbs.link" :title="title" />
 	</section>
 </template>
 
@@ -15,22 +15,19 @@ export default {
 			default() {
 				return {
 					enabled: false,
-					link: 'blog',
-					title: this.title,
+					linkname: null,
+					linklabel: null,
+					// title: this.title,
 				}
 			},
 		},
 		poster: {
 			type: String,
-			required: true,
+			default: '',
 		},
 		title: {
 			type: String,
 			required: true,
-		},
-		uid: {
-			type: String,
-			default: undefined,
 		},
 	},
 }

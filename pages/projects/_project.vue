@@ -1,15 +1,15 @@
 <template>
 	<div class="page">
-		<template v-if="$fetchState.error && data !== null">
+		<template v-if="$fetchState.error && data !== null && !$fetchState.pending && $fetchState.pending">
 			<Error />
 		</template>
 		<template v-if="!$fetchState.pending">
-			<Intro :title="data.title" :crumbs="{ enabled: true, url: crumbsUrl(), link: $t('pages.project.crumbsName'), title: data.title }" :poster="data.poster" />
+			<Intro :title="data.title" :crumbs="{ enabled: true, linkLabel: $t('pages.project.crumbsName'), linkName: 'projects' }" :poster="data.poster" />
 			<section class="project section-padding">
 				<div class="container">
 					<InfoTable :info="data.info" />
 					<SanityContent class="content" :blocks="data.content" :serializers="serializers" />
-					<ProjectGallery :gallery="data.gallery" />
+					<ProjectGallery v-if="data.gallery" :gallery="data.gallery" />
 				</div>
 			</section>
 		</template>
@@ -53,31 +53,15 @@ export default {
 				// use throw new Error()
 				throw new Error('project not found', error)
 			})
-		// console.log(data.langs, store)
 	},
 	fetchOnServer: false,
-	methods: {
-		crumbsUrl() {
-			let link
-			switch (this.$i18n.localeProperties.code) {
-				case 'en':
-					link = `/en/projects/${this.$route.params.project}/`
-					break
-				case 'ua':
-					link = `/ua/nashi-proekty/${this.$route.params.project}/`
-					break
-				default:
-					link = `/proekty/${this.$route.params.project}/`
-			}
-			return link
-		},
-	},
 }
 </script>
 
 <style lang="scss" scoped>
 .project {
 	width: 100%;
+	min-height: 100vh;
 	.container {
 		padding: 0 15px;
 	}
