@@ -7,7 +7,6 @@ export default {
 	// Global page headers: https://go.nuxtjs.dev/config-head
 	head: {
 		title: 'Feel House',
-		htmlAttrs: { lang: 'en' },
 		meta: [{ charset: 'utf-8' }, { name: 'viewport', content: 'width=device-width, initial-scale=1' }],
 		link: [{ rel: 'icon', type: 'png', href: '/favicon.png' }],
 	},
@@ -27,7 +26,7 @@ export default {
 
 	i18n: {
 		defaultLocale: 'ru',
-		baseUrl: 'https://feel-house.ua/',
+		baseUrl: 'https://feel-house.vercel.app/',
 		lazy: true,
 		langDir: 'i18n/',
 		detectBrowserLanguage: false,
@@ -98,8 +97,8 @@ export default {
 	styleResources: { scss: ['./assets/colors.scss', './assets/mixins.scss'] },
 	fontLoader: {
 		url: 'https://fonts.googleapis.com/css2?family=Oswald:wght@300;400&display=swap',
-		prefetch: true,
-		preconnect: true,
+		// prefetch: true,
+		// preconnect: true,
 	},
 
 	// Build Configuration: https://go.nuxtjs.dev/config-build

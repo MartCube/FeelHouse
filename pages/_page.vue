@@ -4,7 +4,7 @@
 			<Error />
 		</template>
 		<template v-if="!$fetchState.pending">
-			<SanityContent class="content" :blocks="data.content" :serializers="serializers" />
+			<!-- <SanityContent class="content" :blocks="data.content" :serializers="serializers" /> -->
 		</template>
 	</div>
 </template>

@@ -60,7 +60,7 @@ export default {
 				language: 'ru',
 				data: [
 					{
-						name: 'О проекте',
+						name: 'О нас',
 						url: 'o-proekte',
 					},
 					{

@@ -71,6 +71,11 @@ export const page = groq`*[ _type == "page" && uid.current == $uid &&  __i18n_la
       __i18n_refs[] -> {'lang': __i18n_lang,'uid':uid.current}
     ],
   },
+	metaTags {
+    title,
+    description,
+    "image": image.asset._ref,
+  },
 }`
 export const project = groq`*[ _type == "project" && uid.current == $uid][0]{
     title,

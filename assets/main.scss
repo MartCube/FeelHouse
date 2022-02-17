@@ -1,25 +1,7 @@
 @import '~/assets/colors.scss';
-// @import '~/assets/fonts.scss';
 @import '~/assets/mixins.scss';
 
 
-
-
-* {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-	outline: none;
-	-webkit-tap-highlight-color: transparent;
-}
-
-html,
-body {
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing: antialiased;
-    -moz-font-smoothing: antialiased;
-    font-smoothing: antialiased;
-}
 * {
     margin: 0;
     padding: 0;
