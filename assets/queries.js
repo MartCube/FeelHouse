@@ -54,11 +54,11 @@ export const page = groq`*[ _type == "page" && uid.current == $uid &&  __i18n_la
 	__i18n_lang != 'ru'  => {
 			'langs': [
 				{
-			'label': __i18n_base -> __i18n_lang,
+			'lang': __i18n_base -> __i18n_lang,
 			'uid': __i18n_base -> uid.current,
 				},
 				...
-				__i18n_base -> __i18n_refs[] -> {'label': __i18n_lang,'uid':uid.current}, 
+				__i18n_base -> __i18n_refs[] -> {'lang': __i18n_lang,'uid':uid.current}, 
 			]  
     },
   __i18n_lang == 'ru' => {
@@ -90,11 +90,11 @@ export const project = groq`*[ _type == "project" && uid.current == $uid][0]{
 	__i18n_lang != 'ru'  => {
 			'langs': [
 				{
-			'label': __i18n_base -> __i18n_lang,
+			'lang': __i18n_base -> __i18n_lang,
 			'uid': __i18n_base -> uid.current,
 				},
 				...
-				__i18n_base -> __i18n_refs[] -> {'label': __i18n_lang,'uid':uid.current}, 
+				__i18n_base -> __i18n_refs[] -> {'lang': __i18n_lang,'uid':uid.current}, 
 			]  
     },
   __i18n_lang == 'ru' => {
@@ -106,6 +106,11 @@ export const project = groq`*[ _type == "project" && uid.current == $uid][0]{
       ...
       __i18n_refs[] -> {'lang': __i18n_lang,'uid':uid.current}
     ],
+  },
+	metaTags {
+    title,
+    description,
+    "image": image.asset._ref,
   },
 }`
 export const article = groq`*[ _type == "article" && uid.current == $uid][0]{
@@ -119,11 +124,11 @@ export const article = groq`*[ _type == "article" && uid.current == $uid][0]{
 	__i18n_lang != 'ru'  => {
 			'langs': [
 				{
-			'label': __i18n_base -> __i18n_lang,
+			'lang': __i18n_base -> __i18n_lang,
 			'uid': __i18n_base -> uid.current,
 				},
 				...
-				__i18n_base -> __i18n_refs[] -> {'label': __i18n_lang,'uid':uid.current}, 
+				__i18n_base -> __i18n_refs[] -> {'lang': __i18n_lang,'uid':uid.current}, 
 			]  
     },
   __i18n_lang == 'ru' => {
@@ -135,6 +140,11 @@ export const article = groq`*[ _type == "article" && uid.current == $uid][0]{
       ...
       __i18n_refs[] -> {'lang': __i18n_lang,'uid':uid.current}
     ],
+  },
+	metaTags {
+    title,
+    description,
+    "image": image.asset._ref,
   },
 }`
 export const service = groq`*[ _type == "service" && uid.current == $uid][0]{
@@ -148,11 +158,11 @@ export const service = groq`*[ _type == "service" && uid.current == $uid][0]{
 	__i18n_lang != 'ru'  => {
 			'langs': [
 				{
-			'label': __i18n_base -> __i18n_lang,
+			'lang': __i18n_base -> __i18n_lang,
 			'uid': __i18n_base -> uid.current,
 				},
 				...
-				__i18n_base -> __i18n_refs[] -> {'label': __i18n_lang,'uid':uid.current}, 
+				__i18n_base -> __i18n_refs[] -> {'lang': __i18n_lang,'uid':uid.current}, 
 			]  
     },
   __i18n_lang == 'ru' => {
@@ -164,6 +174,11 @@ export const service = groq`*[ _type == "service" && uid.current == $uid][0]{
       ...
       __i18n_refs[] -> {'lang': __i18n_lang,'uid':uid.current}
     ],
+  },
+	metaTags {
+    title,
+    description,
+    "image": image.asset._ref,
   },
 }`
 
@@ -193,7 +208,7 @@ export const serviceListLinks = groq`*[ _type == "service" &&  __i18n_lang == $l
 export const navbar = groq`*[ _type == "navbar" ][0]{
 	links[]->{
 		'uid':uid.current,
-		'label':title,
+		'lang':title,
 	}
 }`
 

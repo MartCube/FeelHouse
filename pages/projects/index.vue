@@ -35,6 +35,10 @@ export default {
 					en: { page: this.data.langs.filter((el) => el.lang === 'en')[0].uid },
 					ua: { page: this.data.langs.filter((el) => el.lang === 'ua')[0].uid },
 				})
+				this.$store.dispatch('metaTags', {
+					type: 'page',
+					fetch,
+				})
 			})
 			.catch((error) => {
 				console.log(error)
@@ -48,6 +52,9 @@ export default {
 		// console.log(data.langs, store)
 	},
 	fetchOnServer: false,
+	head() {
+		return this.$store.getters.metaHead
+	},
 }
 </script>
 

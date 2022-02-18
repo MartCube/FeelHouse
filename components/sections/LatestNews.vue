@@ -25,7 +25,7 @@ export default {
 		data: null,
 	}),
 	async fetch() {
-		console.log(this.$i18n.localeProperties.code)
+		// console.log(this.$i18n.localeProperties.code)
 		this.data = await this.$sanity.fetch(articleList, { from: 0, to: 3, lang: this.$i18n.localeProperties.code })
 	},
 }

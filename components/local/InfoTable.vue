@@ -1,7 +1,7 @@
 <template>
 	<div class="info_table">
 		<div class="image">
-			<ImageItem :image="info.image.asset._ref" w="800" />
+			<ImageItem v-if="info.image !== undefined" :image="info.image.asset._ref" w="800" />
 		</div>
 		<div class="wrapper">
 			<p>

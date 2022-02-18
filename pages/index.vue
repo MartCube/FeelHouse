@@ -23,11 +23,6 @@ export default {
 	data: () => ({
 		data: {
 			content: undefined,
-			metaTags: {
-				title: '',
-				description: '',
-				image: '',
-			},
 		},
 		serializers: {
 			types: {
@@ -50,87 +45,28 @@ export default {
 				id = 'golovna'
 				break
 		}
-		// if (id)
-		await this.$sanity
-			.fetch(page, { uid: id, lang: this.$i18n.localeProperties.code })
-			.then((fetch) => {
-				console.log(this.$i18n.localeProperties)
-				this.data.content = fetch.content
-				this.data.metaTags = {
-					title: fetch.metaTags.title,
-					description: fetch.metaTags.description,
-					image: `https://cdn.sanity.io/images/n9rlxbmy/production/${fetch.metaTags.image.slice(6)}?auto=format`,
-				}
-			})
-			.catch((error) => {
-				console.log(error)
-				// set status code on server and
-				if (process.server) {
-					this.$nuxt.context.res.statusCode = 404
-				}
-				// use throw new Error()
-				throw new Error('service not found')
-			})
+		if (id)
+			await this.$sanity
+				.fetch(page, { uid: id, lang: this.$i18n.localeProperties.code })
+				.then(async (fetch) => {
+					this.data.content = fetch.content
+					await this.$store.dispatch('metaTags', {
+						type: 'index',
+						fetch,
+					})
+				})
+				.catch((error) => {
+					// set status code on server and
+					if (process.server) {
+						this.$nuxt.context.res.statusCode = 404
+					}
+					// use throw new Error()
+					throw new Error('index not found', error)
+				})
 	},
 	fetchOnServer: false,
 	head() {
-		console.log(this.$store)
-		return {
-			htmlAttrs: { lang: this.$i18n.localeProperties.code },
-			title: this.data.metaTags.title,
-			link: [
-				{
-					hid: 'canonical',
-					rel: 'canonical',
-					hreflang: 'x-default',
-					href: this.$store.state.domain,
-				},
-				{
-					hid: 'alternate',
-					rel: 'alternate',
-					href: 'ua',
-					hreflang: `${this.$store.state.domain}ua/`,
-				},
-				{
-					hid: 'alternate',
-					rel: 'alternate',
-					href: 'en',
-					hreflang: `${this.$store.state.domain}en/`,
-				},
-			],
-			meta: [
-				{
-					hid: 'title',
-					name: 'title',
-					content: this.data.metaTags.title,
-				},
-				{
-					hid: 'description',
-					name: 'description',
-					content: this.data.metaTags.description,
-				},
-				{
-					hid: 'og:title',
-					name: 'og:title',
-					content: this.data.metaTags.title,
-				},
-				{
-					hid: 'og:image',
-					property: 'og:image',
-					content: this.data.metaTags.image,
-				},
-				{
-					hid: 'og:description',
-					property: 'og:description',
-					content: this.data.metaTags.description,
-				},
-				{
-					hid: 'og:url',
-					property: 'og:url',
-					content: 'https://feel-house.vercel.app/',
-				},
-			],
-		}
+		return this.$store.getters.metaHead
 	},
 }
 </script>

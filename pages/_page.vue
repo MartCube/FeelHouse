@@ -4,7 +4,7 @@
 			<Error />
 		</template>
 		<template v-if="!$fetchState.pending">
-			<!-- <SanityContent class="content" :blocks="data.content" :serializers="serializers" /> -->
+			<SanityContent class="content" :blocks="data.content" :serializers="serializers" />
 		</template>
 	</div>
 </template>
@@ -41,6 +41,10 @@ export default {
 					en: { page: this.data.langs.filter((el) => el.lang === 'en')[0].uid },
 					ua: { page: this.data.langs.filter((el) => el.lang === 'ua')[0].uid },
 				})
+				this.$store.dispatch('metaTags', {
+					type: 'page',
+					fetch,
+				})
 			})
 			.catch((error) => {
 				console.log(error)
@@ -49,11 +53,14 @@ export default {
 					this.$nuxt.context.res.statusCode = 404
 				}
 				// use throw new Error()
-				throw new Error('service not found')
+				throw new Error('page not found', error)
 			})
 		// console.log(data.langs, store)
 	},
 	fetchOnServer: false,
+	head() {
+		return this.$store.getters.metaHead
+	},
 }
 </script>
 

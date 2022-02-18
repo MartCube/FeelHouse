@@ -41,6 +41,10 @@ export default {
 					en: { service: this.data.langs.filter((el) => el.lang === 'en')[0].uid },
 					ua: { service: this.data.langs.filter((el) => el.lang === 'ua')[0].uid },
 				})
+				this.$store.dispatch('metaTags', {
+					type: 'services',
+					fetch,
+				})
 			})
 			.catch((error) => {
 				console.log(error)
@@ -54,21 +58,8 @@ export default {
 		// console.log(data.langs, store)
 	},
 	fetchOnServer: false,
-	computed: {
-		crumbsUrl() {
-			let link
-			switch (this.$i18n.localeProperties.code) {
-				case 'en':
-					link = `/en/services/${this.$route.params.service}/`
-					break
-				case 'ua':
-					link = `/ua/poslygu/${this.$route.params.service}/`
-					break
-				default:
-					link = `/uslugi/${this.$route.params.service}/`
-			}
-			return link
-		},
+	head() {
+		return this.$store.getters.metaHead
 	},
 }
 </script>
