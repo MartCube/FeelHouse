@@ -4,20 +4,14 @@
 			<div v-for="slide in list" :key="slide.link" class="slide">
 				<div class="container">
 					<div class="content">
-						<span class="subtitle">residental</span>
+						<span class="subtitle">{{ type === 'homeintro' ? 'residental' : 'discover' }}</span>
 						<p class="h1">{{ slide.title }}</p>
 						<p class="description">{{ slide.description }}</p>
-						<n-link to="/projects" class="button">Discover</n-link>
+						<n-link v-if="type === 'homeintro'" :to="localePath('projects')" class="button">Discover</n-link>
 					</div>
 				</div>
 				<ImageItem :image="slide.poster" w="2000" />
 			</div>
-			<!-- </div> -->
-			<template #customPaging="page">
-				<div class="custom-dot">
-					{{ page }}
-				</div>
-			</template>
 		</VueSlickCarousel>
 	</section>
 </template>
@@ -45,7 +39,7 @@ export default {
 		data: null,
 		options: {
 			dots: true,
-			dotsClass: 'slick-dots home_intro',
+			dotsClass: 'slick-dots',
 			draggable: true,
 			infinite: true,
 			speed: 1000,

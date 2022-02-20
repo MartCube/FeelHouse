@@ -21,7 +21,7 @@ export const page = groq`*[ _type == "page" && uid.current == $uid &&  __i18n_la
 				description,
 				'poster': poster.asset._ref,
      		},
-      		...
+				...
 		},
 		_type == 'team' => { 
 			employee[]{
