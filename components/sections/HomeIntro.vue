@@ -1,5 +1,5 @@
 <template>
-	<section class="slider" :class="{ homeintro: type === 'homeintro' }">
+	<section class="slider" :class="{}">
 		<VueSlickCarousel v-bind="options">
 			<div v-for="slide in list" :key="slide.link" class="slide">
 				<div class="container">
@@ -27,7 +27,7 @@ import VueSlickCarousel from 'vue-slick-carousel'
 import 'vue-slick-carousel/dist/vue-slick-carousel.css'
 
 export default {
-	name: 'Slider',
+	name: 'HomeIntro',
 	components: {
 		VueSlickCarousel,
 	},

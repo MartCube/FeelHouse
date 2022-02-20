@@ -93,13 +93,13 @@ export default {
 	},
 
 	// Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
-	buildModules: ['@nuxtjs/eslint-module', '@nuxtjs/style-resources', 'nuxt-font-loader'],
+	buildModules: ['@nuxtjs/eslint-module', '@nuxtjs/style-resources'],
 	styleResources: { scss: ['./assets/colors.scss', './assets/mixins.scss'] },
-	fontLoader: {
-		url: 'https://fonts.googleapis.com/css2?family=Oswald:wght@300;400&display=swap',
-		// prefetch: true,
-		// preconnect: true,
-	},
+	// fontLoader: {
+	// 	url: 'https://fonts.googleapis.com/css2?family=Oswald:wght@300;400&display=swap',
+	// 	// prefetch: true,
+	// 	// preconnect: true,
+	// },
 
 	// Build Configuration: https://go.nuxtjs.dev/config-build
 	build: {

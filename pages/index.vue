@@ -12,6 +12,7 @@
 <script>
 import { page } from '@/assets/queries'
 import slider from '@/components/global/Slider.vue'
+// import HomeIntro from '@/components/sections/HomeIntro.vue'
 import LatestNews from '@/components/sections/LatestNews.vue'
 import PartnersGallery from '@/components/sections/PartnersGallery.vue'
 import ProjectRef from '@/components/sections/ProjectRef.vue'
@@ -30,6 +31,7 @@ export default {
 				projectList: ProjectRef,
 				articleList: LatestNews,
 				partners: PartnersGallery,
+				homeintro: slider,
 				countdown,
 				team,
 			},

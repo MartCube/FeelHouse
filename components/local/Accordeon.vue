@@ -2,9 +2,10 @@
 	<div class="accordion block" :class="{ activeBlock: isOpen }" @click="toggleAccordion">
 		<div class="acc-btn" :class="{ active: isOpen }">
 			<span class="count">{{ number }}.</span>
-			{{ question }}
+			<p class="text">{{ question }}</p>
+			<button class="collapse_button"></button>
 		</div>
-		<div class="acc-content" :class="{ current: isOpen }">
+		<div ref="elemHeight" class="acc-content">
 			<div ref="height" class="content">
 				<p class="text">{{ answer }}</p>
 			</div>
@@ -15,10 +16,6 @@
 <script>
 export default {
 	props: {
-		title: {
-			type: String,
-			required: true,
-		},
 		number: {
 			type: Number,
 			required: true,
@@ -34,12 +31,21 @@ export default {
 	},
 	data() {
 		return {
+			height: 0,
 			isOpen: false,
 		}
 	},
+	mounted() {
+		this.height = this.$refs.elemHeight.offsetHeight
+		this.$refs.elemHeight.style.height = '0px'
+	},
 	methods: {
 		toggleAccordion() {
-			console.log(this.$refs.height.offsetHeight)
+			if (!this.isOpen) {
+				this.$refs.elemHeight.style.height = `${this.height}px`
+			} else {
+				this.$refs.elemHeight.style.height = '0px'
+			}
 			this.isOpen = !this.isOpen
 		},
 	},
@@ -53,26 +59,72 @@ export default {
 	border-radius: 0px;
 	overflow: hidden;
 	margin-bottom: 16px;
+	p {
+		margin: 0;
+	}
 
 	.acc-btn {
 		position: relative;
 		font-size: 17px;
-		line-height: 24px;
 		font-weight: 400;
 		cursor: pointer;
 		padding: 20px 40px;
 		padding-right: 60px;
 		color: $text;
 		transition: all 500ms ease;
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-start;
+		.count {
+			margin-top: 3px;
+			margin-right: 1rem;
+			line-height: 24px;
+			color: $primary;
+		}
+		.text {
+			flex-grow: 1;
+			transition: color 50ms ease;
+		}
+		.collapse_button {
+			line-height: 24px;
+			margin-left: 1rem;
+			margin-top: 3px;
+			background-color: transparent;
+			display: flex;
+			justify-content: center;
+			border: none;
+			align-items: center;
+			height: 2rem;
+			width: 2rem;
+			cursor: pointer;
+			&::before,
+			&::after {
+				content: '';
+				width: 15px;
+				position: absolute;
+				height: 1.5px;
+				transition: opacity 50ms ease;
+				display: block;
+				background-color: $primary;
+			}
+			&::before {
+				transform: rotate(90deg);
+			}
+		}
+		&.active {
+			.collapse_button {
+				&::before {
+					opacity: 0;
+				}
+			}
+			.text {
+				color: $primary;
+			}
+		}
 	}
 	.acc-content {
-		position: relative;
-		height: 0;
-		transition: transform 0.2s ease-in;
-		transform: scaleY(0);
+		transition: height 0.2s ease-in;
 		&.current {
-			transform: scaleY(1);
-			height: auto;
 			border-bottom: 1px solid $primary;
 		}
 	}
@@ -87,6 +139,9 @@ export default {
 			top: 0px;
 			display: block;
 		}
+	}
+	&.activeBlock {
+		border-bottom: 1px solid $primary;
 	}
 }
 @media (max-width: 950px) {

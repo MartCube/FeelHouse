@@ -1,7 +1,7 @@
 <template>
 	<header :class="{ fill: scrollPosition > 500 && mobile > 800 }">
 		<div class="container">
-			<n-link to="/" class="logo">
+			<n-link :to="localePath('index')" class="logo">
 				<img src="/logo-light.png" alt="logo" />
 				<img src="/logo-dark.png" alt="logo" />
 			</n-link>

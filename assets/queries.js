@@ -2,19 +2,26 @@ import { groq } from '@nuxtjs/sanity'
 
 // by UID
 export const page = groq`*[ _type == "page" && uid.current == $uid &&  __i18n_lang == $lang ][0]{
-    title,
+  title,
 	'poster':poster.asset._ref,
 	content[] {
 		_type == 'intro' => { 'poster': poster.asset._ref, ... },
 		_type == 'blockContent' => { '_type': 'block', ... },
 		_type == 'contactForm' => { info[] { '_type': 'block', 	...	}, ... },
-		// _type == 'articleList' => {...},
-		// _type == 'faq' => {...},
 		_type == 'countdown' => { 'bg': background.asset._ref, ...},
 		_type == 'about' => { 
 			text[] { '_type': 'block', 	...	},
 			'poster': poster.asset._ref, 
 			... 
+		},
+		_type == 'homeintro' => {
+			'type': _type,
+			list[] {
+				title,
+				description,
+				'poster': poster.asset._ref,
+     		},
+      		...
 		},
 		_type == 'team' => { 
 			employee[]{
@@ -25,6 +32,7 @@ export const page = groq`*[ _type == "page" && uid.current == $uid &&  __i18n_la
 			...   
 		},
 		_type == 'slider' => {
+			'type': _type,
 			list[] {
 				title,
 				description,
