@@ -8,7 +8,7 @@
 			<LangSwitcher />
 
 			<div v-if="currentLinks !== null" class="links" :class="{ open: isOpened }" @click="openMenu()">
-				<n-link v-for="link in currentLinks[0].data" :key="link.url" :to="`/${$i18n.localeProperties.code === 'ru' ? '' : $i18n.localeProperties.code + '/'}${link.url}/`"> {{ link.name }} </n-link>
+				<n-link v-for="link in currentLinks[0].data" :key="link.url" :to="`/${$i18n.localeProperties.code === 'en' ? '' : $i18n.localeProperties.code + '/'}${link.url}/`"> {{ link.name }} </n-link>
 			</div>
 			<!-- <div v-if="!$fetchState.pending" class="links" :class="{ open: isOpened }" @click="openMenu()">
 				<n-link v-for="link in data.links" :key="link.uid" :to="`/${link.uid}/`"> {{ link.label }} </n-link>

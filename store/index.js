@@ -1,5 +1,5 @@
 export const state = (context) => ({
-	domain: 'https://feel-house.vercel.app',
+	domain: 'https://activehouse.design',
 	metaHead: {},
 })
 
@@ -30,27 +30,27 @@ export const actions = {
 			canonical = `${state.domain}/`
 			head.link.push(
 				...[
-					{ hid: 'alternate', rel: 'alternate', href: `${state.domain}/en/`, hreflang: 'en' },
+					{ hid: 'alternate', rel: 'alternate', href: `${state.domain}/ru/`, hreflang: 'ru' },
 					{ hid: 'alternate', rel: 'alternate', href: `${state.domain}/ua/`, hreflang: 'ua' },
 					{ hid: 'alternate', rel: 'alternate', href: `${state.domain}/`, hreflang: 'x-default' },
 				],
 			)
 		} else if (type === 'page') {
-			canonical = `${state.domain}/${fetch.langs.filter((el) => el.lang === 'ru')[0].uid}/`
+			canonical = `${state.domain}/${fetch.langs.filter((el) => el.lang === 'en')[0].uid}/`
 			head.link.push(
 				...[
-					{ hid: 'alternate', rel: 'alternate', href: `${state.domain}/en/${fetch.langs.filter((el) => el.lang === 'en')[0].uid}/`, hreflang: 'en' },
+					{ hid: 'alternate', rel: 'alternate', href: `${state.domain}/ru/${fetch.langs.filter((el) => el.lang === 'ru')[0].uid}/`, hreflang: 'ru' },
 					{ hid: 'alternate', rel: 'alternate', href: `${state.domain}/ua/${fetch.langs.filter((el) => el.lang === 'ua')[0].uid}/`, hreflang: 'ua' },
-					{ hid: 'alternate', rel: 'alternate', href: `${state.domain}/${fetch.langs.filter((el) => el.lang === 'ru')[0].uid}/`, hreflang: 'x-default' },
+					{ hid: 'alternate', rel: 'alternate', href: `${state.domain}/${fetch.langs.filter((el) => el.lang === 'en')[0].uid}/`, hreflang: 'x-default' },
 				],
 			)
 		} else {
-			canonical = `${state.domain}${this.localePath(type, 'ru')}${fetch.langs.filter((el) => el.lang === 'ru')[0].uid}/`
+			canonical = `${state.domain}${this.localePath(type, 'en')}${fetch.langs.filter((el) => el.lang === 'en')[0].uid}/`
 			head.link.push(
 				...[
-					{ hid: 'alternate', rel: 'alternate', href: `${state.domain}/en${this.localePath(type, 'en')}${fetch.langs.filter((el) => el.lang === 'en')[0].uid}/`, hreflang: 'en' },
+					{ hid: 'alternate', rel: 'alternate', href: `${state.domain}/ru${this.localePath(type, 'ru')}${fetch.langs.filter((el) => el.lang === 'ru')[0].uid}/`, hreflang: 'ru' },
 					{ hid: 'alternate', rel: 'alternate', href: `${state.domain}/ua${this.localePath(type, 'ua')}${fetch.langs.filter((el) => el.lang === 'ua')[0].uid}/`, hreflang: 'ua' },
-					{ hid: 'alternate', rel: 'alternate', href: `${state.domain}${this.localePath(type, 'ru')}${fetch.langs.filter((el) => el.lang === 'ru')[0].uid}/`, hreflang: 'x-default' },
+					{ hid: 'alternate', rel: 'alternate', href: `${state.domain}${this.localePath(type, 'en')}${fetch.langs.filter((el) => el.lang === 'en')[0].uid}/`, hreflang: 'x-default' },
 				],
 			)
 		}
