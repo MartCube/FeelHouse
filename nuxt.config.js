@@ -25,8 +25,8 @@ export default {
 	},
 
 	i18n: {
-		defaultLocale: 'en',
-		baseUrl: 'https://activehouse.design/',
+		defaultLocale: 'ru',
+		baseUrl: 'https://feel-house.vercel.app/',
 		lazy: true,
 		langDir: 'i18n/',
 		detectBrowserLanguage: false,
@@ -38,13 +38,13 @@ export default {
 				name: 'eng',
 				file: 'en.js',
 				iso: 'en-EN',
-				isCatchallLocale: true,
 			},
 			{
 				code: 'ru',
 				name: 'рус',
 				file: 'ru.js',
 				iso: 'ru-RU',
+				isCatchallLocale: true,
 			},
 			{
 				code: 'ua',
