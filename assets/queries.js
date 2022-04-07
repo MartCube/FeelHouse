@@ -59,7 +59,7 @@ export const page = groq`*[ _type == "page" && uid.current == $uid &&  __i18n_la
 		},
 		...
 	},
-	__i18n_lang != 'ru'  => {
+	__i18n_lang != 'en'  => {
 			'langs': [
 				{
 			'lang': __i18n_base -> __i18n_lang,
@@ -69,7 +69,7 @@ export const page = groq`*[ _type == "page" && uid.current == $uid &&  __i18n_la
 				__i18n_base -> __i18n_refs[] -> {'lang': __i18n_lang,'uid':uid.current}, 
 			]  
     },
-  __i18n_lang == 'ru' => {
+  __i18n_lang == 'en' => {
 			'langs': [
         {
          'lang': __i18n_lang,
@@ -95,7 +95,7 @@ export const project = groq`*[ _type == "project" && uid.current == $uid][0]{
 		_type == 'image' => { _key, _type, alt, "image": asset._ref, },
 		_type == 'youtube' => {...}
 	},
-	__i18n_lang != 'ru'  => {
+	__i18n_lang != 'en'  => {
 			'langs': [
 				{
 			'lang': __i18n_base -> __i18n_lang,
@@ -105,7 +105,7 @@ export const project = groq`*[ _type == "project" && uid.current == $uid][0]{
 				__i18n_base -> __i18n_refs[] -> {'lang': __i18n_lang,'uid':uid.current}, 
 			]  
     },
-  __i18n_lang == 'ru' => {
+  __i18n_lang == 'en' => {
 			'langs': [
         {
          'lang': __i18n_lang,
@@ -129,7 +129,7 @@ export const article = groq`*[ _type == "article" && uid.current == $uid][0]{
 		_type == 'image' => { _key, _type, alt, "image": asset._ref, },
 		_type == 'youtube' => {...}
 	},
-	__i18n_lang != 'ru'  => {
+	__i18n_lang != 'en'  => {
 			'langs': [
 				{
 			'lang': __i18n_base -> __i18n_lang,
@@ -139,7 +139,7 @@ export const article = groq`*[ _type == "article" && uid.current == $uid][0]{
 				__i18n_base -> __i18n_refs[] -> {'lang': __i18n_lang,'uid':uid.current}, 
 			]  
     },
-  __i18n_lang == 'ru' => {
+  __i18n_lang == 'en' => {
 			'langs': [
         {
          'lang': __i18n_lang,
@@ -163,7 +163,7 @@ export const service = groq`*[ _type == "service" && uid.current == $uid][0]{
 		_type == 'image' => { _key, _type, alt, "image": asset._ref, },
 		_type == 'youtube' => {...}
 	},
-	__i18n_lang != 'ru'  => {
+	__i18n_lang != 'en'  => {
 			'langs': [
 				{
 			'lang': __i18n_base -> __i18n_lang,
@@ -173,7 +173,7 @@ export const service = groq`*[ _type == "service" && uid.current == $uid][0]{
 				__i18n_base -> __i18n_refs[] -> {'lang': __i18n_lang,'uid':uid.current}, 
 			]  
     },
-  __i18n_lang == 'ru' => {
+  __i18n_lang == 'en' => {
 			'langs': [
         {
          'lang': __i18n_lang,

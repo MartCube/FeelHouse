@@ -25,7 +25,7 @@ export default {
 	},
 
 	i18n: {
-		defaultLocale: 'ru',
+		defaultLocale: 'en',
 		baseUrl: 'https://feel-house.vercel.app/',
 		lazy: true,
 		langDir: 'i18n/',
@@ -38,13 +38,13 @@ export default {
 				name: 'eng',
 				file: 'en.js',
 				iso: 'en-EN',
+				isCatchallLocale: true,
 			},
 			{
 				code: 'ru',
 				name: 'рус',
 				file: 'ru.js',
 				iso: 'ru-RU',
-				isCatchallLocale: true,
 			},
 			{
 				code: 'ua',
@@ -55,32 +55,32 @@ export default {
 		],
 		pages: {
 			'blog/index': {
-				en: '/blog',
+				en: '/news',
 				ru: '/novosti',
 				ua: '/novunu',
 			},
 			'blog/_article': {
-				en: '/blog/:article?',
+				en: '/news/:article?',
 				ru: '/novosti/:article?',
 				ua: '/novunu/:article?',
 			},
 			'projects/index': {
-				en: '/projects',
+				en: '/our-projects',
 				ru: '/proekty',
 				ua: '/nashi-proekty',
 			},
 			'projects/_project': {
-				en: '/projects/:project?',
+				en: '/our-projects/:project?',
 				ru: '/proekty/:project?',
 				ua: '/nashi-proekty/:project?',
 			},
 			'services/index': {
-				en: '/services',
+				en: '/service',
 				ru: '/uslugi',
 				ua: '/poslygu',
 			},
 			'services/_service': {
-				en: '/services/:service?',
+				en: '/service/:service?',
 				ru: '/uslugi/:service?',
 				ua: '/poslygu/:service?',
 			},

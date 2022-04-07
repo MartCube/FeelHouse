@@ -45,13 +45,13 @@ export default {
 			let link
 			switch (this.$i18n.localeProperties.code) {
 				case 'en':
-					link = `/en/services/`
+					link = `/service/`
 					break
 				case 'ua':
 					link = `/ua/poslygu/`
 					break
 				default:
-					link = `/uslugi/`
+					link = `/ru/uslugi/`
 			}
 			return link
 		},

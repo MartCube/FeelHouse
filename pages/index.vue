@@ -38,10 +38,10 @@ export default {
 		},
 	}),
 	async fetch() {
-		let id = 'domashnyaja'
+		let id = 'home-us'
 		switch (this.$i18n.localeProperties.code) {
-			case 'en':
-				id = 'home'
+			case 'ru':
+				id = 'domashnyaja'
 				break
 			case 'ua':
 				id = 'golovna'
