@@ -28,7 +28,7 @@ export default {
 		data: null,
 		serializers: {
 			types: {
-				img,
+				image: img,
 				youtube: VideoSection,
 			},
 		},
@@ -71,6 +71,10 @@ export default {
 	min-height: 100vh;
 	.container {
 		padding: 0 15px;
+		picture {
+			margin: 1rem 0;
+			display: block;
+		}
 	}
 }
 </style>
