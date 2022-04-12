@@ -4,8 +4,8 @@
 			{{ errors[0] }}
 		</div>
 
-		<input v-if="type === 'number'" :id="id" v-model="inputValue" v-mask="'###-###-####'" :placeholder="label" :name="id" @change="emitValue" />
-		<input v-else :id="id" v-model="inputValue" :type="type" :placeholder="label" :name="id" @change="emitValue" />
+		<!-- <input v-if="type === 'number'" :id="id" v-model="inputValue" v-mask="'###-###-####'" :placeholder="label" :name="id" @change="emitValue" /> -->
+		<input :id="id" v-model="inputValue" :type="type" :placeholder="label" :name="id" @change="emitValue" />
 
 		<label :for="id" class="input_label">{{ label }}</label>
 		<div class="border"></div>
@@ -14,10 +14,10 @@
 
 <script>
 import { ValidationProvider } from 'vee-validate'
-import { mask } from 'vue-the-mask'
+// import { mask } from 'vue-the-mask'
 
 export default {
-	directives: { mask },
+	// directives: { mask },
 	components: {
 		ValidationProvider,
 	},

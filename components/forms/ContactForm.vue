@@ -5,8 +5,8 @@
 			<div class="contact_form">
 				<h5 class="title">{{ title }}</h5>
 				<form ref="contact_form" autocomplete="off" @submit.prevent="Submit()">
-					<div v-if="isMessageActive">
-						<p class="success_message">{{ messageText }} 🤓</p>
+					<div v-if="message.isActive">
+						<p class="result_message" :class="[message.class]">{{ message.text }} 🤓</p>
 					</div>
 					<ValidationObserver ref="contact" tag="div">
 						<InputItem id="fullName" :label="$t('pages.contact.fullName')" rules="required" />
@@ -24,7 +24,6 @@
 <script>
 import { ValidationObserver } from 'vee-validate'
 import * as emailjs from '@emailjs/browser'
-// import { set } from 'animejs'
 export default {
 	name: 'ContactForm',
 	components: {
@@ -44,6 +43,11 @@ export default {
 		isMessageActive: false,
 		messageText: '',
 		loading: false,
+		message: {
+			isActive: false,
+			text: '',
+			class: '',
+		},
 	}),
 	methods: {
 		async Submit() {
@@ -51,37 +55,35 @@ export default {
 			// validation
 			if (!isValid) return
 
-			this.loading = true
-			console.log('loading')
-
 			emailjs.sendForm('service_hmxxn2q', 'template_v1siuzg', this.$refs.contact_form, 'JOPo-OQYnguYIDcB3').then(
 				(result) => {
 					console.log('SUCCESS!', result.text)
-					this.isMessageActive = true
-					this.loading = false
-					this.messageText = this.$t('pages.contact.successMessage')
+					this.message.isActive = true
+					this.message.class = 'success'
+					this.message.text = this.$t('pages.contact.successMessage')
 					setTimeout(() => {
 						this.$refs.contact_form.reset()
-						this.isMessageActive = false
-						this.messageText = ''
+						this.message.isActive = false
+						this.message.text = ''
+						this.message.class = ''
 					}, 3500)
 				},
 				(error) => {
 					console.log('FAILED...', error.text)
-					this.isMessageActive = true
-					this.loading = false
-					this.messageText = error.text
+					this.message.isActive = true
+					this.message.class = 'error'
+					this.message.text = this.$t('pages.contact.errorMessage')
 					setTimeout(() => {
 						this.$refs.contact_form.reset()
-						this.isMessageActive = false
-						this.messageText = ''
+						this.message.isActive = false
+						this.message.text = ''
+						this.message.class = ''
 					}, 3500)
 				},
 			)
 
 			this.loading = false
 			console.log('submited')
-			// this.message = false
 		},
 	},
 }
@@ -90,6 +92,14 @@ export default {
 <style lang="scss">
 .contact {
 	width: 100%;
+	.result_message {
+		&.success {
+			color: rgb(0, 156, 104);
+		}
+		&.error {
+			color: #d32f2f;
+		}
+	}
 	.container {
 		display: flex;
 		flex-wrap: wrap;

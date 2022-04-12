@@ -11,6 +11,7 @@ export default {
 			message: 'Сообщение',
 			button: 'Отправить',
 			successMessage: 'Спасибо за сообщение! Ми мы уже звоним',
+			errorMessage: 'Ой что-то пошло не так! Пожалуйста попробуйсте снова',
 		},
 		project: {
 			crumbsName: 'Проекты',

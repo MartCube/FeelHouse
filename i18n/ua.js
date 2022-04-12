@@ -11,6 +11,7 @@ export default {
 			message: 'Повідомлення',
 			button: 'Відправити',
 			successMessage: "Дякуємо що зв'язалися з нами! Ми вже двонимо",
+			errorMessage: 'Ой щось пішло не так! Будь ласка спробуйте знову',
 		},
 		project: {
 			crumbsName: 'Проекти',

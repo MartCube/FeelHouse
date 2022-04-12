@@ -11,6 +11,7 @@ export default {
 			message: 'Message',
 			button: 'Send',
 			successMessage: "Thank you that you've riched us out! We already calling",
+			errorMessage: "Oop's something went wrong! PLease ry again",
 		},
 		project: {
 			crumbsName: 'projects',
