@@ -1,5 +1,5 @@
 <template>
-	<section class="team">
+	<section class="team section-padding">
 		<div class="container">
 			<h2 class="section-title">{{ title }}</h2>
 			<div class="grid">

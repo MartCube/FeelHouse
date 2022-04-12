@@ -7,16 +7,16 @@
 					<div class="info">
 						<div class="phones">
 							<h6>Phone</h6>
-							<h5><a href="tel:1 123-456-0606">+1 123-456-0606</a></h5>
+							<h5><a href="tel:+380674011181">+380 (67) 401 11 81</a></h5>
 							<p>Monday - Friday: 8am - 6pm<br />Saturday - Sunday: 9am - 3pm</p>
 						</div>
 						<div class="adress">
 							<h6>Email</h6>
-							<h5><a href="mailto:info@architecture.com">info@architecture.com</a></h5>
-							<p>24 King St, Charleston<br />SC 29401 USA</p>
+							<h5><a href="mailto:info@architecture.com">activehouse.ua@gmail.com</a></h5>
+							<!-- <p>24 King St, Charleston<br />SC 29401 USA</p> -->
 						</div>
 						<div class="vid-area">
-							<a class="location_button" href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3354.758017847153!2d-79.93420398486563!3d32.77215479154045!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88fe7a1ae84ff639%3A0xe5c782f71924a526!2s24%20King%20St%2C%20Charleston%2C%20SC%2029401%2C%20USA!5e0!3m2!1sen!2str!4v1631170502143!5m2!1sen!2str">
+							<a class="location_button" target="_blank" href="https://www.google.com/maps/place//data=!4m2!3m1!1s0x40d4d27ed68ea52f:0x5983e5f77ca719fd?source=g.page.share">
 								<Icon name="location" :fill="color" size="48px" />
 							</a>
 							<h5>Our Location</h5>
@@ -28,7 +28,7 @@
 		<div class="container bottom-footer">
 			<div class="item abot">
 				<div class="logo"><img src="/logo-light.png" alt="" /></div>
-				<p>Welcome to our FeelHouse Architecture agency. Viverra tristique justo in duis vitae diam neque niva.</p>
+				<p>Welcome to our ActiveHouse Architecture agency. Viverra tristique justo in duis vitae diam neque niva.</p>
 				<div class="social-icon">
 					<a href="#">
 						<Icon name="facebook" :fill="color" />
@@ -58,18 +58,18 @@
 				</div>
 				<p>Have a project in mind?</p>
 				<p>Let's Build Something Great Together</p>
-				<a href="tel:1 123-456-0606">+1 123-456-0606</a>
-				<a href="mailto:info@architecture.com">info@architecture.com</a>
+				<a href="tel:+380674011181">+380 (67) 401 11 81</a>
+				<a href="mailto:activehouse.ua@gmail.com">activehouse.ua@gmail.com</a>
 			</div>
 		</div>
 		<div class="sub-footer">
 			<div class="container">
 				<div class="text-left">
-					<p>© 2021, FeelHouse. All right reserved.</p>
+					<p>AcivwHouse.design © 2022 All right reserved.</p>
 				</div>
-				<div class="text-right-left">
+				<!-- <div class="text-right-left">
 					<p><a href="#">Terms of use</a> <span>|</span> <a href="#"> Privacy Environmental Policy </a></p>
-				</div>
+				</div> -->
 			</div>
 		</div>
 	</footer>

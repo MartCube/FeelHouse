@@ -1,23 +1,26 @@
 <template>
 	<section class="list section-padding">
 		<div class="container">
-			<template v-if="!$fetchState.pending">
-				<ServiceCard v-for="service in data" :key="service.uid" :data="service" />
-			</template>
+			<h2 class="section-title">{{ title }}</h2>
+			<div class="grid">
+				<ServiceCard v-for="service in list" :key="service.uid" :data="service" />
+			</div>
 		</div>
 	</section>
 </template>
 
 <script>
-import { serviceList } from '@/assets/queries'
-
 export default {
-	data: () => ({
-		data: null,
-	}),
-	async fetch() {
-		// console.log(this.$i18n.localeProperties.code)
-		this.data = await this.$sanity.fetch(serviceList, { lang: this.$i18n.localeProperties.code })
+	name: 'ServiceList',
+	props: {
+		title: {
+			type: String,
+			required: true,
+		},
+		list: {
+			type: Array,
+			required: true,
+		},
 	},
 }
 </script>
@@ -25,7 +28,11 @@ export default {
 <style lang="scss" scoped>
 .list {
 	width: 100%;
-	.container {
+	.section-title {
+		margin-bottom: 4rem;
+		text-align: center;
+	}
+	.grid {
 		display: flex;
 		justify-content: space-between;
 		flex-wrap: wrap;
@@ -34,7 +41,7 @@ export default {
 }
 @media screen and (max-width: 800px) {
 	.list {
-		.container {
+		.grid {
 			justify-content: center;
 			padding: 100px 5%;
 		}

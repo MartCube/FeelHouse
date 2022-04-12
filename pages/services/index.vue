@@ -5,14 +5,15 @@
 		</template>
 		<template v-if="!$fetchState.pending">
 			<SanityContent class="content" :blocks="data.content" :serializers="serializers" />
-			<ServiceList />
+			<!-- <ServiceList /> -->
 		</template>
 	</div>
 </template>
 
 <script>
 import { page } from '@/assets/queries'
-import intro from '@/components/sections/Intro.vue'
+import intro from '@/components/sections/Intro'
+import serviceList from '@/components/sections/ServiceList'
 
 export default {
 	name: 'Services',
@@ -21,6 +22,7 @@ export default {
 		serializers: {
 			types: {
 				intro,
+				serviceList,
 			},
 		},
 	}),

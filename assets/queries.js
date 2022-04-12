@@ -40,6 +40,16 @@ export const page = groq`*[ _type == "page" && uid.current == $uid &&  __i18n_la
      		},
       		...
 		},
+		_type == 'serviceList' => {
+			...,
+			list[] -> {
+				"key": _key,
+			   title,
+			   "poster": poster.asset._ref,
+			   "uid": uid.current,
+			description,
+     		},
+		},
 		_type == 'projectList' => {
 			list[] -> {
 				title,

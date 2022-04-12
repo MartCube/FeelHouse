@@ -19,11 +19,11 @@
 				<div class="sidebar-title">
 					<h5>Need Savoye Help?</h5>
 				</div>
-				<p>Give us a call or drop by anytime, we endeavour to answer all enquiries within 24 hours on business days. We will be happy to answer your questions. info@savoye.com</p>
+				<p>Give us a call or drop by anytime, we endeavour to answer all enquiries within 24 hours on business days. We will be happy to answer your questions. activehouse.ua@gmail.com</p>
 				<div class="phone">
-					<a href="tel:+11234560606">
-						<Icon name="phone" :fill="color" size="25px" />
-						+1 123-456-0606
+					<a href="mailto:activehouse.ua@gmail.com">
+						<Icon name="mail" :fill="color" size="25px" />
+						activehouse.ua@gmail.com
 					</a>
 				</div>
 			</div>
@@ -120,7 +120,7 @@ aside {
 	.phone a {
 		display: flex;
 		align-items: center;
-		font-size: 24px;
+		font-size: 17px;
 		text-transform: uppercase;
 		font-weight: 400;
 		svg {

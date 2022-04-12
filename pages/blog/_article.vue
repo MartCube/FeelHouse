@@ -52,7 +52,7 @@ export default {
 					this.$nuxt.context.res.statusCode = 404
 				}
 				// use throw new Error()
-				throw new Error('service not found')
+				throw new Error('article not found')
 			})
 		// console.log(data.langs, store)
 	},

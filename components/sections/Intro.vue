@@ -76,6 +76,8 @@ export default {
 		text-transform: uppercase;
 		z-index: 2;
 		color: $white;
+		max-width: 80%;
+		text-align: center;
 	}
 	.crumbs {
 		z-index: 2;
@@ -88,6 +90,7 @@ export default {
 		h1 {
 			font-size: 3rem;
 			text-align: center;
+			max-width: 95%;
 		}
 	}
 }
