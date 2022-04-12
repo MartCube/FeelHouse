@@ -982,10 +982,10 @@
   resolved "https://registry.npmjs.org/@csstools/convert-colors/-/convert-colors-1.4.0.tgz"
   integrity sha512-5a6wqoJV/xEdbRNKVo6I4hO3VjyDq//8q2f9I6PBAvMesJHFauXDorcNCsr9RzvsZnaWi5NYCcfyqP1QeFHFbw==
 
-"@emailjs/browser@^3.4.0":
-  version "3.4.0"
-  resolved "https://registry.yarnpkg.com/@emailjs/browser/-/browser-3.4.0.tgz#47e9bf7b52a45ec416a6c82b89876316e32053aa"
-  integrity sha512-pTR9wEj0KLrJBVWFfB6IFEwmGIod/6cfN541Y0TVN2+9Bbn+R9a8gq6GeJZ6ggbYs36J3gCTXDyVKhtxjRsjtw==
+"@emailjs/browser@^3.6.2":
+  version "3.6.2"
+  resolved "https://registry.yarnpkg.com/@emailjs/browser/-/browser-3.6.2.tgz#8124b656953fae490405ba330aa3aebc1aeb6cd2"
+  integrity sha512-Swc8w+vwDX4XPy6tPegOFGSwHqNiEmEsIKbtAkqHo2WqnS0ORZUnnuZats2R3XqwfxNQD0F6RwnlVWHIMf6sCQ==
 
 "@eslint/eslintrc@^0.4.3":
   version "0.4.3"

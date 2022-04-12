@@ -10,6 +10,7 @@ export default {
 			number: 'Телефео',
 			message: 'Повідомлення',
 			button: 'Відправити',
+			successMessage: "Дякуємо що зв'язалися з нами! Ми вже двонимо",
 		},
 		project: {
 			crumbsName: 'Проекти',

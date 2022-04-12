@@ -11,7 +11,7 @@
 		"lint": "yarn lint:js"
 	},
 	"dependencies": {
-		"@emailjs/browser": "^3.4.0",
+		"@emailjs/browser": "^3.6.2",
 		"@nuxtjs/i18n": "^7.2.0",
 		"@nuxtjs/sanity": "^0.10.0",
 		"@sanity/image-url": "^1.0.1",

@@ -5,16 +5,16 @@
 			<div class="contact_form">
 				<h5 class="title">{{ title }}</h5>
 				<form ref="contact_form" autocomplete="off" @submit.prevent="Submit()">
+					<div v-if="isMessageActive">
+						<p class="success_message">{{ messageText }} 🤓</p>
+					</div>
 					<ValidationObserver ref="contact" tag="div">
-						<InputItem id="fullName" :label="$t('pages.contact.fullName')" rules="required" @getValue="storeValue" />
-						<InputItem id="number" :label="$t('pages.contact.number')" type="number" rules="min:9|required" @getValue="storeValue" />
-						<InputItem id="email" :label="$t('pages.contact.email')" rules="email|required" @getValue="storeValue" />
-						<InputItem id="message" :label="$t('pages.contact.message')" rules="required" @getValue="storeValue" />
+						<InputItem id="fullName" :label="$t('pages.contact.fullName')" rules="required" />
+						<InputItem id="number" :label="$t('pages.contact.number')" type="number" rules="min:9|required" />
+						<InputItem id="email" :label="$t('pages.contact.email')" rules="email|required" />
+						<InputItem id="message" :label="$t('pages.contact.message')" rules="required" />
 						<ButtonItem> {{ $t('pages.contact.button') }} </ButtonItem>
 					</ValidationObserver>
-					<!-- <div v-else class="message">
-						<h2>success ?!</h2>
-					</div> -->
 				</form>
 			</div>
 		</div>
@@ -24,7 +24,9 @@
 <script>
 import { ValidationObserver } from 'vee-validate'
 import * as emailjs from '@emailjs/browser'
+// import { set } from 'animejs'
 export default {
+	name: 'ContactForm',
 	components: {
 		ValidationObserver,
 	},
@@ -39,41 +41,11 @@ export default {
 		},
 	},
 	data: () => ({
-		// message: false,
+		isMessageActive: false,
+		messageText: '',
 		loading: false,
-		form: {
-			fullName: '',
-			number: '',
-			email: '',
-			message: '',
-		},
 	}),
 	methods: {
-		storeValue(input) {
-			switch (input.name) {
-				case 'name': {
-					this.form.name = input.value
-					break
-				}
-				case 'number': {
-					this.form.number = input.value
-					break
-				}
-				case 'email': {
-					this.form.email = input.value
-					break
-				}
-				case 'message': {
-					this.form.message = input.value
-					break
-				}
-			}
-			// if (input.name === 'name') this.form.name = input.value
-			// else if (input.name === 'number') this.form.number = input.value
-			// else if (input.name === 'email') this.form.email = input.value
-			// else if (input.name === 'message') this.form.message = input.value
-		},
-
 		async Submit() {
 			const isValid = await this.$refs.contact.validate()
 			// validation
@@ -82,33 +54,34 @@ export default {
 			this.loading = true
 			console.log('loading')
 
-			// compose email template
-			this.form.emailTemplate = `
-				<h4>Name</h4>
-				<p>${this.form.name}</p>
-				<h4>Number</h4>
-				<p>${this.form.number}</p>
-				<h4>Email</h4>
-				<p>${this.form.email}</p>
-				<h4>Message</h4>
-				<p>${this.form.message}</p>
-			`
-
-			emailjs.sendForm('default_service', 'feel_house_contact', this.$refs.contact_form, 'user_vgxo7Nole0QeHb4nsY5SS').then(
+			emailjs.sendForm('service_hmxxn2q', 'template_v1siuzg', this.$refs.contact_form, 'JOPo-OQYnguYIDcB3').then(
 				(result) => {
 					console.log('SUCCESS!', result.text)
+					this.isMessageActive = true
 					this.loading = false
-					// this.message = !this.message
+					this.messageText = this.$t('pages.contact.successMessage')
+					setTimeout(() => {
+						this.$refs.contact_form.reset()
+						this.isMessageActive = false
+						this.messageText = ''
+					}, 3500)
 				},
 				(error) => {
 					console.log('FAILED...', error.text)
-					// this.message = !this.message
+					this.isMessageActive = true
+					this.loading = false
+					this.messageText = error.text
+					setTimeout(() => {
+						this.$refs.contact_form.reset()
+						this.isMessageActive = false
+						this.messageText = ''
+					}, 3500)
 				},
 			)
 
 			this.loading = false
 			console.log('submited')
-			// this.message = !this.message
+			// this.message = false
 		},
 	},
 }

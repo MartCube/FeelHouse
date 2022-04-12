@@ -10,6 +10,7 @@ export default {
 			number: 'Телефон',
 			message: 'Сообщение',
 			button: 'Отправить',
+			successMessage: 'Спасибо за сообщение! Ми мы уже звоним',
 		},
 		project: {
 			crumbsName: 'Проекты',
