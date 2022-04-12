@@ -18,6 +18,7 @@ import PartnersGallery from '@/components/sections/PartnersGallery.vue'
 import ProjectRef from '@/components/sections/ProjectRef.vue'
 import countdown from '@/components/sections/Countdown.vue'
 import team from '@/components/sections/Team.vue'
+import about from '@/components/sections/About.vue'
 
 export default {
 	name: 'Index',
@@ -34,6 +35,7 @@ export default {
 				homeintro: slider,
 				countdown,
 				team,
+				about,
 			},
 		},
 	}),

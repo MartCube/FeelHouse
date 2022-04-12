@@ -1,7 +1,7 @@
 <template>
 	<div class="empployee">
 		<div class="image">
-			<ImageItem :image="data.image" w="200" h="200" />
+			<ImageItem :image="data.image" w="200" h="200" crop="top" />
 		</div>
 		<div class="info">
 			<span>{{ data.name }}</span>
