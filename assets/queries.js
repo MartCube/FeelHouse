@@ -132,9 +132,9 @@ export const project = groq`*[ _type == "project" && uid.current == $uid][0]{
   },
 }`
 export const article = groq`*[ _type == "article" && uid.current == $uid][0]{
-    title,
+	title,
 	"poster": poster.asset._ref,
-    content[] {
+	content[] {
 		_type == 'blockContent' => {'_type': 'block', ...},
 		_type == 'image' => { _key, _type, alt, "image": asset._ref, },
 		_type == 'youtube' => {...}
@@ -223,11 +223,11 @@ export const serviceListLinks = groq`*[ _type == "service" &&  __i18n_lang == $l
 	title,
 	"uid": uid.current,
 }`
-export const navbar = groq`*[ _type == "navbar" ][0]{
-	links[]->{
-		'uid':uid.current,
-		'lang':title,
-	}
+export const navbar = groq`*[ _type == "page"]{
+	title, 
+  "lang": __i18n_lang,
+  "uid": uid.current,
+	"place": place,
 }`
 
 // pagination

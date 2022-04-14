@@ -26,7 +26,7 @@ export default {
 			let link
 			switch (this.$i18n.localeProperties.code) {
 				case 'en':
-					link = `/our-projects/${this.data.uid}/`
+					link = `/projects/${this.data.uid}/`
 					break
 				case 'ua':
 					link = `/ua/nashi-proekty/${this.data.uid}/`

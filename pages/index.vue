@@ -40,18 +40,9 @@ export default {
 		},
 	}),
 	async fetch() {
-		let id = 'home-us'
-		switch (this.$i18n.localeProperties.code) {
-			case 'ru':
-				id = 'domashnyaja'
-				break
-			case 'ua':
-				id = 'golovna'
-				break
-		}
-		if (id)
+		if (this.getIndexId)
 			await this.$sanity
-				.fetch(page, { uid: id, lang: this.$i18n.localeProperties.code })
+				.fetch(page, { uid: this.getIndexId, lang: this.$i18n.localeProperties.code })
 				.then(async (fetch) => {
 					this.data.content = fetch.content
 					await this.$store.dispatch('metaTags', {
@@ -71,6 +62,20 @@ export default {
 	fetchOnServer: false,
 	head() {
 		return this.$store.getters.metaHead
+	},
+	computed: {
+		getIndexId() {
+			let id = 'home'
+			switch (this.$i18n.localeProperties.code) {
+				case 'ru':
+					id = 'domashnyaja'
+					break
+				case 'ua':
+					id = 'golovna'
+					break
+			}
+			return id
+		},
 	},
 }
 </script>

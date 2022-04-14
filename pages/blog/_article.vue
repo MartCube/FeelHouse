@@ -56,10 +56,16 @@ export default {
 			})
 		// console.log(data.langs, store)
 	},
-	fetchOnServer: false,
 	head() {
 		return this.$store.getters.metaHead
 	},
+	watch: {
+		currentLocale(newValue, oldValue) {
+			console.log('currentLocale changed')
+			this.fetch()
+		},
+	},
+	fetchOnServer: false,
 }
 </script>
 

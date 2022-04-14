@@ -1,15 +1,22 @@
+import { navbar } from '@/assets/queries'
+
 export const state = (context) => ({
 	domain: 'https://activehouse.design',
 	metaHead: {},
+	navigation: [],
 })
 
 export const getters = {
 	metaHead: (state) => state.metaHead,
+	navigation: (state) => state.navigation,
 }
 
 export const mutations = {
 	setMeta(state, value) {
 		state.metaHead = value
+	},
+	setNavigation(state, value) {
+		state.navigation = value
 	},
 }
 
@@ -71,5 +78,16 @@ export const actions = {
 			],
 		)
 		await commit('setMeta', head)
+	},
+
+	async nuxtServerInit({ commit }) {
+		await this.$sanity
+			.fetch(navbar)
+			.then((data) => {
+				commit('setNavigation', data)
+			})
+			.catch((err) => {
+				console.log(err)
+			})
 	},
 }

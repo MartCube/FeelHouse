@@ -55,22 +55,22 @@ export default {
 		],
 		pages: {
 			'blog/index': {
-				en: '/news',
+				en: '/blog',
 				ru: '/novosti',
 				ua: '/novunu',
 			},
 			'blog/_article': {
-				en: '/news/:article?',
+				en: '/blog/:article?',
 				ru: '/novosti/:article?',
 				ua: '/novunu/:article?',
 			},
 			'projects/index': {
-				en: '/our-projects',
+				en: '/projects',
 				ru: '/proekty',
 				ua: '/nashi-proekty',
 			},
 			'projects/_project': {
-				en: '/our-projects/:project?',
+				en: '/projects/:project?',
 				ru: '/proekty/:project?',
 				ua: '/nashi-proekty/:project?',
 			},

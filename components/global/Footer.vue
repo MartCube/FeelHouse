@@ -12,7 +12,7 @@
 						</div>
 						<div class="adress">
 							<h6>Email</h6>
-							<h5><a href="mailto:info@architecture.com">activehouse.ua@gmail.com</a></h5>
+							<h5><a href="mailto:activehouse.ua@gmail.com">activehouse.ua@gmail.com</a></h5>
 							<!-- <p>24 King St, Charleston<br />SC 29401 USA</p> -->
 						</div>
 						<div class="vid-area">
@@ -46,10 +46,9 @@
 					<h6>Sitemap</h6>
 				</div>
 				<ul>
-					<li><n-link to="/faq/">FAQ</n-link></li>
-					<li><n-link to="/faq/">Interior Design</n-link></li>
-					<li><n-link to="/faq/">Urban Design</n-link></li>
-					<li><n-link to="/faq/">Decor Plan</n-link></li>
+					<li v-for="link in getNavigation" :key="link.uid">
+						<n-link :to="`${normalizeLocale}/${link.uid}/`"> {{ link.title }} </n-link>
+					</li>
 				</ul>
 			</div>
 			<div class="item fotcont">
@@ -81,6 +80,26 @@ export default {
 	data: () => ({
 		color: '#272727',
 	}),
+	computed: {
+		getNavigation() {
+			return this.$store.getters.navigation.filter((el) => el.lang === this.$i18n.localeProperties.code && el.uid !== this.getIndexId).sort((a, b) => a.place - b.place)
+		},
+		normalizeLocale() {
+			return this.$i18n.localeProperties.code === 'en' ? '' : '/' + this.$i18n.localeProperties.code
+		},
+		getIndexId() {
+			let id = 'home'
+			switch (this.$i18n.localeProperties.code) {
+				case 'ru':
+					id = 'domashnyaja'
+					break
+				case 'ua':
+					id = 'golovna'
+					break
+			}
+			return id
+		},
+	},
 }
 </script>
 <style lang="scss" scoped>

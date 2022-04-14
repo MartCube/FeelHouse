@@ -6,14 +6,9 @@
 				<img src="/logo-dark.png" alt="logo" />
 			</n-link>
 			<LangSwitcher />
-
-			<div v-if="currentLinks !== null" class="links" :class="{ open: isOpened }" @click="openMenu()">
-				<n-link v-for="link in currentLinks[0].data" :key="link.url" :to="`/${$i18n.localeProperties.code === 'en' ? '' : $i18n.localeProperties.code + '/'}${link.url}/`"> {{ link.name }} </n-link>
-			</div>
-			<!-- <div v-if="!$fetchState.pending" class="links" :class="{ open: isOpened }" @click="openMenu()">
-				<n-link v-for="link in data.links" :key="link.uid" :to="`/${link.uid}/`"> {{ link.label }} </n-link>
-				<LangSwitcher />
-			</div> -->
+			<nav class="links" :class="{ open: isOpened }" @click="openMenu()">
+				<n-link v-for="link in getNavigation" :key="link.uid" :to="`${normalizeLocale}/${link.uid}/`"> {{ link.title }} </n-link>
+			</nav>
 			<button class="burger" :class="{ open: isOpened }" @click="openMenu()">
 				<span></span>
 				<span></span>
@@ -24,119 +19,39 @@
 </template>
 
 <script>
-// import { navbar } from '@/assets/queries'
-
 export default {
 	name: 'Navbar',
 	data: () => ({
-		currentLinks: null,
-		links: [
-			{
-				language: 'ua',
-				data: [
-					{
-						name: 'Про нас',
-						url: 'pro-nas',
-					},
-					{
-						name: 'Послуги',
-						url: 'poslygu',
-					},
-					{
-						name: 'Проекти',
-						url: 'nashi-proekty',
-					},
-					{
-						name: 'Новини',
-						url: 'novunu',
-					},
-					{
-						name: 'Контакти',
-						url: 'contactu',
-					},
-				],
-			},
-			{
-				language: 'ru',
-				data: [
-					{
-						name: 'О нас',
-						url: 'o-proekte',
-					},
-					{
-						name: 'Услуги',
-						url: 'uslugi',
-					},
-					{
-						name: 'Проекты',
-						url: 'proekty',
-					},
-					{
-						name: 'Блог',
-						url: 'novosti',
-					},
-					{
-						name: 'Контакты',
-						url: 'kontakty',
-					},
-				],
-			},
-			{
-				language: 'en',
-				data: [
-					{
-						name: 'About us',
-						url: 'about-project',
-					},
-					{
-						name: 'Services',
-						url: 'service',
-					},
-					{
-						name: 'Projects',
-						url: 'our-projects',
-					},
-					{
-						name: 'Blog',
-						url: 'news',
-					},
-					{
-						name: 'Contacts',
-						url: 'contact-us',
-					},
-				],
-			},
-		],
 		scrollPosition: null,
 		mobile: null,
 		isOpened: false,
 	}),
 	computed: {
-		currentLocale() {
-			return this.$i18n.locale
+		getNavigation() {
+			return this.$store.getters.navigation.filter((el) => el.lang === this.$i18n.localeProperties.code && el.uid !== this.getIndexId).sort((a, b) => a.place - b.place)
 		},
-	},
-	// async fetch() {
-	// 	this.data = await this.$sanity.fetch(navbar)
-	// },
-	watch: {
-		currentLocale(newValue, oldValue) {
-			console.log('currentLocale changed')
-			this.getNavbarLinks()
+		normalizeLocale() {
+			return this.$i18n.localeProperties.code === 'en' ? '' : '/' + this.$i18n.localeProperties.code
+		},
+		getIndexId() {
+			let id = 'home'
+			switch (this.$i18n.localeProperties.code) {
+				case 'ru':
+					id = 'domashnyaja'
+					break
+				case 'ua':
+					id = 'golovna'
+					break
+			}
+			return id
 		},
 	},
 	mounted() {
 		this.mobile = window.innerWidth
-		this.getNavbarLinks()
 		window.addEventListener('scroll', this.updateScroll)
 		window.addEventListener('resize', this.resize)
 	},
 	methods: {
-		getNavbarLinks() {
-			this.currentLinks = this.links.filter((el) => {
-				return el.language === this.$i18n.localeProperties.code ? el.data : false
-			})
-		},
 		updateScroll() {
 			this.scrollPosition = window.scrollY
 		},
